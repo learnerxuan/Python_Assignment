@@ -1,0 +1,3 @@
+101,John Doe,john@example.com,Enrolled,85
+102,Jane Smith,jane@example.com,Withdrawn,70
+103,Alice Brown,alice@example.com,Enrolled,90
