@@ -1,0 +1,12 @@
+student_id,course_code,feedback
+101,CS101,"Great course, very interactive."
+101,CS102,"Challenging but rewarding."
+102,CS101,"Good explanations and examples."
+103,CS103,"Loved the hands-on exercises."
+104,CS104,"Too theoretical, needs more practicals."
+105,CS105,"Excellent introduction to AI."
+106,CS106,"Good coverage of operating systems."
+107,CS107,"Interesting, but needs better labs."
+108,CS108,"Fun course with real-world examples."
+109,CS109,"Great insights into cloud architecture."
+110,CS110,"Very well-structured course."

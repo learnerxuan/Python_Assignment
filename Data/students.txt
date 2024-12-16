@@ -1,0 +1,11 @@
+ID,name,email,enrollment_status,grade
+101,John Doe,john.doe@example.com,Enrolled,85
+102,Jane Smith,jane.smith@example.com,Enrolled,78
+103,Alice Brown,alice.brown@example.com,Enrolled,92
+104,Bob Johnson,bob.johnson@example.com,Withdrawn,65
+105,Emily Davis,emily.davis@example.com,Enrolled,88
+106,Chris Wilson,chris.wilson@example.com,Enrolled,74
+107,Karen Taylor,karen.taylor@example.com,Withdrawn,60
+108,Tom Lee,tom.lee@example.com,Enrolled,81
+109,Susan Miller,susan.miller@example.com,Enrolled,90
+110,David Clark,david.clark@example.com,Enrolled,79
