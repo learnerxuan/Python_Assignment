@@ -1,4 +1,4 @@
-course_code,course_name,description,id
+course_id,course_name,description,id
 CS101,Introduction to Programming,Learn Python basics,T1
 CS102,Data Science Basics,Intro to statistics and analysis,T2
 CS103,Web Development,HTML/CSS/JavaScript basics,T3
