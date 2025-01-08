@@ -1,11 +1,11 @@
-ID,name,email,enrollment_status,grade
-101,John Doe,john.doe@example.com,Enrolled,85
-102,Jane Smith,jane.smith@example.com,Enrolled,78
-103,Alice Brown,alice.brown@example.com,Enrolled,92
-104,Bob Johnson,bob.johnson@example.com,Withdrawn,65
-105,Emily Davis,emily.davis@example.com,Enrolled,88
-106,Chris Wilson,chris.wilson@example.com,Enrolled,74
-107,Karen Taylor,karen.taylor@example.com,Withdrawn,60
-108,Tom Lee,tom.lee@example.com,Enrolled,81
-109,Susan Miller,susan.miller@example.com,Enrolled,90
-110,David Clark,david.clark@example.com,Enrolled,79
+id,name,password,phone_number,email,gender,enrollment_status,grade_CGPA
+S1, Ben, student123, 123-321-4567, ben@gmail.com, Male, Enrolled, 4.00
+S2, Jane Smith, student456, 234-432-5678, jane.smith@example.com, Female, Enrolled, 3.97
+S3, John, student789, 345-543-6789, john@gmail.com, Male, Enrolled, 4.00
+S4, Bob Johnson, student2023, 456-654-7890, bob.johnson@example.com, Male, Withdrawn, 4.00
+S5, Emily Davis, studentPass, 567-765-8901, emily.davis@example.com, Female, Enrolled, 2.55
+S6, Chris Wilson, student101, 678-876-9012, chris.wilson@example.com, Male, Enrolled, 3.88
+S7, Karen Taylor, studentSafe, 789-987-0123, karen.taylor@example.com, Female, Withdrawn, 4.00
+S8, Tom Lee, studentKey, 890-098-1234, tom.lee@example.com, Male, Enrolled, 3.90
+S9, Susan Miller, studentStrong, 901-109-2345, susan.miller@example.com, Female, Enrolled, 4.00
+S10, David Clark, studentSecure, 012-210-3456, david.clark@example.com, Male, Enrolled, 4.00
