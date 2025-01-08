@@ -1,1 +1,1 @@
-course_id, id, lesson_plan, assignment, materials
+course_id, id, lesson_plan, assignment, notes, announcements
