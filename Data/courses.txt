@@ -1,11 +1,11 @@
-course_code,course_name,description,instructor
-CS101,Introduction to Programming,Learn Python basics,teacher1
-CS102,Data Science Basics,Intro to statistics and analysis,teacher2
-CS103,Web Development,HTML/CSS/JavaScript basics,teacher3
-CS104,Database Systems,Learn SQL and database design,teacher1
-CS105,AI Fundamentals,Intro to machine learning concepts,teacher2
-CS106,Operating Systems,Understand OS fundamentals,teacher3
-CS107,Network Security,Learn about cybersecurity principles,teacher1
-CS108,Mobile App Development,Build apps for Android and iOS,teacher2
-CS109,Cloud Computing,Explore cloud architecture and tools,teacher3
-CS110,Software Engineering,Learn software design principles,teacher1
+course_code,course_name,description,id
+CS101,Introduction to Programming,Learn Python basics,T1
+CS102,Data Science Basics,Intro to statistics and analysis,T2
+CS103,Web Development,HTML/CSS/JavaScript basics,T3
+CS104,Database Systems,Learn SQL and database design,T4
+CS105,AI Fundamentals,Intro to machine learning concepts,T5
+CS106,Operating Systems,Understand OS fundamentals,T6
+CS107,Network Security,Learn about cybersecurity principles,T7
+CS108,Mobile App Development,Build apps for Android and iOS,T8
+CS109,Cloud Computing,Explore cloud architecture and tools,T9
+CS110,Software Engineering,Learn software design principles,T10
