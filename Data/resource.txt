@@ -1,1 +1,11 @@
-
+resource_id,type,location_id
+101,Projector,1
+102,Laptop,2
+103,Desk,3
+104,Whiteboard,1
+105,Chair,4
+106,Microphone,2
+107,Desk,1
+108,Chair,3
+109,Projector,4
+110,Laptop,3
