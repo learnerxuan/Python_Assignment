@@ -1,11 +1,11 @@
-course_code,day,time,room
-CS101,Monday,10:00-12:00,Room 101
-CS102,Wednesday,14:00-16:00,Room 102
-CS103,Friday,10:00-12:00,Room 103
-CS104,Tuesday,13:00-15:00,Room 104
-CS105,Thursday,09:00-11:00,Room 105
-CS106,Monday,12:00-14:00,Room 106
-CS107,Wednesday,10:00-12:00,Room 107
-CS108,Friday,13:00-15:00,Room 108
-CS109,Tuesday,09:00-11:00,Room 109
-CS110,Thursday,14:00-16:00,Room 110
+course_code,day,time,room,teacher_id
+CS101,Monday,10:00-12:00,Room 101,T1
+CS102,Wednesday,14:00-16:00,Room 102,T2
+CS103,Friday,10:00-12:00,Room 103,T3
+CS104,Tuesday,13:00-15:00,Room 104,T4
+CS105,Thursday,09:00-11:00,Room 105,T5
+CS106,Monday,12:00-14:00,Room 106,T6
+CS107,Wednesday,10:00-12:00,Room 107,T7
+CS108,Friday,13:00-15:00,Room 108,T8
+CS109,Tuesday,09:00-11:00,Room 109,T9
+CS110,Thursday,14:00-16:00,Room 110,T10
