@@ -1,0 +1,11 @@
+id, enrollment_status, grade_CGPA
+S1, Enrolled, 4.00
+S2, Enrolled, 3.97
+S3, Enrolled, 4.00
+S4, Withdrawn, 4.00
+S5, Enrolled, 2.55
+S6, Enrolled, 3.88
+S7, Withdrawn, 4.00
+S8, Enrolled, 3.90
+S9, Enrolled, 4.00
+S10, Enrolled, 4.00
