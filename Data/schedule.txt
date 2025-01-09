@@ -1,4 +1,4 @@
-course_code,day,time,room,teacher_id
+course_id,day,time,room,teacher_id
 CS101,Monday,10:00-12:00,Room 101,T1
 CS102,Wednesday,14:00-16:00,Room 102,T2
 CS103,Friday,10:00-12:00,Room 103,T3
