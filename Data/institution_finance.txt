@@ -1,0 +1,13 @@
+name_revenue,amount,name_expenses,amount
+Tuition Fees,26434,Faculty Salaries,11617
+Government Grants,26630,Administrative Salaries,27356
+Donations,34512,Facility Maintenance,26220
+Research Grants,27885,Utilities,11820
+Endowment Income,29619,Scholarships,11489
+Facility Rentals,45379,Research Expenses,12051
+Consulting Services,17366,Library Expenses,10309
+Cafeteria Sales,33041,IT Services,13070
+Bookstore Sales,41051,Marketing and Advertising,10897
+Parking Fees,42548,Travel and Conferences,26386
+Event Ticket Sales,15006,Office Supplies,21308
+Alumni Contributions,24793,Miscellaneous Expenses,17425

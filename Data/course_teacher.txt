@@ -1,0 +1,11 @@
+course_id, teacher_id, lesson_plan, assignment, notes, announcements
+CS101, T1, Introduction to Python, Python Basics Assignment, Python Notes, Python Workshop Announcement
+CS102, T2, Data Science Overview, Statistics Assignment, Data Science Notes, Data Science Seminar Announcement
+CS103, T3, HTML/CSS/JS Basics, Web Development Project, Web Dev Notes, Web Dev Bootcamp Announcement
+CS104, T4, SQL Fundamentals, Database Design Assignment, SQL Notes, Database Webinar Announcement
+CS105, T5, Machine Learning Intro, ML Algorithms Assignment, AI Notes, AI Conference Announcement
+CS106, T6, OS Concepts, OS Design Assignment, OS Notes, OS Symposium Announcement
+CS107, T7, Cybersecurity Principles, Network Security Assignment, Security Notes, Cybersecurity Workshop Announcement
+CS108, T8, Mobile App Basics, App Development Project, Mobile Dev Notes, Mobile Dev Hackathon Announcement
+CS109, T9, Cloud Architecture, Cloud Tools Assignment, Cloud Computing Notes, Cloud Expo Announcement
+CS110, T10, Software Design Principles, Software Engineering Project, Software Eng Notes, Software Eng Meetup Announcement

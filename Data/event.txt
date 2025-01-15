@@ -1,0 +1,5 @@
+event_id,event_name,event_type,start_time,end_time,location_id,organizer_id
+1,Math Conference,Conference,2025-02-10 09:00,2025-02-10 17:00,1,101
+2,Cultural Festival,Extracurricular,2025-03-20 10:00,2025-03-20 15:00,2,102
+3,Physics Seminar,Seminar,2025-04-15 14:00,2025-04-15 16:00,1,103
+4,Music Workshop,Extracurricular,2025-05-05 08:00,2025-05-05 12:00,3,104
