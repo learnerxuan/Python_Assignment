@@ -1,4 +1,4 @@
-course_id, id, lesson_plan, assignment, notes, announcements
+course_id, teacher_id, lesson_plan, assignment, notes, announcements
 CS101, T1, Introduction to Python, Python Basics Assignment, Python Notes, Python Workshop Announcement
 CS102, T2, Data Science Overview, Statistics Assignment, Data Science Notes, Data Science Seminar Announcement
 CS103, T3, HTML/CSS/JS Basics, Web Development Project, Web Dev Notes, Web Dev Bootcamp Announcement
