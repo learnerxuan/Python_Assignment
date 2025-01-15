@@ -4,6 +4,7 @@ def administrator():
             """ Add New User for Admin, Teacher, Staff, and Student """
             while True:  # Loop to redisplay the Add User menu
                 try:
+                    # Print out the User Management Menu
                     print("\n==================================================")
                     print("                  USER MANAGEMENT                 ")
                     print("==================================================")
@@ -14,8 +15,10 @@ def administrator():
                     print("5. Back")
                     print("==================================================")
 
+                    # User input their choice
                     choice = int(input("👉 Choose your option by number: "))
 
+                    # Set user to user's choice for file purpose
                     if choice == 1:
                         user = "admin"
                     elif choice == 2:
@@ -25,8 +28,7 @@ def administrator():
                     elif choice == 4:
                         user = "student"
                     elif choice == 5:
-                        # Exit the Add User menu
-                        break
+                        break # Exit the Add User menu
                     else:
                         print("Invalid choice. Please choose again.")
                         continue
@@ -35,13 +37,14 @@ def administrator():
                     print(f"                 ADD {user.upper()} USER                  ")
                     print("==================================================")
 
-                    # Take input from user and store it in variables
+                    # Take input from user and store it into variables
                     id = str(input("Enter id: "))
                     name = str(input("Enter name: "))
                     password = str(input("Enter password: "))
                     phone_number = str(input("Enter phone number: "))
                     email = str(input("Enter email: "))
                     gender_option = int(input("Enter gender (0 - Male, 1 - Female): "))
+                    # By on gender_option, set gender
                     if gender_option == 0:
                         gender = "Male"
                     elif gender_option == 1:
@@ -61,6 +64,7 @@ def administrator():
                         content = file.read()
                         if content and not content.endswith("\n"):  # Ensure no extra blank lines
                             file.write("\n")
+                        # Write all the data into file
                         file.write(f"{id},{name},{password},{phone_number},{email},{gender}")
                 except ValueError:
                     print("❌ Invalid input. Please enter a valid number.")
@@ -81,6 +85,7 @@ def administrator():
                     print("5. Back")
                     print("==================================================")
 
+                    # Input user choice
                     choice = int(input("👉 Choose your option by number: "))
 
                     if choice == 1:
@@ -98,15 +103,17 @@ def administrator():
                         print("Invalid choice. Please choose again.")
                         continue
 
+                    # Input id of the user who needed to be updated
                     id = str(input("Enter id to update: ")).strip()
                     found = False
                     updated_records = []
                     file_path = f"../Data/{user}.txt"
 
-                    # Read and process the file
                     with open(file_path, "r") as file:
                         for line in file:
                             all_lines = line.strip().split(",")
+
+                            # Input new data if id is found
                             if all_lines[0] == id:
                                 found = True
                                 print(f"Updating record for user ID: {id}")
@@ -146,7 +153,7 @@ def administrator():
                         print(f"User with ID '{id}' not found. Please try again.")
                         continue  # Redisplay the update menu
 
-                    # Write updated records back to the file
+                    # Write updated data back to the file
                     with open(file_path, "w") as file:
                         file.writelines(updated_records)
 
@@ -584,14 +591,14 @@ def administrator():
         def add_course():
             print("Adding new course...")
             try:
-                course_code = str(input("Enter course code: ")).strip()
+                course_id = str(input("Enter course code: ")).strip()
 
                 # Check if the course already exists
                 with open("../Data/courses.txt", "r") as file:
                     for line in file:
                         check_exist = line.strip().split(",")[0]
-                        if check_exist == course_code:
-                            print(f"Error : Course with code {course_code} already exists")
+                        if check_exist == course_id:
+                            print(f"Error : Course with code {course_id} already exists")
                             return
 
                 course_name = str(input("Enter course name: ")).strip()
@@ -616,7 +623,7 @@ def administrator():
                     content = file.read()
                     if content and not content.endswith("\n"):  # Ensure file ends with a newline
                         file.write("\n")
-                    file.write(f"{course_code},{course_name},{description},{teacher_id}\n")  # Add a newline at the end
+                    file.write(f"{course_id},{course_name},{description},{teacher_id}\n")  # Add a newline at the end
                 print(f"✅ New course added successfully!")
 
             except FileNotFoundError as e:
@@ -703,7 +710,6 @@ def administrator():
                 print("=" * 50)
 
                 if user_choice == 1:
-
                     view_courses()
                 elif user_choice == 2:
                     add_course()
@@ -747,20 +753,20 @@ def administrator():
         def add_class_schedule():
             print("Adding new class...")
             try:
-                course_code = str(input("Enter course code: ")).strip()
+                course_id = str(input("Enter course code: ")).strip()
                 # Check whether course code exist
                 course_found = False
                 teacher_for_course = None
                 with open("../Data/courses.txt", "r") as file:
                     for line in file:
                         check_exist = line.strip().split(",")
-                        if course_code == check_exist[0]:
+                        if course_id == check_exist[0]:
                             course_found = True
                             teacher_for_course = check_exist[3]  # The teacher's ID for this course
                             break
 
                 if not course_found:
-                    print(f"❌ Course code: {course_code} not found")
+                    print(f"❌ Course code: {course_id} not found")
                     return
 
                 day = str(input("Enter day (e.g., Monday): ")).strip()
@@ -783,7 +789,7 @@ def administrator():
                     return
 
                 if teacher_id != teacher_for_course:
-                    print(f"❌ Error: Teacher ID '{teacher_id}' is not assigned to teach course '{course_code}'.")
+                    print(f"❌ Error: Teacher ID '{teacher_id}' is not assigned to teach course '{course_id}'.")
                     return
 
                 with open("../Data/schedule.txt","r") as file:
@@ -811,8 +817,8 @@ def administrator():
                                 return
 
                 with open("../Data/schedule.txt", "a") as file:
-                    file.write(f"{course_code},{day},{start_time},{end_time},{room},{teacher_id}\n")
-                print(f"✅ New schedule for course '{course_code}' added successfully!")
+                    file.write(f"{course_id},{day},{start_time},{end_time},{room},{teacher_id}\n")
+                print(f"✅ New schedule for course '{course_id}' added successfully!")
 
             except FileNotFoundError as e:
                 print(f"❌ Error: {e.filename} not found. Please ensure the file exists.")
@@ -827,7 +833,7 @@ def administrator():
             """
             try:
                 print("Updating class schedule ...")
-                course_code = str(input("Enter Course Code to update: ")).strip() # Input course code which user wanted update
+                course_id = str(input("Enter Course ID to update: ")).strip() # Input course code which user wanted update
                 found = False
                 schedules = []  # Store all rows from the file
                 matching_schedules = []  # Store rows matching the course code
@@ -837,15 +843,15 @@ def administrator():
                     for line in file:
                         class_schedule = line.strip().split(",")
                         schedules.append(class_schedule)
-                        if course_code == class_schedule[0]:
+                        if course_id == class_schedule[0]:
                             found = True
                             matching_schedules.append(class_schedule)
                 if not found:
-                    print(f"❌ Course code '{course_code}' not found.")
+                    print(f"❌ Course code '{course_id}' not found.")
                     return
 
                 # Display matching schedules in a table
-                print("\nCurrent schedule(s) for course code:", course_code)
+                print("\nCurrent schedule(s) for course code:", course_id)
                 print("=" * 85)
                 print(
                     f"{'No.':<3}| {'Course Code':<12} | {'Day':<10} | {'Start Time':<10} | {'End Time':<10} | {'Room':<10} | {'Instructor':<10} |")
@@ -1274,23 +1280,17 @@ def administrator():
 
                 if choice == 1:
                     generate_performance_report()
-
                 elif choice == 2:
                     course_attendance_report()
-
                 elif choice == 3:
                     student_attendance_report()
-
                 elif choice == 4:
                     generate_students_financial_report()
-
                 elif choice == 5:
                     generate_institution_financial_report()
-
                 elif choice == 6:
                     print("Exiting Report Generation Menu. Goodbye!")
                     break
-
                 else:
                     print("❌ Invalid choice. Please choose a valid number (1-6).")
 
@@ -1298,9 +1298,6 @@ def administrator():
                 print("❌ Please enter a valid number (1-6).")
             except Exception as e:
                 print(f"⚠️ An unexpected error occurred. Details: {e}")
-
-    def logout():
-        return
 
     """
     Administrator menu for managing system functions.
