@@ -1,0 +1,777 @@
+1. System Administration: Manage user accounts and credentials for all system users
+(teachers, students, staff).
+2. Student Management: Oversee student records, including viewing and updating personal
+details, enrollment status, and academic performance.
+3. Course Management: Create, update, or delete course offerings and assign instructors to
+courses.
+4. Class Schedule: Maintain and update class schedules, ensuring no overlap and proper
+resource allocation.
+5. Report Generation: Generate academic performance, attendance, and financial reports for
+students and the institution.
+
+main.py
+START
+           OUTPUT “Welcome to the Education Management System”
+           WHILE True
+                      OUTPUT “1. Login”
+                      OUTPUT “2. Exit”
+                      INPUT user_choice
+                      IF user_choice == “1” THEN
+                                 CALL login()
+                      ELIF user_choice == “2” THEN
+                                 OUTPUT “Exiting the system ….. Bye!”
+                                 Break
+                      ELSE
+                                OUTPUT “Invalid choice. Please enter your choice again”
+                      END IF
+          END WHILE
+END
+
+FUNCTION login()
+            OUTPUT “1. Login as Administrator”
+            OUTPUT “2. Login as Teacher”
+            OUTPUT “3. Login as Staff”
+            OUTPUT “4. Login as Student”
+            INPUT login_option, username, password
+
+            IF login_option == “1” THEN
+                        IF username and password are in admin.txt file THEN
+                           CALL Administrator()
+                        ELSE
+                           OUTPUT “Invalid credentials. Please try again”
+            ELIF login_option == “2” THEN
+                        IF username and password are in teacher.txt file THEN
+                            CALL teacher()
+                        ELSE
+                           OUTPUT “Invalid credentials. Please try again”
+            ELIF login_option == “3” THEN
+                        IF username and password are in staff.txt file THEN
+                            CALL staff()
+                        ELSE
+                           OUTPUT “Invalid credentials. Please try again”v
+            ELIF login_option == “4” THEN
+                        IF username and password are in student.txt file THEN
+                            CALL student()
+                        ELSE
+                           OUTPUT “Invalid credentials. Please try again”
+            ELSE
+                        OUTPUT “Invalid options. Please try again”
+            END IF
+END FUNCTION
+
+LOW ZE XUAN - Administrator
+Aministrator.py
+
+FUNCTION Administrator()
+        FUNCTION system_administration()
+                FUNCTION add_user()
+                        WHILE TRUE
+                            OUTPUT "1. Add User for Admin"
+                            OUTPUT "2. Add User for Teacher"
+                            OUTPUT "3. Add User for Staff"
+                            OUTPUT "4. Add User for Student"
+                            INPUT user_choice
+                            IF user_choice == 1 THEN
+                                user = "admin"
+                            ELIF user_choice == 2 THEN
+                                user = "teacher"
+                            ELIF user_choice == 3 THEN
+                                user = "staff"
+                            ELIF user_choice == 4 THEN
+                                user = "student"
+                            ELIF user_choice == 5 THEN
+                                break
+                            ELSE
+                                OUTPUT "Invalid choice. Please choose again."
+                                CONTINUE
+
+                            INPUT id, name, password, phone_number, email, gender
+                            OPEN "<user>.txt" in append and reading mode as file
+                                WRITE id, name, password, phone_number, email, gender TO file
+                                CLOSE file
+                            END IF
+                        END WHILE
+                END FUNCTION
+
+                FUNCTION update_user()
+                        WHILE TRUE
+                            OUTPUT "1. Update Admin User"
+                            OUTPUT "2. Update Teacher User"
+                            OUTPUT "3. Update Staff User"
+                            OUTPUT "4. Update Student User"
+                            OUTPUT "5. Back"
+
+                            INPUT update_choice
+
+                            IF choice == 1 THEN
+                                user = "admin"
+                            ELIF choice == 2 THEN
+                                user = "teacher"
+                            ELIF choice == 3 THEN
+                                user = "staff"
+                            ELIF choice == 4 THEN
+                                user = "student"
+                            ELIF choice == 5 THEN
+                                RETURN
+                            ELSE
+                                OUTPUT "Invalid choice. Please choose again."
+
+                            INPUT user_id
+
+                            OPEN "<user>.txt" in write mode as file
+                                IF user_id is found THEN
+                                    INPUT new name,password,phone_number,email,gender
+                                    UPDATE new name,password,phone_number,email,gender into "<user>.txt" file
+                                ELSE
+                                    OUTPUT "User id not found"
+                                CLOSE file
+                            END IF
+                        END WHILE
+                END FUNCTION
+
+                FUNCTION delete_user()
+                        WHILE TRUE
+                            OUTPUT "1. Delete Admin User"
+                            OUTPUT "2. Delete Teacher User"
+                            OUTPUT "3. Delete Staff User"
+                            OUTPUT "4. Delete Student User"
+                            OUTPUT "5. Back"
+
+                            INPUT delete_choice
+
+                            IF choice == 1 THEN
+                                user = "admin"
+                            ELIF choice == 2 THEN
+                                user = "teacher"
+                            ELIF choice == 3 THEN
+                                user = "staff"
+                            ELIF choice == 4 THEN
+                                user = "student"
+                            ELIF choice == 5 THEN
+                                RETURN
+                            ELSE
+                                OUTPUT "Invalid choice. Please choose again."
+
+                            INPUT user_id
+
+                            OPEN "<user>.txt" in write mode as file
+                                IF user_id is found THEN
+                                    DELETE new name,password,phone_number,email,gender
+                                    OUTPUT "User deleted successfully."
+                                ELSE
+                                    OUTPUT "User id not found"
+                                CLOSE file
+                            END IF
+                        END WHILE
+                END FUNCTION
+
+                WHILE True
+                    OUTPUT "SYSTEM ADMINISTRATION"
+                    OUTPUT "1. Add User"
+                    OUTPUT "2. Update User"
+                    OUTPUT "3. Delete User"
+                    OUTPUT "4. Back"
+
+                    INPUT user_choice
+
+                    IF user_choice == 1 THEN
+                        CALL add_user()
+                    ELIF user_choice == 2 THEN
+                        CALL update_user()
+                    ELIF user_choice == 3 THEN
+                        CALL delete_user()
+                    ELIF user_choice == 4 THEN
+                        RETURN
+                    ELSE
+                        OUTPUT "Invalid choice. Please enter a number between 1 and 4."
+                    END IF
+                END WHILE
+        END FUNCTION
+
+        FUNCTION student_management()
+
+                FUNCTION view_record()
+
+                        FUNCTION view_student_personal_details()
+
+                                OPEN "student.txt" in read mode as file
+                                    STORE students' name in students dictionary variable
+                                    CLOSE file
+
+                                OPEN "record.txt" in read mode as file
+                                    OUTPUT students' ID, students' name from students dictionary variable,password,phone_number,email and gender
+                                    CLOSE file
+
+                        END FUNCTION
+
+                        FUNCTION view_academic_performance()
+
+                                 OPEN "student.txt" in read mode as file
+                                     STORE students' name in students dictionary variable
+                                     CLOSE file
+
+                                 OPEN "academic_performance.txt" in read mode as file
+                                     OUTPUT id,students' name from students dictionary variable,course_id,assignment_grade,exam_grade
+                                     CLOSE file
+
+                        END FUNCTION
+
+                        WHILE True
+                            OUTPUT "STUDENT RECORD MENU"
+                            OUTPUT "1. View Personal Details"
+                            OUTPUT "2. View Academic Performance"
+                            OUTPUT "3. Back"
+
+                            INPUT user_choice
+
+                            IF choice == 1 THEN
+                                CALL view_student_personal_details()
+                            ELIF choice == 2 THEN
+                                CALL view_academic_performance()
+                            ELIF choice == 3 THEN
+                                RETURN
+                            END IF
+                        END WHILE
+                END FUNCTION
+
+                FUNCTION update_record()
+
+                        FUNCTION update_student_personal_details()
+                                INPUT id to be updated
+
+                                OPEN "student.txt" in read and write mode as file
+                                    IF id is found in student.txt THEN
+                                        INPUT new_name, new_password, new_phone_number, new_email, new_gender
+                                        STORE new data back to file
+                                    ELSE
+                                        OUTPUT "id not found"
+                                    CLOSE file
+                                    END IF
+                        END FUNCTION
+
+                        FUNCTION update_student_academic_performance()
+                                INPUT id to be updated
+
+                                OPEN "academic_performance.txt" in read and write mode as file
+                                    IF id is found in academic_performance.txt THEN
+                                        INPUT course_id to be updated
+                                        INPUT new_assignment_grade,new_exam_grade
+                                        STORE new data back to file
+                                    ELSE
+                                        OUTPUT "id not found"
+                                    CLOSE file
+                                    END IF
+                        END FUNCTION
+
+                        WHILE True
+                            OUTPUT "STUDENT RECORD MENU"
+                            OUTPUT "1. Update Personal Details"
+                            OUTPUT "2. Update Academic Performance"
+
+                            INPUT user_choice
+
+                            IF choice == 1 THEN
+                                CALL update_student_personal_details()
+                            ELIF choice == 2 THEN
+                                CALL update_student_academic_performance()
+                            ELIF choice == 3 THEN
+                                RETURN
+                            END IF
+                        END WHILE
+
+                END FUNCTION
+
+                WHILE True
+                    OUTPUT "STUDENT MANAGEMENT MENU"
+                    OUTPUT "1. View Student Records"
+                    OUTPUT "2. Update Student Record"
+                    OUTPUT "3. Back"
+
+                    INPUT user_choice
+
+                    IF user_choice == 1 THEN
+                        CALL view_record()
+                    ELIF user_choice == 2 THEN
+                        update_record()
+                    ELIF user_choice == 3 THEN
+                        break
+                    END IF
+                END WHILE
+
+        END FUNCTION
+
+        FUNCTION course_management()
+
+                FUNCTION view_courses()
+
+                        OPEN "courses.txt" in read mode as file
+                            OUTPUT course_id,course_name,description,id
+                            CLOSE file
+
+                END FUNCTION
+
+                FUNCTION add_course()
+
+                        INPUT course_id to be added
+                        OPEN "courses.txt" in read mode as file
+                            IF course_id is found THEN
+                                OUTPUT "course_id is already exists"
+                                RETURN
+
+                        INPUT course_name, description, teacher_id
+                        OPEN "teacher.txt" in read mode as file
+                            IF teacher is not found THEN
+                                OUTPUT "teacher_id not already exists"
+                                RETURN
+
+                        OPEN "courses.txt" in write mode as file
+                            WRITE course_id,course_name,description,teacher_id into file
+                            CLOSE FILE
+
+                            END IF
+                END FUNCTION
+
+                FUNCTION update_course()
+
+                        INPUT course_id to be updated
+
+                        OPEN "courses.txt" in read and write mode as file
+                            IF course_id is found in courses.txt THEN
+                                INPUT new_course_name, new_description
+                                STORE new data back to file
+                            ELSE
+                                OUTPUT "course id not found"
+                                CLOSE file
+                            END IF
+
+                END FUNCTION
+
+                FUNCTION delete_course()
+
+                        INPUT course_id to be deleted
+
+                        OPEN "courses.txt" in read and write mode as file
+                            IF course_id is found in file THEN
+                                DELETE course_id row
+                            ELSE
+                                OUTPUT "course id not found"
+                                CLOSE file
+                            END IF
+
+                END FUNCTION
+
+                WHILE True
+                    OUTPUT "COURSE MANAGEMENT MENU"
+                    OUTPUT "1. View All Courses"
+                    OUTPUT "2. Add Course"
+                    OUTPUT "3. Update Course"
+                    OUTPUT "4. Delete Course"
+                    OUTPUT "5. Back"
+
+                    INPUT user_choice
+
+                    IF user_choice == 1 THEN
+                        CALL view_courses()
+                    ELIF user_choice == 2 THEN
+                        CALL add_course()
+                    ELIF user_choice == 3 THEN
+                        CALL update_course()
+                    ELIF user_choice == 4 THEN
+                        delete_course()
+                    ELIF user_choice == 5 THEN
+                        RETURN
+                    END IF
+                END WHILE
+        END FUNCTION
+
+        FUNCTION class_schedule()
+
+                FUNCTION view_class_schedule()
+
+                        OPEN "schedule.txt" in read mode as file
+                            OUTPUT course_id,day,starting_time,ending_time,room,teacher_id
+                            CLOSE file
+
+                END FUNCTION
+
+                FUNCTION add_class_schedule()
+
+                        INPUT course_id
+
+                        OPEN "courses.txt" in read mode as file
+                            IF course_id not found in file THEN
+                                OUTPUT "course_id is not found"
+                                CLOSE FILE
+                                RETURN
+
+                        INPUT day,starting_time,ending_time,room,teacher_id
+
+                        OPEN "teacher.txt" in read mode as file
+                            IF teacher_id not found in file THEN
+                                OUTPUT "teacher_id is not found"
+                                CLOSE FILE
+                                RETURN
+
+                        OPEN "schedule.txt" in read mode as file
+                            IF scheduled_day == day and scheduled_room == room THEN
+                                IF end_time > scheduled_start and start_time < scheduled_end THEN
+                                    OUTPUT "Conflict detected: The room is already reserved for that time."
+                                    RETURN
+                            CLOSE FILE
+
+                            IF scheduled_day == day and scheduled_instructor == teacher_id THEN
+                                IF end_time > scheduled_start and start_time < scheduled_end THEN
+                                    OUTPUT "Conflict detected: Instructor {teacher_id} is busy at that time."
+                                    RETURN
+
+                        OPEN "schedule.txt" in write mode as file
+                            WRITE day,starting_time,ending_time,room,teacher_id into file
+                            CLOSE FILE
+
+                            END IF
+                END FUNCTION
+
+                FUNCTION update_class_schedule()
+
+                        INPUT course_id
+
+                        OPEN "courses.txt" in read mode as file
+                            IF course_id not found in file THEN
+                                OUTPUT "course_id is not found"
+                                CLOSE FILE
+                                RETURN
+
+                        OPEN "schedule.txt" in read mode as file
+                            OUTPUT course_id,day,starting_time,ending_time,room,teacher_id of the inputted course_id
+                            IF course_id > 1 THEN
+                                INPUT row of course_id to be updated
+                            CLOSE FILE
+
+                        INPUT new_day, new_start_time, new_end_time, new_room
+
+                        OPEN "schedule.txt" in write mode as file
+                            WRITE new_day, new_start_time, new_end_time, new_room into file
+                            CLOSE FILE
+
+                            END IF
+                END FUNCTION
+
+                FUNCTION delete_class_schedule()
+
+                        INPUT course_id
+
+                        OPEN "courses.txt" in read mode as file
+                            IF course_id not found in file THEN
+                                OUTPUT "course_id is not found"
+                                CLOSE FILE
+                                RETURN
+
+                        OPEN "schedule.txt" in read and write mode as file
+                            OUTPUT course_id,day,starting_time,ending_time,room,teacher_id of the inputted course_id
+                            IF course_id > 1 THEN
+                                INPUT row of course_id to be deleted
+                                DELETE row of course_id selected
+                            ELSE
+                                DELETE row of course_id
+                            CLOSE FILE
+
+                            END IF
+                END FUNCTION
+
+                WHILE True
+                    OUTPUT "CLASS SCHEDULE MANAGEMENT MENU"
+                    OUTPUT "1. View Schedule"
+                    OUTPUT "2. Add Class"
+                    OUTPUT "3. Update Class"
+                    OUTPUT "4. Delete Class"
+
+                    INPUT user_choice
+
+                    IF user_choice == 1 THEN
+                        CALL view_class_schedule()
+                    ELIF user_choice == 2 THEN
+                        CALL add_class_schedule()
+                    ELIF user_choice == 3 THEN
+                        CALL update_class_schedule()
+                    ELIF user_choice == 4 THEN
+                        CALL delete_class_schedule()
+                    ELIF user_choice == 5 THEN
+                        RETURN
+                    END IF
+                END WHILE
+        END FUNCTION
+
+        FUNCTION report_generation()
+
+                FUNCTION generate_performance_report()
+
+                        OPEN "student.txt" in read mode as file
+                            STORE student_id as key, student_name as value in students dictionary
+                            CLOSE file
+
+                        OPEN "academic_performance.txt" in read mode as file
+                            OUTPUT student_id and student_name from students dictionary,course_id,assignment_grade,exam_grade
+                            CLOSE
+
+                END FUNCTION
+
+                FUNCTION course_attendance_report()
+
+                        OPEN "attendance.txt" in read mode as file
+                            COUNT total_present_attendance, total_absent_attendance and total_attendance
+                            attendance_percentage = (total_present_attendance / total_attendance) * 100
+                            OUTPUT course_id,total_present_attendance,total_absent_attendance, attendance_percentage
+                            CLOSE FILE
+
+                END FUNCTION
+
+                FUNCTION student_attendance_report()
+
+                        OPEN "student.txt" in read mode as file
+                            STORE student_id as key, student_name as value in students dictionary
+                            CLOSE file
+
+                        OPEN "attendance.txt" in read mode as file
+                            COUNT total_classes and total_classes_attended, total_attendance
+                            attendance_percentage = (total_present_attendance / total_attendance) * 100
+                            OUTPUT student_id and student_name from students dictionary, total_class, total_class_attended, attendance_percentage
+                            CLOSE FILE
+
+                END FUNCTION
+
+                FUNCTION generate_students_financial_report()
+
+                        OPEN "student.txt" in read mode as file
+                            STORE student_id as key, student_name as value in students dictionary
+                            CLOSE file
+
+                        OPEN "students.finance.txt" in read mode as file
+                            COUNT amount_left = total_fees - fees_paid
+                            IF total_fees != fees_paid THEN
+                                SET pay = "Not Completed"
+                            ELSE
+                                SET pay = "Completed"
+                            OUTPUT student_id and student_name from students dictionary,total_fees,fees_paid,amount_left,pay
+                            CLOSE FILE
+                            END IF
+
+                END FUNCTION
+
+                FUNCTION generate_institution_financial_report()
+
+                        OPEN "institution_report.txt" in read mode as file
+                            COUNT total_revenue, total_expenses
+                            OUTPUT revenue,total_revenue,expenses,total_expenses
+                            CLOSE FILE
+
+                END FUNCTION
+
+                WHILE True
+                    OUTPUT "REPORT GENERATION MENU"
+                    OUTPUT "1. Academic Performance Report"
+                    OUTPUT "2. Course Attendance Report"
+                    OUTPUT "3. Student Attendance Report"
+                    OUTPUT "4. Financial Report for Students"
+                    OUTPUT "5. Financial Report for Institution"
+                    OUTPUT "6. Back"
+
+                    INPUT user_choice
+
+                    IF choice == 1 THEN
+                        CALL generate_performance_report()
+                    ELIF choice == 2 THEN
+                        CALL course_attendance_report()
+                    ELIF choice == 3 THEN
+                        CALL student_attendance_report()
+                    ELIF choice == 4 THEN
+                        CALL generate_students_financial_report()
+                    ELIF choice == 5 THEN
+                        CALL generate_institution_financial_report()
+                    ELIF choice == 6 THEN
+                        OUTPUT "Exiting Report Generation Menu. Goodbye!"
+                        RETURN
+                    ELSE
+                        OUTPUT "Invalid choice. Please choose a valid number (1-6)."
+                    END IF
+                END WHILE
+
+        END FUNCTION
+
+        WHILE True
+            OUTPUT “Administrator Menu:”
+            OUTPUT “1. System Administration”
+            OUTPUT “2. Student Management”
+            OUTPUT “3. Course Management”
+            OUTPUT “4. Class Schedule”
+            OUTPUT “5. Report Generation”
+            OUTPUT “6. Logout”
+            OUTPUT “7. Exit”
+            INPUT admin_choice
+            IF admin_choice == 1 THEN
+                            CALL system_administration()
+            ELIF admin_choice == 2 THEN
+                             CALL  student_management()
+            ELIF admin_choice == 3 THEN
+                             CALL course_management()
+            ELIF admin_choice == 4 THEN
+                             CALL class_schedule()
+            ELIF admin_choice == 5 THEN
+                             CALL report_generation()
+            ELIF admin_choice == 6 THEN
+                             CALL login()
+            ELIF admin_choice == 7 THEN
+                             OUTPUT “Exiting the system ….. Bye!”
+            ELSE
+                 OUTPUT “Invalid choice. Please choose again”
+            END IF
+        END WHILE
+
+END FUNCTION
+
+
+
+FUNCTION manage_students()
+    DISPLAY "1. View Students"
+    DISPLAY "2. Update Student Record"
+    PROMPT student_choice
+
+    IF student_choice == "1" THEN
+        CALL view_students()
+    ELSE IF student_choice == "2" THEN
+        CALL update_student()
+    ELSE
+        DISPLAY "Invalid choice."
+    END IF
+END FUNCTION
+
+FUNCTION view_students()
+    OPEN "students.txt" IN read mode
+    FOR each line IN file DO
+        DISPLAY line
+    END FOR
+    CLOSE file
+END FUNCTION
+
+FUNCTION update_student()
+    PROMPT "Enter Student ID to update: " AND STORE IN student_id
+
+    OPEN "students.txt" IN read mode
+    READ all lines INTO student_list
+    CLOSE file
+
+    FOR each student IN student_list DO
+        SPLIT student INTO id, name, email, status, grade
+        IF id == student_id THEN
+            PROMPT "Enter new name: " AND STORE IN name
+            PROMPT "Enter new email: " AND STORE IN email
+            PROMPT "Enter new status: " AND STORE IN status
+            PROMPT "Enter new grade: " AND STORE IN grade
+            UPDATE student TO id,name,email,status,grade
+            BREAK
+        END IF
+    END FOR
+
+    OPEN "students.txt" IN write mode
+    WRITE updated student_list TO file
+    CLOSE file
+
+    DISPLAY "Student record updated successfully."
+END FUNCTION
+
+FUNCTION manage_courses()
+    DISPLAY "1. Add Course"
+    DISPLAY "2. Update Course"
+    DISPLAY "3. Delete Course"
+    PROMPT course_choice
+
+    IF course_choice == "1" THEN
+        CALL add_course()
+    ELSE IF course_choice == "2" THEN
+        CALL update_course()
+    ELSE IF course_choice == "3" THEN
+        CALL delete_course()
+    ELSE
+        DISPLAY "Invalid choice."
+    END IF
+END FUNCTION
+
+FUNCTION add_course()
+    PROMPT "Enter course code: " AND STORE IN course_code
+    PROMPT "Enter course name: " AND STORE IN course_name
+    PROMPT "Enter course description: " AND STORE IN description
+    PROMPT "Enter instructor username: " AND STORE IN instructor
+
+    OPEN "courses.txt" IN append mode
+    WRITE course_code,course_name,description,instructor TO file
+    CLOSE file
+
+    DISPLAY "Course added successfully."
+END FUNCTION
+
+FUNCTION update_course()
+    PROMPT "Enter course code to update: " AND STORE IN target_code
+
+    OPEN "courses.txt" IN read mode
+    READ all lines INTO course_list
+    CLOSE file
+
+    FOR each course IN course_list DO
+        SPLIT course INTO code, name, description, instructor
+        IF code == target_code THEN
+            PROMPT "Enter new course name: " AND STORE IN name
+            PROMPT "Enter new description: " AND STORE IN description
+            PROMPT "Enter new instructor username: " AND STORE IN instructor
+            UPDATE course TO code,name,description,instructor
+            BREAK
+        END IF
+    END FOR
+
+    OPEN "courses.txt" IN write mode
+    WRITE updated course_list TO file
+    CLOSE file
+
+    DISPLAY "Course updated successfully."
+END FUNCTION
+
+FUNCTION delete_course()
+    PROMPT "Enter course code to delete: " AND STORE IN target_code
+
+    OPEN "courses.txt" IN read mode
+    READ all lines INTO course_list
+    CLOSE file
+
+    REMOVE any course WHERE code == target_code FROM course_list
+
+    OPEN "courses.txt" IN write mode
+    WRITE updated course_list TO file
+    CLOSE file
+
+    DISPLAY "Course deleted successfully."
+END FUNCTION
+
+FUNCTION manage_schedule()
+    DISPLAY "Feature not implemented yet. Coming soon!"
+END FUNCTION
+
+FUNCTION generate_reports()
+    DISPLAY "1. Academic Performance Report"
+    DISPLAY "2. Attendance Report"
+    PROMPT report_choice
+
+    IF report_choice == "1" THEN
+        CALL generate_academic_report()
+    ELSE IF report_choice == "2" THEN
+        CALL generate_attendance_report()
+    ELSE
+        DISPLAY "Invalid choice."
+    END IF
+END FUNCTION
+
+FUNCTION generate_academic_report()
+    OPEN "students.txt" IN read mode
+    DISPLAY "Academic Performance Report:"
+    FOR each line IN file DO
+        DISPLAY line
+    END FOR
+    CLOSE file
+END FUNCTION
