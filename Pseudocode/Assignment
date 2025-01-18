@@ -1,0 +1,126 @@
+FUNCTION teacher()
+         FUNCTION manage_courses()
+
+           print "Manage Courses"
+           print " 1) Update Course"
+           print "2)create a course"
+           input choice
+
+           if choice = 1 then
+               print "Courses Available:"
+               read courses from courses.txt
+               print courses
+               input your courses_code
+           IF courses is in "courses.txt" THEN
+               INPUT new_information
+               Update course_information in course.txt
+               print "Course update successfully"
+           ELSE
+               Print "Course Not Available"
+           END IF
+           If choice = 2 then
+               Input course_name , course_code , course_schedule
+               Update course_name , course_code , course_schedule to "course.txt"
+               Print "course created"
+           END IF
+           END FUNCTION
+
+         FUNCTION Student_Enrollment
+
+           print"Student Enrollment"
+           print"1)Enroll Student"
+           print"2)Remove Student"
+           Input choice
+
+           If choice = 1 then
+               print "Courses Available"
+               Read courses from "course.txt"
+               print courses
+               Input course_code
+               IF course_code available then
+                   print "Enter Student_ID"
+                   read students from "student.txt"
+                   print students
+                   Input Student_ID
+                   Read Student_ID from "student.txt"
+                       IF Student_ID available then
+                       Update Student_ID to "enrollment.txt"
+                       Print "Enrolled Successfully"
+                       ELSE print 'Student_ID not Available '
+               ELSE
+                   print " Course Not Available"
+               END IF
+           ELSE IF choice = 2 then
+                print "Courses Available"
+                Read courses from "course.txt"
+                print courses
+                Input course_code
+                IF course_code available then
+                print "Enter Student_ID"
+                read students from "student.txt"
+                print students
+                Input Student_ID
+                       IF Student_ID Available then
+                       Remove Student_ID from "enrollment.txt"
+                       print "Removed Successfully"
+                       ELSE print " Student_ID not available"
+                ELSE
+                Print "Course Not Available"
+                END FUNCTION
+
+         FUNCTION Grade_Assignment
+           print "Grading and Assessment"
+           print "1)Grade Assignment"
+           print "2)Grade Exams"
+           print "3)provide feedback"
+           Input choice
+
+           If choice = 1 then
+               print "courses available"
+               read courses from "courses.txt"
+               print courses
+               input course_code
+               IF course_code available then
+               print "Enter Student_ID"
+               read students from "student.txt"
+               print students
+               Input Student_ID
+                       IF Student_ID available then
+                       print "Enter Grade"
+                       Input Assignment_grade
+                       Update Assignment_Grade to "student.txt"
+                       print "Graded Successfully"
+               END IF
+           ELSE IF choice = 2 then
+           print "courses available"
+               read courses from "courses.txt"
+               print courses
+               input course_code
+               IF course_code available then
+               print "Enter Student_ID"
+               read students from "student.txt"
+               print students
+               Input Student_ID
+                       IF Student_ID available then
+                       print "Enter Grade"
+                       Input Exam_grade
+                       Update Exam_Grade to "student.txt"
+                       print "Graded Successfully"
+               END IF
+           ELSE IF choice = 3 then
+           print "courses available"
+               read courses from "courses.txt"
+               print courses
+               input course_code
+               IF course_code available then
+               print "Enter Student_ID"
+               read students from "student.txt"
+               print students
+               Input Student_ID
+                       IF Student_ID available then
+                       print "Give Feedback"
+                       Input Feedback_Grade
+                       Update Feedback_Grade to "student.txt"
+                       print "Feedback Successfully Updated"
+
+         FUNCTION
