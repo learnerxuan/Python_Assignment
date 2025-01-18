@@ -41,7 +41,7 @@ def choose(choice):
             print(f"Invalid input. Please enter a number between {choice[0]} and {choice[-1]}.")
 
 
-def staff_manage_account():
+def staff_manage_acc():
     pass
 
 staff("id", "name")

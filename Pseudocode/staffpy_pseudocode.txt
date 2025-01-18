@@ -1,0 +1,167 @@
+FUNCTION staff()
+    OUTPUT staff_name, staff_id
+    OUTPUT "1. Manage my account"
+    OUTPUT "2. Students"
+    OUTPUT "3. Timetable"
+    OUTPUT "4. Resources"
+    OUTPUT "5. Events"
+    OUTPUT "6. Communication"
+    OUTPUT "7. Log out"
+    OUTPUT "8. Exit program"
+
+    WHILE True
+        PROMPT "Enter option"
+        INPUT choice
+        IF choice == 1 THEN
+            CALL staff_manage_acc()
+        ELSE IF choice == 2 THEN
+            CALL student_rec()
+        ELSE IF choice == 3 THEN
+            CALL manage_timetable()
+        ELSE IF choice == 4 THEN
+            CALL resources()
+        ELSE IF choice == 5 THEN
+            CALL events()
+        ELSE IF choice == 6 THEN
+            CALL communication()
+        ELSE IF choice == 7 THEN
+            CALL main()
+        ELSE IF choice == 8 THEN
+            EXIT program
+        ELSE
+            REPROMPT USER "Invalid choice. Please try again."
+        END IF
+    END WHILE
+END FUNCTION
+
+
+FUNCTION staff_manage_acc()
+    OPEN "staff.txt" in read mode as file
+        OUTPUT staff_id, staff_name, password, phone_number, email, gender
+        OUTPUT "1. Change password"
+        OUTPUT "2. Update phone number"
+        OUTPUT "3. Update email"
+        OUTPUT "4. Back"
+
+        WHILE True
+        PROMPT "Enter option"
+            INPUT choice
+            IF choice == 1 THEN
+                CALL change_password()
+            ELSE IF choice == 2 THEN
+                CALL update_phone()
+            ELSE IF choice == 3 THEN
+                CALL update_email()
+            ELSE IF choice == 4 THEN
+                CALL staff()
+            ELSE
+                REPROMPT USER "Invalid choice. Please try again."
+            END IF
+        END WHILE
+END FUNCTION
+
+
+FUNCTION change_password()
+    PROMPT "Enter new password:"
+    INPUT new_password
+    PROMPT "Confirm new password:"
+    INPUT confirm_password
+
+    IF new_password equals confirm_password THEN
+        UPDATE password for the logged-in staff_id with new_password
+        SAVE changes to the file
+        OUTPUT "Password updated successfully."
+    ELSE
+        OUTPUT "Passwords do not match. Please try again."
+    END IF
+    CALL staff_manage_acc()
+END FUNCTION
+
+
+FUNCTION update_phone()
+    PROMPT "Enter new phone number:"
+    INPUT new_phone
+    UPDATE phone for the logged-in staff_id with new_phone
+    SAVE changes to the file
+    OUTPUT "Phone number updated successfully."
+    CALL staff_manage_acc()
+END FUNCTION
+
+
+FUNCTION update_email()
+    INPUT new_email
+    UPDATE email for the logged-in staff_id with new_email
+    SAVE changes to the file
+    OUTPUT "Email updated successfully."
+    CALL staff_manage_acc()
+END FUNCTION
+
+
+FUNCTION student_rec()
+    OPEN "student.txt" in read mode as student and OPEN "course_enrollments.txt" in read mode as enroll OPEN "courses.txt" in read mode as courses
+        OUTPUT "1. Students' course registration"
+        OUTPUT "2. Transfer course"
+        OUTPUT "3. Course withdrawal"
+        OUTPUT "0. Back"
+        WHILE True
+            INPUT choice
+            IF choice == 1 THEN
+                CALL stu_course_reg()
+            ELSE IF choice == 2 THEN
+                CALL stu_trans_course()
+            ELSE IF choice == 3 THEN
+                CALL stu_course_withdraw()
+            ELSE IF choice == 0 THEN
+                CALL staff()
+            ELSE
+                REPROMPT USER "Invalid choice. Please try again."
+            END IF
+        END WHILE
+END FUNCTION
+
+
+FUNCTION stu_course_reg()
+    INPUT student_id, course_teacher_id
+    SET course_enroll_status to "active"
+    OUTPUT student_name "successfully enrolled to" course_title
+    CALL student_rec()
+
+
+FUNCTION stu_trans_course()
+    INPUT search_id
+    FOR each line in enroll
+        IF search_id == student_id THEN
+        OUTPUT row
+    PROMPT "Course from (course_enrollment_id): "
+    PROMPT "Transfer to (course_teacher_id): "
+    INPUT course_from, transfer_to
+    FOR each line in enroll
+        IF course_from == course_enrollment_id
+            SET course_enroll_status = "inactive"
+        ELSE
+            REPROMPT course_from
+    OPEN "course_teacher.txt" as reading in read mode
+        FOR each line in reading
+            IF course_to == course_teacher_id
+                OPEN "course_enrollments.txt" as writing in append mode
+                    APPEND student_id                
+            ELSE
+                REPROMPT course_to
+END FUNCTION
+
+
+FUNCTION stu_course_withdraw()
+    INPUT student_id
+    OPEN "course_enrollments.txt" in read mode as enroll
+        FOR each line in enroll
+            IF student_id equals to student_id in enroll
+                OUTPUT line
+        INPUT course_teacher_id
+        OPEN "course_enrollments.txt" in write mode as writing
+            SET course_enroll_status == inactive
+END FUNCTION
+
+
+FUNCTION manage_timetable()
+    
+END FUNCTION
