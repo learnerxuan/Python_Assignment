@@ -163,5 +163,5 @@ END FUNCTION
 
 
 FUNCTION manage_timetable()
-    
+
 END FUNCTION
