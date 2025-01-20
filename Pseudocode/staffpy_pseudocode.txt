@@ -2,7 +2,7 @@ FUNCTION staff()
     OUTPUT staff_name, staff_id
     OUTPUT "1. Manage my account"
     OUTPUT "2. Students"
-    OUTPUT "3. Timetable"
+    OUTPUT "3. Manage timetable"
     OUTPUT "4. Resources"
     OUTPUT "5. Events"
     OUTPUT "6. Communication"
@@ -163,5 +163,439 @@ END FUNCTION
 
 
 FUNCTION manage_timetable()
+    INPUT course_teacher_id
+    OPEN "timetable.txt" in read mode as timetable
+        FOR each line in timetable
+            IF course_teacher_id equals to course_teacher_id in timetable
+                OUTPUT line
+            ELSE
+                REPROMPT "Enter class id"
+            END IF
+        OUTPUT "1. Change day"
+        OUTPUT "2. Change time"
+        OUTPUT "3. Change location"
+        OUTPUT "0. Back"
+
+        OPEN "timetable.txt" in write mode as writing
+        WHILE True
+            PROMPT "Enter option"
+            INPUT choice
+            IF choice == 1 THEN
+                INPUT new_day
+                    UPDATE day to new_day
+            ELSE IF choice == 2 THEN
+                INPUT new_start_time, new_end_time
+                    UPDATE start_time to new_start_time, end_time to new_end_time
+            ELSE IF choice == 3 THEN
+                INPUT new_location_id
+                    UPDATE location_id to new_location_id
+            ELSE IF choice == 0 THEN
+                CALL staff()
+            ELSE
+                REPROMPT USER "Invalid choice. Please try again."
+            END IF
+        END WHILE        
+END FUNCTION
+
+
+FUNCTION resources()
+    OUTPUT "1. View resources"
+    OUTPUT "2. Add new resource"
+    OUTPUT "3. Update resource details"
+    OUTPUT "4. Delete resource"
+    OUTPUT "5. Split resources"
+    OUTPUT "6. Maintenance management"
+    OUTPUT "7. Generate reports"
+    OUTPUT "0. Back"
+
+    WHILE True
+        PROMPT "Enter option"
+        INPUT choice
+        IF choice == 1 THEN
+            CALL view_resources()
+        ELSE IF choice == 2 THEN
+            CALL new_resources()
+        ELSE IF choice == 3 THEN
+            CALL update_resources()
+        ELSE IF choice == 4 THEN
+            CALL delete_resources()
+        ELSE IF choice == 5 THEN
+            CALL split_resources()
+        ELSE IF choice == 6 THEN
+            CALL maintenance()
+        ELSE IF choice == 7 THEN
+            CALL resource_report()
+        ELSE IF choice == 0 THEN
+            CALL staff()
+        ELSE
+            REPROMPT USER "Invalid choice. Please try again."
+        END IF
+    END WHILE
+END FUNCTION
+
+
+FUNCTION view_resources()
+    OUTPUT "1. View all resources"
+    OUTPUT "2. Search by id"
+    OUTPUT "3. Search by name"
+    OUTPUT "4. Filter by type"
+    OUTPUT "5. Filter by condition"
+    OUTPUT "6. Filter by location"
+    OUTPUT "0. Back"
+    OPEN "resources.txt" in read mode as file
+        WHILE True
+            PROMPT "Enter option"
+            INPUT choice
+            IF choice == 1 THEN
+                FOR each line in file
+                    OUTPUT line
+            ELSE IF choice == 2 THEN
+                INPUT id
+                FOR each line in file
+                    IF id == resource_id THEN
+                        OUTPUT line
+                    ELSE
+                        OUTPUT "Resource not found"
+            ELSE IF choice == 3 THEN
+                INPUT name
+                FOR each line in file
+                    IF name == resource_name THEN
+                        OUTPUT line
+                    ELSE
+                        OUTPUT "Resource not found"
+            ELSE IF choice == 4 THEN
+                INPUT type
+                FOR each line in file
+                    IF type == type in file
+                        OUTPUT line
+                    ELSE
+                        OUTPUT "Type not found"
+            ELSE IF choice == 5 THEN
+                INPUT condition
+                FOR each line in file
+                    IF condition == condition in file
+                        OUTPUT line
+                    ELSE
+                        OUTPUT "Condition not found"
+            ELSE IF choice == 6 THEN
+                INPUT location_id
+                FOR each line in file
+                    IF location_id == location_id in file
+                        OUTPUT line
+                    ELSE
+                        OUTPUT "Location not found"
+            ELSE IF choice == 0 THEN
+                CALL resources()
+            ELSE
+                REPROMPT USER "Invalid choice. Please try again."
+            END IF
+    END WHILE
+END FUNCTION
+
+
+FUNCTION new_resources()
+        OPEN "resoruces.txt" in append mode as file
+            INPUT resource_name, resource_type, condition, quantity, new_location_id
+            APPEND resource_name, resource_type, condition, quantity, new_location_id
+            OUTPUT "Resource(s) successfully added"
+            CALL resources()
+END FUNCTION
+
+
+FUNCTION update_resources()
+    OPEN "resources.txt" in read mode as reading
+        SEARCH resource_id
+        IF resource_id is in reading 
+            OUTPUT "1. Update name"
+            OUTPUT "2. Update type"
+            OUTPUT "3. Update condition"
+            OUTPUT "4. Update quantity"
+            OUTPUT "5. Update location"
+            OUTPUT "0. Back"
+        ELSE
+            OUTPUT "Resource unavailable"
+        END IF
+    INPUT choice
+    OPEN "resources.txt" in write mode as writing
+        IF choice == 1 THEN
+            INPUT new_name
+            UPDATE resource_name = new_name
+        ELSE IF choice == 2 THEN
+            INPUT new_type
+            UPDATE resource_type = new_type
+        ELSE IF choice == 3 THEN
+            INPUT new_condition
+            UPDATE condition = new_condition
+        ELSE IF choice == 4 THEN
+            INPUT new_quantity
+            UPDATE quantity - new_quantity
+        ELSE IF choice == 5 THEN
+            INPUT new_location
+            UPDATE location_id = new_location
+        ELSE IF choice == 0 THEN
+            CALL resources()
+        END IF
+    CALL resources()
+END FUNCTION
+
+
+FUNCTION delete_resource()
+    INPUT search_id
+    OPEN "resources.txt" in read mode as file   
+        INPUT search_id
+        FOR each line in file   
+            IF line == search_id    
+                DELETE line
+            ELSE 
+                OUTPUT "Resource not found"
+            END IF
+        CALL resources()
+END FUNCTION
+
+
+FUNCTION split_resources()
+    INPUT search_id, number_to_split
+    OPEN "resources.txt" in read mode as file   
+        FOR each line in file   
+            IF search_id == resource_id and number_to_split < quantity
+                OPEN "resources.txt" in write mode as writing
+                    UPDATE quantity = quantity - number_to_split
+                    APPEND new_resouce_id, quantity
+            ELSE
+                OUTPUT "Resource not available"
+            END IF
+END FUNCTION
+
+FUNCTION maintenance()
+    OUTPUT "1. Log maintenance"
+    OUTPUT "2. View maintenance history"
+    OUTPUT "3. Update maintenance status"
+    OUTPUT "4. Search maintenance record"
+    OUTPUT "5. Upcoming Maintenance Tasks"
+    OUTPUT "0. Back"
+
+    WHILE True
+        PROMPT "Enter option"
+        INPUT choice
+        IF choice == 1 THEN
+            CALL log_maintenance()
+        ELSE IF choice == 2 THEN
+            CALL view_maintenance_history()
+        ELSE IF choice == 3 THEN
+            CALL update_maintrenance_status()
+        ELSE IF choice == 4 THEN
+            CALL search_maintenance()
+        ELSE IF choice == 5 THEN
+            CALL generate_maintenance_report()
+        ELSE IF choice == 6 THEN
+            CALL upcoming_maintenance()
+        ELSE IF choice == 0 THEN
+            EXIT program
+        ELSE
+            REPROMPT USER "Invalid choice. Please try again."
+        END IF
+    END WHILE
+END FUNCTION
+
+
+FUNCTION log_maintenance()
+    INPUT resource_id, maintenance_date, maintenance_type, maintenance_status, cost, notes
+
+    OPEN "maintenance.txt" in append mode as maintenance
+        WRITE resource_id, maintenance_date, maintenance_type, maintenance_status, cost, notes
+    CLOSE maintenance
+    OUTPUT "Maintenance logged successfully."
+END FUNCTION
+    
+
+FUNCTION view_maintenance_history()
+    INPUT resource_id
+    OPEN "maintenance.csv" in read mode as maintenance
+        FOR each line in maintenance
+            IF id equals resource_id THEN
+                OUTPUT line
+            END IF
+    CLOSE maintenance
+END FUNCTION
+
+
+FUNCTION update_maintenance_status()
+    INPUT maintenance_id, new_status
+
+    OPEN "maintenance.csv" in read mode as maintenance
+        FOR each line in maintenance
+            IF id equals maintenance_id THEN
+                UPDATE status into new_status
+                OUTPUT "Maintenance status updated successfully."
+            ELSE
+                OUTPUT "Maintenance id not found"
+            END IF
+    CLOSE maintenance
+END FUNCTION
+
+
+FUNCTION search_maintenance()
+    INPUT search_term
+    OPEN "maintenance.csv" in read mode as maintenance
+        FOR each line in maintenance
+            IF search_term exists in line THEN
+                OUTPUT line
+            END IF
+    CLOSE maintenance
+END FUNCTION
+
+
+FUNCTION upcoming_maintenance_tasks()
+    OPEN "maintenance.csv" in read mode as maintenance
+        FOR each line in maintenance
+            IF status == "Pending" AND date > CURRENT_DATE THEN
+                OUTPUT line
+            END IF
+    CLOSE maintenance
+END FUNCTION
+
+
+FUNCTION events()
+    OUTPUT "1. Create New Event"
+    OUTPUT "2. Edit Event"
+    OUTPUT "3. Delete Event"
+    OUTPUT "4. View All Events"
+    OUTPUT "5. Filter Events"
+    OUTPUT "6. Search Events"
+    OUTPUT "0. Back"
+
+    WHILE True
+        PROMPT "Enter option"
+        INPUT choice
+        IF choice == 1 THEN
+            CALL new_event()
+        ELSE IF choice == 2 THEN
+            CALL edit_event()
+        ELSE IF choice == 3 THEN
+            CALL delete_event()
+        ELSE IF choice == 4 THEN
+            CALL all_event()
+        ELSE IF choice == 5 THEN
+            CALL filter_event()
+        ELSE IF choice == 6 THEN
+            CALL search_event()
+        ELSE IF choice == 0 THEN
+            CALL staff()
+        ELSE
+            REPROMPT USER "Invalid choice. Please try again."
+        END IF
+    END WHILE
+END FUNCTION
+
+
+FUNCTION new_event()
+    OPEN "event.txt" in append mode as file
+    INPUT event_name, event_domain, event_type, max_attendees
+    APPEND event_name, event_domain, event_type, max_attendees
+    OUTPUT "Event successfully added"
+    CALL events()
+END FUNCTION
+
+
+FUNCTION edit_event()
+    OPEN "event.txt" in read mode as reading
+        SEARCH event_id
+        IF event_id is in reading 
+            OUTPUT "1. Update name"
+            OUTPUT "2. Update domain"
+            OUTPUT "3. Update type"
+            OUTPUT "4. Update timetable"
+            OUTPUT "0. Back"
+        ELSE
+            OUTPUT "Resource unavailable"
+        END IF
+    INPUT choice
+    OPEN "resources.txt" in write mode as writing
+        IF choice == 1 THEN
+            INPUT new_name
+            UPDATE event_name = new_name
+        ELSE IF choice == 2 THEN
+            INPUT new_domain
+            UPDATE event_domain = new_domain
+        ELSE IF choice == 3 THEN
+            INPUT new_type
+            UPDATE type = new_type
+        ELSE IF choice == 4 THEN
+            INPUT new_timetable_id
+            UPDATE timetable_id = new_timetable_id
+        ELSE IF choice == 0 THEN
+            CALL events()
+        END IF
+    CALL events()
+END FUNCTION
+
+
+FUNCTION delete_event()
+    INPUT search_id
+    OPEN "event.txt" in read mode as file   
+        INPUT search_id
+        FOR each line in file   
+            IF line == search_id    
+                DELETE line
+            ELSE 
+                OUTPUT "Event not found"
+            END IF
+        CALL event()
+END FUNCTION
+
+
+FUNCTION all_event()
+    OPEN "event.txt" in read mode as file
+        FOR each line in file
+            OUTPUT line
+END FUNCTION
+
+
+FUNCTION filter_event()
+    OUTPUT "Filter Events:"
+    OUTPUT "1. By Domain (Academic/Extracurricular)"
+    OUTPUT "2. By Type (Conference, Seminar, etc.)"
+    OUTPUT "0. Back"
+
+    INPUT choice
+
+    WHILE True
+        IF choice == 1 THEN
+            INPUT domain
+            OPEN "events.csv" in read mode as events
+                FOR each line in events
+                    IF event_domain matches domain THEN
+                    OUTPUT event details
+                    END IF
+            CLOSE events
+        ELSE IF choice == 2 THEN
+            INPUT event_type
+            OPEN "events.csv" in read mode as events
+                FOR each line in events
+                    IF event_type matches THEN
+                        OUTPUT event details
+                    END IF
+            CLOSE events
+        ELSE IF choice == 0 THEN
+            CALL event()
+        ELSE
+            OUTPUT "Invalid choice. Try again."
+        END IF
+    END While
+END FUNCTION
+
+
+FUNCTION search_event()
+    OUTPUT "Search Events:"
+    INPUT keyword
+    OPEN "events.csv" in read mode as events
+        FOR each line in events
+            IF keyword matches any event attribute THEN
+                OUTPUT event details
+            END IF
+END FUNCTION
+
+
+FUNCTION communication()
     
 END FUNCTION
