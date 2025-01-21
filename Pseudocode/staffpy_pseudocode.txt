@@ -9,7 +9,7 @@ FUNCTION staff()
     OUTPUT "7. Log out"
     OUTPUT "8. Exit program"
 
-    WHILE True
+    DO
         PROMPT "Enter option"
         INPUT choice
         IF choice == 1 THEN
@@ -31,79 +31,87 @@ FUNCTION staff()
         ELSE
             REPROMPT USER "Invalid choice. Please try again."
         END IF
-    END WHILE
-END FUNCTION
+    WHILE condition choice is False
+    RETURN 
 
 
 FUNCTION staff_manage_acc()
-    OPEN "staff.txt" in read mode as file
+    OPEN "staffs.txt" in read mode as file
         OUTPUT staff_id, staff_name, password, phone_number, email, gender
         OUTPUT "1. Change password"
         OUTPUT "2. Update phone number"
         OUTPUT "3. Update email"
         OUTPUT "4. Back"
 
-        WHILE True
-        PROMPT "Enter option"
-            INPUT choice
-            IF choice == 1 THEN
-                CALL change_password()
-            ELSE IF choice == 2 THEN
-                CALL update_phone()
-            ELSE IF choice == 3 THEN
-                CALL update_email()
-            ELSE IF choice == 4 THEN
-                CALL staff()
-            ELSE
-                REPROMPT USER "Invalid choice. Please try again."
-            END IF
-        END WHILE
-END FUNCTION
+        DO
+            PROMPT "Enter option"
+                INPUT choice
+                IF choice == 1 THEN
+                    CALL change_password()
+                ELSE IF choice == 2 THEN
+                    CALL update_phone()
+                ELSE IF choice == 3 THEN
+                    CALL update_email()
+                ELSE IF choice == 4 THEN
+                    CALL staff()
+                ELSE
+                    REPROMPT USER "Invalid choice. Please try again."
+                END IF
+        WHILE condition choice is False
+    RETURN
 
 
 FUNCTION change_password()
-    PROMPT "Enter new password:"
-    INPUT new_password
-    PROMPT "Confirm new password:"
-    INPUT confirm_password
+    OPEN "staffs.txt" in write mode as file
+        INPUT new_password
+        INPUT confirm_password
 
-    IF new_password equals confirm_password THEN
-        UPDATE password for the logged-in staff_id with new_password
-        SAVE changes to the file
-        OUTPUT "Password updated successfully."
-    ELSE
-        OUTPUT "Passwords do not match. Please try again."
-    END IF
-    CALL staff_manage_acc()
-END FUNCTION
+        IF new_password equals confirm_password THEN
+            UPDATE password for the logged-in staff_id with new_password
+            SAVE changes to the file
+            OUTPUT "Password updated successfully."
+        ELSE IF input is 0 THEN
+            CALL staff_manage_acc()
+        ELSE
+            OUTPUT "Passwords do not match. Please try again."
+        END IF
+    RETURN
 
 
 FUNCTION update_phone()
-    PROMPT "Enter new phone number:"
-    INPUT new_phone
-    UPDATE phone for the logged-in staff_id with new_phone
-    SAVE changes to the file
-    OUTPUT "Phone number updated successfully."
-    CALL staff_manage_acc()
-END FUNCTION
+    OPEN "staffs.txt" in write mode as file
+        INPUT new_phone
+        IF input is 0 THEN
+            CALL staff_manage_acc()
+        ELSE
+            UPDATE phone for the logged-in staff_id with new_phone
+            SAVE changes to the file
+            OUTPUT "Phone number updated successfully."
+            CALL staff_manage_acc()
+        END IF
+    RETURN
 
 
 FUNCTION update_email()
+    OPEN "staffs.txt" in write mode as file
     INPUT new_email
-    UPDATE email for the logged-in staff_id with new_email
-    SAVE changes to the file
-    OUTPUT "Email updated successfully."
-    CALL staff_manage_acc()
-END FUNCTION
+    IF input is 0 THEN
+        CALL staff_manage_acc()
+    ELSE
+        UPDATE email for the logged-in staff_id with new_email
+        SAVE changes to the file
+        OUTPUT "Email updated successfully."
+        CALL staff_manage_acc()
+    RETURN
 
 
 FUNCTION student_rec()
-    OPEN "student.txt" in read mode as student and OPEN "course_enrollments.txt" in read mode as enroll OPEN "courses.txt" in read mode as courses
+    OPEN "students.txt" in read mode as student and OPEN "course_enrollments.txt" in read mode as enroll OPEN "courses.txt" in read mode as courses
         OUTPUT "1. Students' course registration"
         OUTPUT "2. Transfer course"
         OUTPUT "3. Course withdrawal"
         OUTPUT "0. Back"
-        WHILE True
+        DO
             INPUT choice
             IF choice == 1 THEN
                 CALL stu_course_reg()
@@ -116,54 +124,67 @@ FUNCTION student_rec()
             ELSE
                 REPROMPT USER "Invalid choice. Please try again."
             END IF
-        END WHILE
-END FUNCTION
+        WHILE condition choice is False
+    RETURN
 
 
 FUNCTION stu_course_reg()
-    INPUT student_id, course_teacher_id
-    SET course_enroll_status to "active"
-    OUTPUT student_name "successfully enrolled to" course_title
-    CALL student_rec()
+    OPEN "classes.txt" as class in write mode
+        INPUT student_id, class_id
+        IF input is 0 THEN
+            CALL student_rec
+        ELSE
+            SET course_enroll_status to "active"
+            OUTPUT student_name "Successfully enrolled to" course_title
+        END WHILE
+    RETURN
 
 
 FUNCTION stu_trans_course()
     INPUT search_id
-    FOR each line in enroll
-        IF search_id == student_id THEN
-        OUTPUT row
-    PROMPT "Course from (course_enrollment_id): "
-    PROMPT "Transfer to (course_teacher_id): "
-    INPUT course_from, transfer_to
-    FOR each line in enroll
-        IF course_from == course_enrollment_id
-            SET course_enroll_status = "inactive"
-        ELSE
-            REPROMPT course_from
-    OPEN "course_teacher.txt" as reading in read mode
-        FOR each line in reading
-            IF course_to == course_teacher_id
-                OPEN "course_enrollments.txt" as writing in append mode
-                    APPEND student_id                
+    IF input is 0 THEN
+        CALL student_rec()
+    ELSE
+        FOR each line in enroll
+            IF search_id == student_id THEN
+            OUTPUT row
+        PROMPT "Course from (course_enrollment_id): "
+        PROMPT "Transfer to (course_teacher_id): "
+        INPUT course_from, transfer_to
+        FOR each line in enroll
+            IF course_from == course_enrollment_id
+                SET course_enroll_status = "inactive"
             ELSE
-                REPROMPT course_to
-END FUNCTION
+                REPROMPT course_from
+        OPEN "classes.txt" as reading in read mode
+            FOR each line in reading
+                IF course_to == course_teacher_id
+                    OPEN "course_enrollments.txt" as writing in append mode
+                        APPEND student_id                
+                ELSE
+                    REPROMPT course_to
+    END IF
+    RETURN
 
 
 FUNCTION stu_course_withdraw()
     INPUT student_id
-    OPEN "course_enrollments.txt" in read mode as enroll
-        FOR each line in enroll
-            IF student_id equals to student_id in enroll
-                OUTPUT line
-        INPUT course_teacher_id
-        OPEN "course_enrollments.txt" in write mode as writing
-            SET course_enroll_status == inactive
-END FUNCTION
+    IF input is 0 THEN
+        CALL student_rec()
+    ELSE
+        OPEN "course_enrollments.txt" in read mode as enroll
+            FOR each line in enroll
+                IF student_id equals to student_id in enroll
+                    OUTPUT line
+            INPUT course_teacher_id
+            OPEN "course_enrollments.txt" in write mode as writing
+                SET course_enroll_status == inactive
+    END IF
+    RETURN
 
 
 FUNCTION manage_timetable()
-    INPUT course_teacher_id
+    INPUT class_id
     OPEN "timetable.txt" in read mode as timetable
         FOR each line in timetable
             IF course_teacher_id equals to course_teacher_id in timetable
@@ -177,7 +198,7 @@ FUNCTION manage_timetable()
         OUTPUT "0. Back"
 
         OPEN "timetable.txt" in write mode as writing
-        WHILE True
+        DO
             PROMPT "Enter option"
             INPUT choice
             IF choice == 1 THEN
@@ -194,8 +215,8 @@ FUNCTION manage_timetable()
             ELSE
                 REPROMPT USER "Invalid choice. Please try again."
             END IF
-        END WHILE        
-END FUNCTION
+        WHILE condition choice is False     
+    RETURN
 
 
 FUNCTION resources()
@@ -208,7 +229,7 @@ FUNCTION resources()
     OUTPUT "7. Generate reports"
     OUTPUT "0. Back"
 
-    WHILE True
+    DO
         PROMPT "Enter option"
         INPUT choice
         IF choice == 1 THEN
@@ -230,8 +251,8 @@ FUNCTION resources()
         ELSE
             REPROMPT USER "Invalid choice. Please try again."
         END IF
-    END WHILE
-END FUNCTION
+    WHILE conditon choice is False
+    RETURN
 
 
 FUNCTION view_resources()
@@ -243,7 +264,7 @@ FUNCTION view_resources()
     OUTPUT "6. Filter by location"
     OUTPUT "0. Back"
     OPEN "resources.txt" in read mode as file
-        WHILE True
+        DO
             PROMPT "Enter option"
             INPUT choice
             IF choice == 1 THEN
@@ -289,17 +310,20 @@ FUNCTION view_resources()
             ELSE
                 REPROMPT USER "Invalid choice. Please try again."
             END IF
-    END WHILE
-END FUNCTION
+        WHILE condition choice is False
+    RETURN
 
 
 FUNCTION new_resources()
         OPEN "resoruces.txt" in append mode as file
             INPUT resource_name, resource_type, condition, quantity, new_location_id
-            APPEND resource_name, resource_type, condition, quantity, new_location_id
-            OUTPUT "Resource(s) successfully added"
+            IF input is 0 THEN
+                CALL resources()
+            ELSE
+                APPEND resource_name, resource_type, condition, quantity, new_location_id
+                OUTPUT "Resource(s) successfully added"
             CALL resources()
-END FUNCTION
+    RETURN
 
 
 FUNCTION update_resources()
@@ -317,54 +341,62 @@ FUNCTION update_resources()
         END IF
     INPUT choice
     OPEN "resources.txt" in write mode as writing
-        IF choice == 1 THEN
-            INPUT new_name
-            UPDATE resource_name = new_name
-        ELSE IF choice == 2 THEN
-            INPUT new_type
-            UPDATE resource_type = new_type
-        ELSE IF choice == 3 THEN
-            INPUT new_condition
-            UPDATE condition = new_condition
-        ELSE IF choice == 4 THEN
-            INPUT new_quantity
-            UPDATE quantity - new_quantity
-        ELSE IF choice == 5 THEN
-            INPUT new_location
-            UPDATE location_id = new_location
-        ELSE IF choice == 0 THEN
-            CALL resources()
-        END IF
-    CALL resources()
-END FUNCTION
+        DO 
+            IF choice == 1 THEN
+                INPUT new_name
+                UPDATE resource_name = new_name
+            ELSE IF choice == 2 THEN
+                INPUT new_type
+                UPDATE resource_type = new_type
+            ELSE IF choice == 3 THEN
+                INPUT new_condition
+                UPDATE condition = new_condition
+            ELSE IF choice == 4 THEN
+                INPUT new_quantity
+                UPDATE quantity - new_quantity
+            ELSE IF choice == 5 THEN
+                INPUT new_location
+                UPDATE location_id = new_location
+            ELSE IF choice == 0 THEN
+                CALL resources()
+        WHILE condition choice is False
+    RETURN
 
 
 FUNCTION delete_resource()
     INPUT search_id
-    OPEN "resources.txt" in read mode as file   
-        INPUT search_id
-        FOR each line in file   
-            IF line == search_id    
-                DELETE line
-            ELSE 
-                OUTPUT "Resource not found"
-            END IF
-        CALL resources()
-END FUNCTION
+        IF input is 0 THEN 
+            CALL resources()
+        ELSE
+            OPEN "resources.txt" in read mode as file   
+                INPUT search_id
+                FOR each line in file   
+                    IF line == search_id    
+                        DELETE line
+                    ELSE 
+                        OUTPUT "Resource not found"
+        END IF 
+    RETURN
 
 
 FUNCTION split_resources()
     INPUT search_id, number_to_split
-    OPEN "resources.txt" in read mode as file   
-        FOR each line in file   
-            IF search_id == resource_id and number_to_split < quantity
-                OPEN "resources.txt" in write mode as writing
-                    UPDATE quantity = quantity - number_to_split
-                    APPEND new_resouce_id, quantity
-            ELSE
-                OUTPUT "Resource not available"
-            END IF
-END FUNCTION
+    IF input is 0 THEN
+        CALL resources()
+    ELSE
+        OPEN "resources.txt" in read mode as file   
+            FOR each line in file   
+                IF search_id == resource_id and number_to_split < quantity
+                    OPEN "resources.txt" in write mode as writing
+                        UPDATE quantity = quantity - number_to_split
+                        APPEND new_resouce_id, quantity
+                ELSE
+                    OUTPUT "Resource not available"
+                    CALL resources()
+                END IF
+    END IF
+    RETURN
+
 
 FUNCTION maintenance()
     OUTPUT "1. Log maintenance"
@@ -374,7 +406,7 @@ FUNCTION maintenance()
     OUTPUT "5. Upcoming Maintenance Tasks"
     OUTPUT "0. Back"
 
-    WHILE True
+    DO 
         PROMPT "Enter option"
         INPUT choice
         IF choice == 1 THEN
@@ -394,65 +426,75 @@ FUNCTION maintenance()
         ELSE
             REPROMPT USER "Invalid choice. Please try again."
         END IF
-    END WHILE
-END FUNCTION
+    WHILE condition choice is False
+    RETURN
 
 
 FUNCTION log_maintenance()
     INPUT resource_id, maintenance_date, maintenance_type, maintenance_status, cost, notes
-
-    OPEN "maintenance.txt" in append mode as maintenance
-        WRITE resource_id, maintenance_date, maintenance_type, maintenance_status, cost, notes
-    CLOSE maintenance
-    OUTPUT "Maintenance logged successfully."
-END FUNCTION
+    IF input is 0 THEN
+        CALL maintenance()
+    ELSE
+        OPEN "maintenance.txt" in append mode as maintenance
+            WRITE resource_id, maintenance_date, maintenance_type, maintenance_status, cost, notes
+        OUTPUT "Maintenance logged successfully."
+        CALL maintenance()
+    END IF
+    RETURN
     
 
 FUNCTION view_maintenance_history()
     INPUT resource_id
-    OPEN "maintenance.csv" in read mode as maintenance
-        FOR each line in maintenance
-            IF id equals resource_id THEN
-                OUTPUT line
-            END IF
-    CLOSE maintenance
-END FUNCTION
+    IF input is 0 THEN
+        CALL maintenance()
+    ELSE
+        OPEN "maintenance.txt" in read mode as maintenance
+            FOR each line in maintenance
+                IF id equals resource_id THEN
+                    OUTPUT line
+                END IF
+        CALL maintenance()
+    RETURN
 
 
 FUNCTION update_maintenance_status()
     INPUT maintenance_id, new_status
-
-    OPEN "maintenance.csv" in read mode as maintenance
-        FOR each line in maintenance
-            IF id equals maintenance_id THEN
-                UPDATE status into new_status
-                OUTPUT "Maintenance status updated successfully."
-            ELSE
-                OUTPUT "Maintenance id not found"
-            END IF
-    CLOSE maintenance
-END FUNCTION
+    IF input is 0 THEN
+        CALL maintenance()
+    ELSE
+        OPEN "maintenance.txt" in read mode as maintenance
+            FOR each line in maintenance
+                IF id equals maintenance_id THEN
+                    UPDATE status into new_status
+                    OUTPUT "Maintenance status updated successfully."
+                ELSE
+                    OUTPUT "Maintenance id not found"
+                END IF
+        CALL maintenance()
+    RETURN
 
 
 FUNCTION search_maintenance()
     INPUT search_term
-    OPEN "maintenance.csv" in read mode as maintenance
-        FOR each line in maintenance
-            IF search_term exists in line THEN
-                OUTPUT line
-            END IF
-    CLOSE maintenance
-END FUNCTION
+    IF input is 0 THEN
+        OPEN "maintenance.txt" in read mode as maintenance
+            FOR each line in maintenance
+                IF search_term exists in line THEN
+                    OUTPUT line
+                ELSE
+                    OUTPUT "Search does not exist"
+                END IF
+        CALL maintenance()
+    RETURN
 
 
 FUNCTION upcoming_maintenance_tasks()
-    OPEN "maintenance.csv" in read mode as maintenance
+    OPEN "maintenance.txt" in read mode as maintenance
         FOR each line in maintenance
             IF status == "Pending" AND date > CURRENT_DATE THEN
                 OUTPUT line
             END IF
-    CLOSE maintenance
-END FUNCTION
+    RETURN
 
 
 FUNCTION events()
@@ -464,7 +506,7 @@ FUNCTION events()
     OUTPUT "6. Search Events"
     OUTPUT "0. Back"
 
-    WHILE True
+    DO
         PROMPT "Enter option"
         INPUT choice
         IF choice == 1 THEN
@@ -484,17 +526,19 @@ FUNCTION events()
         ELSE
             REPROMPT USER "Invalid choice. Please try again."
         END IF
-    END WHILE
-END FUNCTION
+    WHILE condition choice is False
+    RETURN
 
 
 FUNCTION new_event()
     OPEN "event.txt" in append mode as file
-    INPUT event_name, event_domain, event_type, max_attendees
-    APPEND event_name, event_domain, event_type, max_attendees
-    OUTPUT "Event successfully added"
-    CALL events()
-END FUNCTION
+        IF input is 0 THEN
+            CALL events()
+        ELSE
+            INPUT event_name, event_domain, event_type, max_attendees
+            APPEND event_name, event_domain, event_type, max_attendees
+            OUTPUT "Event successfully added"
+    RETURN
 
 
 FUNCTION edit_event()
@@ -511,23 +555,23 @@ FUNCTION edit_event()
         END IF
     INPUT choice
     OPEN "resources.txt" in write mode as writing
-        IF choice == 1 THEN
-            INPUT new_name
-            UPDATE event_name = new_name
-        ELSE IF choice == 2 THEN
-            INPUT new_domain
-            UPDATE event_domain = new_domain
-        ELSE IF choice == 3 THEN
-            INPUT new_type
-            UPDATE type = new_type
-        ELSE IF choice == 4 THEN
-            INPUT new_timetable_id
-            UPDATE timetable_id = new_timetable_id
-        ELSE IF choice == 0 THEN
-            CALL events()
-        END IF
-    CALL events()
-END FUNCTION
+        DO 
+            IF choice == 1 THEN
+                INPUT new_name
+                UPDATE event_name = new_name
+            ELSE IF choice == 2 THEN
+                INPUT new_domain
+                UPDATE event_domain = new_domain
+            ELSE IF choice == 3 THEN
+                INPUT new_type
+                UPDATE type = new_type
+            ELSE IF choice == 4 THEN
+                INPUT new_timetable_id
+                UPDATE timetable_id = new_timetable_id
+            ELSE IF choice == 0 THEN
+                CALL events()
+        WHILE condition choice is False
+    RETURN
 
 
 FUNCTION delete_event()
@@ -541,14 +585,14 @@ FUNCTION delete_event()
                 OUTPUT "Event not found"
             END IF
         CALL event()
-END FUNCTION
+    RETURN
 
 
 FUNCTION all_event()
     OPEN "event.txt" in read mode as file
         FOR each line in file
             OUTPUT line
-END FUNCTION
+    RETURN
 
 
 FUNCTION filter_event()
@@ -559,7 +603,7 @@ FUNCTION filter_event()
 
     INPUT choice
 
-    WHILE True
+    DO
         IF choice == 1 THEN
             INPUT domain
             OPEN "events.csv" in read mode as events
@@ -581,21 +625,75 @@ FUNCTION filter_event()
         ELSE
             OUTPUT "Invalid choice. Try again."
         END IF
-    END While
-END FUNCTION
+    WHILE condition choice is False
+    RETURN
 
 
 FUNCTION search_event()
     OUTPUT "Search Events:"
     INPUT keyword
-    OPEN "events.csv" in read mode as events
+    OPEN "events.txt" in read mode as events
         FOR each line in events
             IF keyword matches any event attribute THEN
                 OUTPUT event details
+            ELSE
+                OUTOUT "Event not found"
             END IF
-END FUNCTION
+    CALL events()
+    RETURN
 
 
 FUNCTION communication()
-    
-END FUNCTION
+    OUTPUT "1. General feedbacks"
+    OUTPUT "2. Course feedbacks"
+    OUTPUT "3. Teacher feedbacks"
+
+    DO
+        PROMPT "Enter option"
+        INPUT choice
+        IF choice == 1 THEN
+            CALL general_feedbacks()
+        ELSE IF choice == 2 THEN
+            CALL course_feedbacks()
+        ELSE IF choice == 3 THEN
+            CALL teacher_feedbacks()
+        ELSE IF choice == 0 THEN
+            CALL staff()
+        ELSE
+            REPROMPT USER "Invalid choice. Please try again."
+        END IF
+    WHILE condition choice is False
+    RETURN 
+
+
+FUNCTION general_feedbacks()
+    OPEN "feedbacks.txt" in read mode as feedback
+        FOR each line in feedback
+            IF target_id is general THEN
+                OUTPUT line
+            ELIF input is 0 THEN
+                CALL communication()
+            END IF
+    RETURN
+
+
+FUNCTION course_feedbacks()
+    OPEN "feedbacks.txt" in read mode as feedback
+        FOR each line in feedback
+            IF target_id is course_id THEN
+                OUTPUT line
+            ELIF input is 0 THEN
+                CALL communication()
+            END IF
+    RETURN
+
+
+FUNCTION teacher_feedbacks()
+    OPEN "feedbacks.txt" in read mode as feedback
+        FOR each line in feedback
+            IF target_id is teacher_id THEN
+                OUTPUT line
+            ELIF input is 0 THEN
+                CALL communication()
+            END IF
+    RETURN
