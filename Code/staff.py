@@ -44,4 +44,5 @@ def choose(choice):
 def staff_manage_acc():
     pass
 
+
 staff("id", "name")
