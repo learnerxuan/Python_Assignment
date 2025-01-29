@@ -1,1 +1,1 @@
-assessment_id,course_enrollment_id,class_id,type,grade,assess_feedback
+assessment_id,course__id,class_id,type,grade,assess_feedback
