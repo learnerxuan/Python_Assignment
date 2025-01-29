@@ -1,11 +1,9 @@
 student_id,student_name,password,phone_number,email,gender,school_enrollment_status,parents_id
-stu001,Emma Watson,emma123,111-222-3333,emma.watson@example.com,Female,Enrolled,par001
-stu002,Noah Johnson,noah456,222-333-4444,noah.johnson@example.com,Male,Enrolled,par002
-stu003,Ava Martinez,ava789,333-444-5555,ava.martinez@example.com,Female,Withdrawn,par003
-stu004,Liam Brown,liam2023,444-555-6666,liam.brown@example.com,Male,Enrolled,par004
-stu005,Olivia Davis,oliviaPass,555-666-7777,olivia.davis@example.com,Female,Enrolled,par005
-stu006,Ethan Wilson,ethan101,666-777-8888,ethan.wilson@example.com,Male,Suspended,par006
-stu007,Sophia Taylor,sophiaSafe,777-888-9999,sophia.taylor@example.com,Female,Enrolled,par007
-stu008,James Anderson,jamesKey,888-999-0000,james.anderson@example.com,Male,Enrolled,par008
-
-
+student1,Emma Watson,emma123,111-222-3333,emma.watson@example.com,Female,Enrolled,par001
+student2,Noah Johnson,noah456,222-333-4444,noah.johnson@example.com,Male,Enrolled,par002
+student3,Ava Martinez,ava789,333-444-5555,ava.martinez@example.com,Female,Withdrawn,par003
+student4,Liam Brown,liam2023,444-555-6666,liam.brown@example.com,Male,Enrolled,par004
+student5,Olivia Davis,oliviaPass,555-666-7777,olivia.davis@example.com,Female,Enrolled,par005
+student6,Ethan Wilson,ethan101,666-777-8888,ethan.wilson@example.com,Male,Suspended,par006
+student7,Sophia Taylor,sophiaSafe,777-888-9999,sophia.taylor@example.com,Female,Enrolled,par007
+student8,James Anderson,jamesKey,888-999-0000,james.anderson@example.com,Male,Enrolled,par008
