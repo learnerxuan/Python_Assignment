@@ -1,1 +1,9 @@
 parents_id,student_id,parents_name,phone_number,email,gender
+parent1,student1,William Watson,111-222-3333,william.watson@example.com,Male
+parent2,student2,Sophia Johnson,222-333-4444,sophia.johnson@example.com,Female
+parent3,student3,Isabella Martinez,333-444-5555,isabella.martinez@example.com,Female
+parent4,student4,James Brown,444-555-6666,james.brown@example.com,Male
+parent5,student5,Charlotte Davis,555-666-7777,charlotte.davis@example.com,Female
+parent6,student6,Benjamin Wilson,666-777-8888,benjamin.wilson@example.com,Male
+parent7,student7,Mia Taylor,777-888-9999,mia.taylor@example.com,Female
+parent8,student8,Lucas Anderson,888-999-0000,lucas.anderson@example.com,Male
