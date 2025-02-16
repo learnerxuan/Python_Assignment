@@ -1,11 +1,6 @@
 staff_id,staff_name,password,phone_number,email,gender
-staff1,Alice Johnson,12pass12,012345,mail@mail.com,Female
-staff2,Bob Smith,staff456,222-333-4444,bob.smith@example.com,Male
-staff3,Carol Williams,staff789,333-444-5555,carol.williams@example.com,Female
-staff4,David Brown,staff2023,444-555-6666,david.brown@example.com,Male
-staff5,Eva Davis,staffPass,555-666-7777,eva.davis@example.com,Female
-staff6,Frank Wilson,staff101,666-777-8888,frank.wilson@example.com,Male
-staff7,Grace Lee,staffSafe,777-888-9999,grace.lee@example.com,Female
-staff8,Henry Miller,staffKey,888-999-0000,henry.miller@example.com,Male
-staff9,Irene Taylor,staffStrong,999-000-1111,irene.taylor@example.com,Female
-staff10,Jack Anderson,staffSecure,000-111-2222,jack.anderson@example.com,Male
+S001,Alice Johnson,12pass12,012345,mail@mail.com,Female
+S002,Bob Smith,staff456,222-333-4444,bob.smith@example.com,Male
+S003,Carol Williams,staff789,333-444-5555,carol.williams@example.com,Female
+S004,David Brown,staff2023,444-555-6666,david.brown@example.com,Male
+S005,Eva Davis,staffPass,555-666-7777,eva.davis@example.com,Female

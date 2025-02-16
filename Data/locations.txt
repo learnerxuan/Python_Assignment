@@ -1,2 +1,2 @@
 location_id,location_name,capacity
-
+L001

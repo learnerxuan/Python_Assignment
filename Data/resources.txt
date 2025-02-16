@@ -1,2 +1,2 @@
 resource_id,resource_name,resource_type,condition,quantity,location_id
-
+R001

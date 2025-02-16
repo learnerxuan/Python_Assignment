@@ -1,1 +1,2 @@
 aca_per_id,assessment_id,student_id,cgpa
+AP001,ASM001,S001,4.0

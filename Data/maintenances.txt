@@ -1,1 +1,2 @@
 maintenance_id,resource_id,date,type,cost,status,notes
+M001,R001
