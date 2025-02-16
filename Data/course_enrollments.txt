@@ -1,11 +1,2 @@
 course_enrollment_id,class_id,student_id,assessment_id,course_enroll_status
-E1,C1,S1,A1,Enrolled
-E2,C2,S2,A2,Completed
-E3,C3,S3,A3,Enrolled
-E4,C4,S4,A4,Dropped
-E5,C5,S5,A5,Enrolled
-E6,C6,S6,A6,Completed
-E7,C7,S7,A7,Enrolled
-E8,C8,S8,A8,Completed
-E9,C9,S9,A9,Enrolled
-E10,C10,S10,A10,Completed
+CE001,C1,student1,None,Enrolled

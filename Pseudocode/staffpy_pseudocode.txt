@@ -149,7 +149,7 @@ FUNCTION stu_trans_course()
             IF search_id == student_id THEN
             OUTPUT row
         PROMPT "Course from (course_enrollment_id): "
-        PROMPT "Transfer to (course_teacher_id): "
+        PROMPT "Transfer to (class_id): "
         INPUT course_from, transfer_to
         FOR each line in enroll
             IF course_from == course_enrollment_id
@@ -158,7 +158,7 @@ FUNCTION stu_trans_course()
                 REPROMPT course_from
         OPEN "classes.txt" as reading in read mode
             FOR each line in reading
-                IF course_to == course_teacher_id
+                IF course_to == class_id
                     OPEN "course_enrollments.txt" as writing in append mode
                         APPEND student_id                
                 ELSE
@@ -176,7 +176,7 @@ FUNCTION stu_course_withdraw()
             FOR each line in enroll
                 IF student_id equals to student_id in enroll
                     OUTPUT line
-            INPUT course_teacher_id
+            INPUT class_id
             OPEN "course_enrollments.txt" in write mode as writing
                 SET course_enroll_status == inactive
     END IF
@@ -187,7 +187,7 @@ FUNCTION manage_timetable()
     INPUT class_id
     OPEN "timetable.txt" in read mode as timetable
         FOR each line in timetable
-            IF course_teacher_id equals to course_teacher_id in timetable
+            IF class_id equals to class_id in timetable
                 OUTPUT line
             ELSE
                 REPROMPT "Enter class id"

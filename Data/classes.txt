@@ -6,6 +6,7 @@ C4,CS104,teacher10,Fundamentals of Physics,Newton's Laws of Motion,Lab session a
 C5,CS105,teacher5,Biology Basics,Photosynthesis and cell respiration,Complete homework 2 by Friday,T5
 C6,CS106,teacher8,General Chemistry,Acids, bases, and pH,Read the lab manual before the experiment,T6
 C7,CS107,teacher9,English Literature,Shakespeare's works,Prepare for class discussion on Hamlet,T7
-C8,CS108, teacher3,Web Development,Introduction to HTML and CSS,Work on website design project,T8
+C8,CS108,teacher3,Web Development,Introduction to HTML and CSS,Work on website design project,T8
 C9,CS109,teacher4,Linear Algebra,Matrix operations and vector spaces,Review practice problems before the test,T9
 C10,CS110,teacher6,Microeconomics,Supply and demand analysis,Read chapters 5 and 6 for next class,T10
+C10,CS109,teacher6,Microeconomics,Supply and demand analysis,Read chapters 5 and 6 for next class,T10
