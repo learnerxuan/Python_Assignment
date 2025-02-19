@@ -1,2 +1,12 @@
-location_id,location_name,capacity
+location,capacity
+Room 101,30
+Room 102,40
+Room 103,35
+Room 104,50
+Room 105,25
+Room 106,45
+Room 107,30
+Room 108,40
+Room 109,35
+Room 110,50
 
