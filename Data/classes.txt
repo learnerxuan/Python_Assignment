@@ -1,11 +1,11 @@
-class_id,course_id,teacher_id,lesson_plan,notes,announcement,timetable_id
-C1,CS101,teacher1,Intro to Programming,Focus on basic syntax and variables,Prepare for next week's quiz,T1
-C2,CS102,teacher2,Data Structures and Algorithms,Study arrays and linked lists,Review chapter 3 before the class,T2
-C3,CS103,teacher5,Calculus I,Topics on derivatives and limits,Bring a calculator to class,T3
-C4,CS104,teacher10,Fundamentals of Physics,Newton's Laws of Motion,Lab session after the theory,T4
-C5,CS105,teacher5,Biology Basics,Photosynthesis and cell respiration,Complete homework 2 by Friday,T5
-C6,CS106,teacher8,General Chemistry,Acids, bases, and pH,Read the lab manual before the experiment,T6
-C7,CS107,teacher9,English Literature,Shakespeare's works,Prepare for class discussion on Hamlet,T7
-C8,CS108, teacher3,Web Development,Introduction to HTML and CSS,Work on website design project,T8
-C9,CS109,teacher4,Linear Algebra,Matrix operations and vector spaces,Review practice problems before the test,T9
-C10,CS110,teacher6,Microeconomics,Supply and demand analysis,Read chapters 5 and 6 for next class,T10
+class_id,course_id,teacher_id,lesson_plan,notes,announcement,day,start_time,end_time,location
+C1,CS101,teacher1,Intro to Programming,Focus on basic syntax and variables,Prepare for next week's quiz,Monday,08:00,10:00,Room 101
+C2,CS102,teacher2,Data Structures and Algorithms,Study arrays and linked lists,Review chapter 3 before the class,Tuesday,10:00,12:00,Room 102
+C3,CS103,teacher5,Calculus I,Topics on derivatives and limits,Bring a calculator to class,Wednesday,09:00,11:00,Room 103
+C4,CS104,teacher10,Fundamentals of Physics,Newton's Laws of Motion,Lab session after the theory,Thursday,13:00,15:00,Room 104
+C5,CS105,teacher5,Biology Basics,Photosynthesis and cell respiration,Complete homework 2 by Friday,Friday,14:00,16:00,Room 105
+C6,CS106,teacher8,General Chemistry,Acids, bases, and pH,Read the lab manual before the experiment,Monday,11:00,13:00,Room 106
+C7,CS107,teacher9,English Literature,Shakespeare's works,Prepare for class discussion on Hamlet,Tuesday,14:00,16:00,Room 107
+C8,CS108,teacher3,Web Development,Introduction to HTML and CSS,Work on website design project,Wednesday,08:00,10:00,Room 108
+C9,CS109,teacher4,Linear Algebra,Matrix operations and vector spaces,Review practice problems before the test,Thursday,10:00,12:00,Room 109
+C10,CS110,teacher6,Microeconomics,Supply and demand analysis,Read chapters 5 and 6 for next class,Friday,09:00,11:00,Room 110
