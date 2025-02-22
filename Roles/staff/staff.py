@@ -2,6 +2,7 @@ import color
 import staff_lib
 from staff_manage_acc import staff_manage_acc
 from student_rec import student_rec
+from resources import resources
 
 
 def staff(staff_id, staff_name):
@@ -42,4 +43,4 @@ def staff(staff_id, staff_name):
             exit("Program Exited")
 
 
-staff("staff1", "name")
+staff("S001", "name")

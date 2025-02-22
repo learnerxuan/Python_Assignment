@@ -1,2 +1,8 @@
-resource_id,resource_name,resource_type,condition,quantity,location_id
-R001
+resource_id,resource_name,resource_type,condition,quantity,location
+R001,Projector,Electronics,Good,2,Room 1
+R002,Whiteboard Marker,Stationery,Used,10,Storage Room A
+R003,Computer,Electronics,Good,5,Lab 202
+R004,Chair,Furniture,Good,30,Hall B
+R005,New resource,tool,Fair,5,Room 2
+R006,newnew,clothing,Good,9,Room 1
+R007,"new, resource",clothing,Used,10,Room 1

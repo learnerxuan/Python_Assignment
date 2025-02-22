@@ -41,7 +41,7 @@ def staff_update_detail(staff_id, field):
             if staff["staff_id"] == staff_id:
                 staff_found = True
                 while True:
-                    new_detail = input(f"Enter new {field} (0 to cancel): ")
+                    new_detail = input(f"Enter new {field} (0 to cancel): ").strip()
 
                     # Cancelled updating, return to staff_manage_acc
                     if new_detail == "0":
@@ -49,7 +49,7 @@ def staff_update_detail(staff_id, field):
 
                     # Double confirm password
                     if field == "password":
-                        confirm_detail = input("Confirm password: ")
+                        confirm_detail = input("Confirm password: ").strip()
                         if new_detail != confirm_detail:
                             print("Password does not match. Please try again.")
                             continue

@@ -1,11 +1,11 @@
 course_id,course_name,description
-CS001,Introduction to Programming,Learn Python basics
-CS002,Data Science Basics,Intro to statistics and analysis
-CS003,Web Development,HTML/CSS/JavaScript basics
-CS004,Database Systems,Learn SQL and database design
-CS005,AI Fundamentals,Intro to machine learning concepts
-CS006,Operating Systems,Understand OS fundamentals
-CS007,Network Security,Learn about cybersecurity principles
-CS008,Mobile App Development,Build apps for Android and iOS
-CS009,Cloud Computing,Explore cloud architecture and tools
-CS110,Software Engineering,Learn software design principles
+C001,Introduction to Programming,Learn Python basics
+C002,Data Science Basics,Intro to statistics and analysis
+C003,Web Development,HTML/CSS/JavaScript basics
+C004,Database Systems,Learn SQL and database design
+C005,AI Fundamentals,Intro to machine learning concepts
+C006,Operating Systems,Understand OS fundamentals
+C007,Network Security,Learn about cybersecurity principles
+C008,Mobile App Development,Build apps for Android and iOS
+C009,Cloud Computing,Explore cloud architecture and tools
+C010,Software Engineering,Learn software design principles

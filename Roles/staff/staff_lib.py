@@ -2,7 +2,7 @@ def choose(choice):
     """Validates user choice and returns a number from the given list of choices passed as an argument."""
     while True:
         try:
-            num = int(input(f"Enter number ({choice[0]}-{choice[-1]}): "))
+            num = int(input(f"Enter number ({choice[0]}-{choice[-1]}): ").strip())
             if num in choice:
                 return num
             else:
@@ -38,25 +38,41 @@ def read_csv_line(line):
 def search_value(file_path, column_index, search_value, return_column=None):
     """
     Checks if the given search_value exists in the specified column of the file.
-    Optionally returns value of other column by specifying its index
+    return_column returns the value of the specified column of the same row that the search value was found.
+    If return_column is not specified
+        - Returns True if at least found one
+        - Returns Flase if not found
+    If return_column is specified
+        - Returns the value if only exist one 
+        - Returns a list of value if multiple match
+        - Returns False if not found
     """
+    results = []
     try:
         with open(file_path, "r") as file:
             for line in file:
-                columns = line.strip().split(",")
+                columns = read_csv_line(line.strip())
                 if column_index < len(columns) and columns[column_index] == search_value:
                     if return_column is not None and return_column < len(columns):
-                        return columns[return_column]
-                    return True
-        return False
-    except Exception as e:
+                        results.append(columns[return_column])
+                    else:
+                        return True
+                
+        # Handling different result cases
+        if not results:
+            return False
+        elif len(results) == 1:
+            return results[0]  # Return single value if only one match
+        return results  # Return list if multiple matches found
+    
+    except Exception:
         return False
 
 
 def read_csv_file(file_path):
     """
     Reads a CSV file and stores each record as a dictionary, using the header as keys, stored in a list.
-    Return the list and header
+    Returns the list and header
     """
 
     # List to temporarily store all record
@@ -84,10 +100,17 @@ def read_csv_file(file_path):
 def new_id(last_id, prefix_length):
     """
     Generates the next ID by extracting the numeric part, incrementing it, and formatting it with leading zeros.
-    Return the next_id
+    Returns the next_id
     """
-
     prefix, number = last_id[:prefix_length], last_id[prefix_length:]
     next_number = int(number) + 1
     next_id = f"{prefix}{next_number:0{len(number)}}"
     return next_id
+
+
+def get_input(prompt):
+    """ Get user input and immediately return to the previous function if '0' is entered. Input is stripped"""
+    user_input = input(prompt).strip()
+    if user_input == "0":
+        return  # Exits function immediately, returning to the caller function
+    return user_input  # Otherwise, return the input normally
