@@ -1,1 +1,11 @@
 faculty_id,faculty_name
+F001,Faculty of Science
+F002,Faculty of Engineering
+F003,Faculty of Arts
+F004,Faculty of Business
+F005,Faculty of Medicine
+F006,Faculty of Law
+F007,Faculty of Education
+F008,Faculty of Social Sciences
+F009,Faculty of Humanities
+F010,Faculty of Computer Science
