@@ -353,7 +353,7 @@ FUNCTION update_resources()
                 UPDATE condition = new_condition
             ELSE IF choice == 4 THEN
                 INPUT new_quantity
-                UPDATE quantity - new_quantity
+                UPDATE quantity = new_quantity
             ELSE IF choice == 5 THEN
                 INPUT new_location
                 UPDATE location_id = new_location
@@ -477,6 +477,8 @@ FUNCTION update_maintenance_status()
 FUNCTION search_maintenance()
     INPUT search_term
     IF input is 0 THEN
+        CALL maintenance()
+    ELSE
         OPEN "maintenance.txt" in read mode as maintenance
             FOR each line in maintenance
                 IF search_term exists in line THEN

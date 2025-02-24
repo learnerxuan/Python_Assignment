@@ -41,7 +41,7 @@ def staff_update_detail(staff_id, field):
             if staff["staff_id"] == staff_id:
                 staff_found = True
                 while True:
-                    new_detail = input(f"Enter new {field} (0 to cancel): ").strip()
+                    new_detail = input(f"Enter new {field.replace("_", " ")} (0 to cancel): ").strip()
 
                     # Cancelled updating, return to staff_manage_acc
                     if new_detail == "0":
