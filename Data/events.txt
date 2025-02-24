@@ -1,2 +1,21 @@
 event_id,event_name,event_domain,event_type,timetable_id,max_attendees
-
+EVT001,Tech Expo 2025,Technology,Conference,T101,500
+EVT002,AI Innovation Summit,Artificial Intelligence,Seminar,T102,300
+EVT003,Blockchain Revolution,Finance,Workshop,T103,200
+EVT004,Cybersecurity Awareness Week,Cybersecurity,Conference,T104,400
+EVT005,Cloud Computing Mastery,IT,Workshop,T105,250
+EVT006,Startup Pitch Challenge,Business,Competition,T106,150
+EVT007,Digital Marketing Trends,Marketing,Seminar,T107,350
+EVT008,Green Tech Symposium,Environment,Conference,T108,500
+EVT009,Game Development Bootcamp,Game Development,Workshop,T109,180
+EVT010,Quantum Computing Insights,Science,Seminar,T110,220
+EVT011,Medical AI Breakthroughs,Healthcare,Conference,T111,450
+EVT012,Web3 & Decentralization,Blockchain,Workshop,T112,170
+EVT013,UX/UI Design Trends,Design,Seminar,T113,300
+EVT014,Data Science Hackathon,Data Science,Competition,T114,200
+EVT015,Virtual Reality Innovations,Technology,Workshop,T115,250
+EVT016,EdTech Future Summit,Education,Conference,T116,400
+EVT017,Ethical Hacking Training,Cybersecurity,Workshop,T117,200
+EVT018,AI & Robotics Symposium,Artificial Intelligence,Conference,T118,500
+EVT019,Future of FinTech,Finance,Seminar,T119,300
+EVT020,Smart Cities Forum,Urban Planning,Conference,T120,350
