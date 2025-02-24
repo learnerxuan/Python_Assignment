@@ -402,8 +402,7 @@ FUNCTION maintenance()
     OUTPUT "1. Log maintenance"
     OUTPUT "2. View maintenance history"
     OUTPUT "3. Update maintenance status"
-    OUTPUT "4. Search maintenance record"
-    OUTPUT "5. Upcoming Maintenance Tasks"
+    OUTPUT "4. Filter maintenance record"
     OUTPUT "0. Back"
 
     DO 
@@ -416,11 +415,7 @@ FUNCTION maintenance()
         ELSE IF choice == 3 THEN
             CALL update_maintrenance_status()
         ELSE IF choice == 4 THEN
-            CALL search_maintenance()
-        ELSE IF choice == 5 THEN
-            CALL generate_maintenance_report()
-        ELSE IF choice == 6 THEN
-            CALL upcoming_maintenance()
+            CALL filter_maintenance()
         ELSE IF choice == 0 THEN
             EXIT program
         ELSE
@@ -474,7 +469,7 @@ FUNCTION update_maintenance_status()
     RETURN
 
 
-FUNCTION search_maintenance()
+FUNCTION filter_maintenance()
     INPUT search_term
     IF input is 0 THEN
         CALL maintenance()
@@ -487,15 +482,6 @@ FUNCTION search_maintenance()
                     OUTPUT "Search does not exist"
                 END IF
         CALL maintenance()
-    RETURN
-
-
-FUNCTION upcoming_maintenance_tasks()
-    OPEN "maintenance.txt" in read mode as maintenance
-        FOR each line in maintenance
-            IF status == "Pending" AND date > CURRENT_DATE THEN
-                OUTPUT line
-            END IF
     RETURN
 
 

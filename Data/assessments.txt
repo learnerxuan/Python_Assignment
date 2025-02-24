@@ -1,2 +1,11 @@
 assessment_id,course_id,class_id,student_id,type,grade,assess_feedback
-ASM001,C001,CSL001,S001,exam,3.75,"Great understanding of programming basics!"
+ASM001,C001,CLS001,S001,exam,3.75,"Great understanding of programming basics!"
+ASM002,C002,CLS002,S002,quiz,3.50,"Good grasp of fundamental concepts."
+ASM003,C003,CLS003,S003,assignment,3.80,"Well-structured and detailed work."
+ASM004,C004,CLS004,S004,exam,2.75,"Struggles with key concepts, needs practice."
+ASM005,C005,CLS005,S005,project,4.00,"Excellent application of theoretical knowledge!"
+ASM006,C001,CLS001,S006,quiz,3.20,"Satisfactory performance, can do better."
+ASM007,C002,CLS002,S007,assignment,3.90,"Great attention to detail and execution."
+ASM008,C003,CLS003,S008,exam,2.50,"Lack of clarity in answers, requires revision."
+ASM009,C004,CLS004,S009,project,4.00,"Outstanding creativity and execution!"
+ASM010,C005,CLS005,S010,quiz,3.60,"Good effort, but needs refinement."

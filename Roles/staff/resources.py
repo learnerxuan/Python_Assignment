@@ -1,8 +1,9 @@
 import staff_lib
-from staff_lib import get_input
 
-# Resource condition dictionary
+# Dictionary used in this file
 resource_condition = {1: "Good", 2: "Used", 3: "Fair", 4: "Needs Repair"}
+maintenance_types = {"1": "Repair", "2": "Inspection", "3": "Replacement", "4": "Upgrade", "5": "Cleaning"}
+maintenance_status = {"1": "Completed", "2": "Pending", "3": "In Progress"}
 
 
 def resources():
@@ -94,7 +95,9 @@ def view_resources():
                 print("1 - Good, 2 - Used, 3 - Fair, 4 - Needs Repair")
                 while True:
                     try:
-                        condition_num = int(get_input("Enter resource condition 1-4 (0 to cancel): "))
+                        condition_num = int(input("Enter resource condition 1-4 (0 to cancel): "))
+                        if condition_num == 0:
+                            break
                         if condition_num not in resource_condition:
                             print("Invalid condition.")
                             continue
@@ -124,17 +127,24 @@ def view_resources():
 
 
 def new_resources():
-    """Register new resources, take name, condition, quantity, location"""
+    """Register new resources, take name, condition, quantity, location."""
 
     try:
         # Get name
-        resource_name = get_input("Enter resource name (0 to cancel): ")
+        resource_name = input("Enter resource name (0 to cancel): ")
+
+        if resource_name == "0":
+            return
 
         # User input resource type by choosing from the avialable list
         with open("./Data/resource_type.txt", "r") as types:
             print(''.join(types.readlines()))
         while True:
-            resource_type = get_input("Enter resource type from above (0 to cancel): ").lower()
+            resource_type = input("Enter resource type from above (0 to cancel): ").lower()
+            
+            if resource_type == "0":
+                return
+
             if not staff_lib.search_value("./Data/resource_type.txt", 0, resource_type):
                 print("Invalid resource type.")
                 continue
@@ -145,7 +155,11 @@ def new_resources():
         print("1 - Good, 2 - Used, 3 - Fair, 4 - Needs Repair")
         while True:
             try:
-                condition_num = int(get_input("Enter resource condition 1-4 (0 to cancel): "))
+                condition_num = int(input("Enter resource condition 1-4 (0 to cancel): "))
+
+                if condition_num == 0:
+                    return
+
                 if condition_num not in resource_condition:
                     print("Invalid condition.")
                     continue
@@ -169,7 +183,11 @@ def new_resources():
         for line in loca:
             print(line["location_name"])
         while True:
-            location = get_input("Enter resource location (0 to cancel): ").title()
+            location = input("Enter resource location (0 to cancel): ").title()
+
+            if location == "0":
+                return
+
             if not staff_lib.search_value("./Data/locations.txt", 0, location):
                 print("Invalid location.")
                 continue
@@ -199,10 +217,14 @@ def new_resources():
 
 
 def update_resources():
-    """Update resource details"""
+    """Update resource details."""
     while True:
         try:
-            search_id = get_input("Enter resource ID (0 to cancel): ")
+            search_id = input("Enter resource ID (0 to cancel): ")
+
+            if search_id == "0":
+                return
+
             if not staff_lib.search_value("./Data/resources.txt", 0, search_id):
                 print("Invalid resource ID")
                 continue
@@ -235,7 +257,10 @@ def update_resources():
                 # Search for resource user wants to update
                 if resource["resource_id"] == search_id:
                     if field == "resource_name":
-                        new_detail = get_input("Enter new resource name (0 to cancel): ").title()
+                        new_detail = input("Enter new resource name (0 to cancel): ").title()
+
+                        if new_detail == "0":
+                            return
 
                     elif field == "resource_type":
                         # Display all type
@@ -243,7 +268,11 @@ def update_resources():
                             print(''.join(types.readlines()))
                         while True:
                             # User input resource type by choosing from the avialable list
-                            new_detail = get_input("Enter new resource type from above (0 to cancel): ").lower()
+                            new_detail = input("Enter new resource type from above (0 to cancel): ").lower()
+
+                            if new_detail == "0":
+                                return
+
                             if not staff_lib.search_value("./Data/resource_type.txt", 0, new_detail): # Validate type
                                 print("Invalid resource type.")
                                 continue
@@ -255,7 +284,11 @@ def update_resources():
                         print("1 - Good, 2 - Used, 3 - Fair, 4 - Needs Repair")
                         while True:
                             try:
-                                condition_num = int(get_input("Enter new resource condition 1-4 (0 to cancel): "))
+                                condition_num = int(input("Enter new resource condition 1-4 (0 to cancel): "))
+
+                                if condition_num == 0:
+                                    return
+
                                 if condition_num not in resource_condition: # Validate condition
                                     print("Invalid condition.")
                                     continue
@@ -270,6 +303,10 @@ def update_resources():
                         while True:
                             try:
                                 new_detail = int(input("Enter new quantity: "))
+
+                                if new_detail == 0:
+                                    return
+
                                 break
                             except ValueError:
                                 print("Please enter a valid number.")                    
@@ -281,7 +318,11 @@ def update_resources():
                         for line in loca:
                             print(line["location_name"])
                         while True:
-                            new_detail = get_input("Enter resource location (0 to cancel): ").title()
+                            new_detail = input("Enter resource location (0 to cancel): ").title()
+
+                            if new_detail == 0:
+                                return
+
                             if not staff_lib.search_value("./Data/locations.txt", 0, new_detail):
                                 print("Invalid location.")
                                 continue
@@ -307,10 +348,14 @@ def update_resources():
 
 
 def delete_resources():
-    """Delete resource based on resource ID user inputted"""
+    """Delete resource based on resource ID user inputted."""
     while True:
         try:
-            resource_id = get_input("Enter resource ID (0 to cancel): ")
+            resource_id = input("Enter resource ID (0 to cancel): ")
+
+            if resource_id == "0":
+                return
+
             # Validate the presence of resource ID
             if not staff_lib.search_value("./Data/resources.txt", 0, resource_id):
                 print("Invalid resource ID.")
@@ -338,10 +383,14 @@ def delete_resources():
 
 
 def split_resources():
-    """Allows splitting of certain resource of a certain quantity become a new record and assign a new location"""
+    """Allows splitting of certain resource of a certain quantity become a new record and assign a new location."""
     while True:
         try:
-            resource_id = get_input("Enter resource ID (0 to cancel): ")
+            resource_id = input("Enter resource ID (0 to cancel): ")
+
+            if resource_id == "0":
+                return
+
             # Validate resource ID
             if not staff_lib.search_value("./Data/resources.txt", 0, resource_id):
                 print("Invalid resource ID.")
@@ -357,7 +406,11 @@ def split_resources():
                     print(",".join(resource.values()))
                     while True:
                         try:
-                            num_to_split = int(get_input("Enter quantity to be splitted out (0 to cancel): "))
+                            num_to_split = int(input("Enter quantity to be splitted out (0 to cancel): "))
+
+                            if num_to_split == 0:
+                                return
+
                         except ValueError:
                             print("Invalid numbers.")
                             continue
@@ -373,7 +426,11 @@ def split_resources():
                         for line in loca:
                             print(line["location_name"])
                         while True:
-                            new_loc = get_input("Enter resource new location (0 to cancel): ").title()
+                            new_loc = input("Enter resource new location (0 to cancel): ").title()
+
+                            if new_loc == "0":
+                                return
+
                             if not staff_lib.search_value("./Data/locations.txt", 0, new_loc):
                                 print("Invalid location.")
                                 continue
@@ -418,22 +475,29 @@ def split_resources():
 
 
 def new_type():
-    """Add new resource type"""
+    """Add new resource type."""
+    try:
+        with open("./Data/resource_type.txt", "a+") as types:
+            print("Resource Type")
+            types.seek(0)
+            print(''.join(types.readlines()))
 
-    with open("./Data/resource_type.txt", "a+") as types:
-        print("Resource Type")
-        types.seek(0)
-        print(''.join(types.readlines()))
+            new = input("Enter new type (0 to cancel): ").lower()
 
-        new = get_input("Enter new type (0 to cancel): ").lower()
+            if new == "0":
+                return
 
-        # Check if resource type already existed
-        if staff_lib.search_value("./Data/resource_type.txt", 0, new):
-            print("Resource type exist")
-            return
-        
-        types.writelines(new + "\n")
-        print("New resource type added.")
+            # Check if resource type already existed
+            if staff_lib.search_value("./Data/resource_type.txt", 0, new):
+                print("Resource type exist")
+                return
+            
+            types.writelines(new + "\n")
+            print("New resource type added.")
+    except FileNotFoundError:
+        print("File not found")
+    except IOError:
+        print("Unable to read/write the file")
 
     return
 
@@ -445,27 +509,278 @@ def maintenance():
 1. Log maintenance
 2. View maintenance history
 3. Update maintenance status
-4. Search maintenance record
-5. Upcoming Maintenance Tasks
+4. Filter maintenance record
 0. Back""")
         
         # Get user input and validate it
-        choice = staff_lib.choose([0, 1, 2, 3, 4, 5, 6, 7])
+        choice = staff_lib.choose([0, 1, 2, 3, 4])
 
         if choice == 1:
             log_maintenance()
         elif choice == 2:
             view_maintenance_history()
         elif choice == 3:
-            update_maintrenance_status()
+            update_mainenance_status()
         elif choice == 4:
-            search_maintenance()
-        elif choice == 5:
-            generate_maintenance_report()
+            filter_maintenance()
         elif choice == 0:
             # Return back to staff menu
             return
-        
+
+
+def get_main_type():
+    """Returns maintenance type in string."""
+    print("Select Maintenance Type:")
+    for key, value in maintenance_types.items():
+        print(f"{key} - {value}")
+    while True:
+        try:
+            type_num = input("Enter maintenance type (1-5) (0 to cancel): ")
+
+            if type_num == "0":
+                return
+
+            if type_num in maintenance_types:
+                type = maintenance_types[type_num]
+                return type
+            else:
+                print("Invalid choice. Please enter a number between 1 and 5.")
+        except ValueError:
+            print("Invalid choice. Please enter a number between 1 and 5.")
+            continue
+
+
+def get_main_status():
+    """Returns maintenance status in string."""
+
+    print("Select Maintenance Status:")
+    for key, value in maintenance_status.items():
+        print(f"{key} - {value}")
+    while True:
+        try:
+            status_num = input("Enter maintenance status (1-3) (0 to cancel): ")
+
+            if status_num == "0":
+                return
+
+            if status_num in maintenance_status:
+                status = maintenance_status[status_num]
+                return status
+            else:
+                print("Invalid choice. Please enter a number between 1 and 3.")
+        except ValueError:
+            print("Invalid choice. Please enter a number between 1 and 3.")
+
 
 def log_maintenance():
-    ...
+    """Log new maintenance record."""
+    try:
+        while True:
+            resource_id = input("Enter resource ID (0 to cancel): ")
+
+            if resource_id == "0":
+                return
+
+            # Check if resource ID exist
+            if not staff_lib.search_value("./Data/resources.txt", 0, resource_id):
+                print("Invalid resource.")
+                continue
+            break
+        
+        # Date validation loop
+        while True:
+            date = input("Enter date (YYYY-MM-DD) (0 to cancel): ")
+
+            if date == "0":
+                return
+
+            # Split date into three parts
+            parts = date.split("-")
+            if len(parts) == 3 and all(part.isdigit() for part in parts):
+                year, month, day = parts
+                # Convert to integer
+                year, month, day = int(year), int(month), int(day)
+
+                # Basic validation
+                if 1000 <= year <= 9999 and 1 <= month <= 12 and 1 <= day <= 31:
+                    date = f"{year}-{month:02d}-{day:02d}"
+                    break
+            print("Invalid date format.")
+        
+        # Get maintenance type
+        type = get_main_type()
+
+        # Get cost
+        while True:
+            try:
+                cost = float(input("Enter maintenance cost: "))
+                if cost < 0: # Prevent negative cost
+                    print("Cost cannot be negative.")
+                    continue
+                cost = f"{cost:.2f}"  # Format to two decimal places
+                break
+            except ValueError:
+                print("Invalid input. Please enter a valid number")
+
+        # Get maintenance status
+        status = get_main_status()
+
+        # Enter additional notes
+        notes = input("Enter notes (0 to cancel): ")
+        if notes == "0":
+            return
+        notes = staff_lib.format_csv_value(notes)
+
+        # Create new maintenance log
+        maintenance, _ = staff_lib.read_csv_file("./Data/maintenances.txt")
+
+        if maintenance:  # Check if the list is not empty
+            last_id = maintenance[-1]["maintenance_id"]
+            next_id = staff_lib.new_id(last_id, 1)  # Increment ID
+        else: 
+            next_id = "R001"  # Default starting ID if no records exist
+
+        # Add new record
+        with open("./Data/maintenances.txt", "a") as new_main:
+            new_main.write(f"{next_id},{resource_id},{date},{type},{cost},{status},{notes}\n")
+        print("Successfully added!")
+
+    except FileNotFoundError:
+        print("File not found")
+    except IOError:
+        print("Unable to read/write the file")
+
+    return
+
+
+def view_maintenance_history():
+    """View maintenance history of a specific resource."""
+    try:
+        # Search for resource ID
+        resource_id = input("Enter resource ID (0 to cancel): ")
+
+        if resource_id == "0":
+            return
+        
+        # If resource ID exist in maintenances.txt, returns a list for multiple occurance, single value for one occurance
+        main_ids = staff_lib.search_value("./Data/maintenances.txt", 1, resource_id, 0)
+
+        if main_ids == False:
+            print("Resource has no maintenance history.")
+            return
+
+        maintenances, header = staff_lib.read_csv_file("./Data/maintenances.txt") 
+        print(",".join(header))
+
+        # If there's only one occurance
+        if isinstance(main_ids, str):
+            for maintenance in maintenances:
+                if maintenance["maintenance_id"] == main_ids:
+                    print(",".join(staff_lib.format_csv_value(str(value)) for value in maintenance.values()))
+
+        elif isinstance(main_ids, list):
+            # Iterate over a list of maintenance ID for that one resource
+            for main_id in main_ids:
+                for maintenance in maintenances:
+                    if maintenance["maintenance_id"] == main_id:
+                        print(",".join(staff_lib.format_csv_value(str(value)) for value in maintenance.values()))
+
+    except FileNotFoundError:
+        print("File not found")
+    except IOError:
+        print("Unable to read/write the file")
+
+    return
+
+
+def update_mainenance_status():
+    """Update maintenance status of a specific maintenance record."""
+    try:
+        maintenance_id = input("Enter maintenance ID: ")
+        if not staff_lib.search_value("./Data/maintenances.txt", 0, maintenance_id):
+            print("Invalid maintenance ID.")
+            return
+        maintenances, header = staff_lib.read_csv_file("./Data/maintenances.txt")
+        for maintenance in maintenances:
+            if maintenance["maintenance_id"] == maintenance_id:
+                # Output the maintenance record
+                print(",".join(header))
+                print(",".join(staff_lib.format_csv_value(str(value)) for value in maintenance.values()))
+
+                # Get new maintenance status
+                status = get_main_status()
+
+                # Update the status of the specific record
+                maintenance["status"] = status
+
+        # Write newly changed data to file
+        with open("./Data/maintenances.txt", "w") as writer:
+            writer.write(",".join(header) + "\n")
+            for maintenance in maintenances:
+                # Only write the value of each key-value pair for each maintenance
+                writer.write(",".join(staff_lib.format_csv_value(str(value)) for value in maintenance.values()) + "\n")
+            print(f"Maintenance status successfully updated.")
+
+    except FileNotFoundError:
+        print("File not found")
+    except IOError:
+        print("Unable to read/write the file")
+
+    return
+    
+
+def filter_maintenance():
+    """Display maintenance records of a specific type or status."""
+    while True:
+        try:
+            print("1. Filter by type\n2. Filter by status\n0. Back")
+            # Get field that user wants to filter by
+            choice = staff_lib.choose([0, 1, 2])
+            if choice == 0:
+                return
+            
+            # Filter by type
+            elif choice == 1:
+                type = get_main_type()
+                # Get the maintenance IDs of the specific type
+                maintenance_ids = staff_lib.search_value("./Data/maintenances.txt", 3, type, 0)
+
+                if maintenance_ids == False:
+                    print("No record.")
+                    continue
+                
+                maintenances, header = staff_lib.read_csv_file("./Data/maintenances.txt")
+
+                print(",".join(header))
+
+                # Iterate throught the list of all maintenances
+                for maintenance in maintenances:
+                    # Print the specific type only
+                    if maintenance["type"] == type:
+                        print(",".join(staff_lib.format_csv_value(str(value)) for value in maintenance.values()))
+
+            # Filter by status
+            elif choice == 2:
+                status = get_main_status()
+                # Get the maintenance IDs of the specific status
+                maintenance_ids = staff_lib.search_value("./Data/maintenances.txt", 5, status, 0)
+
+                if maintenance_ids == False:
+                    print("No record.")
+                    continue
+                
+                maintenances, header = staff_lib.read_csv_file("./Data/maintenances.txt")
+
+                print(",".join(header))
+
+                # Iterate throught the list of all maintenances
+                for maintenance in maintenances:
+                    # Print the specific status only
+                    if maintenance["status"] == status:
+                        print(",".join(staff_lib.format_csv_value(str(value)) for value in maintenance.values()))
+
+        except FileNotFoundError:
+            print("File not found")
+        except IOError:
+            print("Unable to read/write the file")
+        return

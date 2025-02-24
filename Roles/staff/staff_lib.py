@@ -107,10 +107,3 @@ def new_id(last_id, prefix_length):
     next_id = f"{prefix}{next_number:0{len(number)}}"
     return next_id
 
-
-def get_input(prompt):
-    """ Get user input and immediately return to the previous function if '0' is entered. Input is stripped"""
-    user_input = input(prompt).strip()
-    if user_input == "0":
-        return  # Exits function immediately, returning to the caller function
-    return user_input  # Otherwise, return the input normally
