@@ -2,8 +2,8 @@ import staff_lib
 
 # Dictionary used in this file
 resource_condition = {1: "Good", 2: "Used", 3: "Fair", 4: "Needs Repair"}
-maintenance_types = {"1": "Repair", "2": "Inspection", "3": "Replacement", "4": "Upgrade", "5": "Cleaning"}
-maintenance_status = {"1": "Completed", "2": "Pending", "3": "In Progress"}
+maintenance_types = {1: "Repair", 2: "Inspection", 3: "Replacement", 4: "Upgrade", 5: "Cleaning"}
+maintenance_status = {1: "Completed", 2: "Pending", 3: "In Progress"}
 
 
 def resources():
@@ -95,7 +95,7 @@ def view_resources():
                 print("1 - Good, 2 - Used, 3 - Fair, 4 - Needs Repair")
                 while True:
                     try:
-                        condition_num = int(input("Enter resource condition 1-4 (0 to cancel): "))
+                        condition_num = int(input("Enter resource condition 1-4 (0 to cancel): ").strip())
                         if condition_num == 0:
                             break
                         if condition_num not in resource_condition:
@@ -131,7 +131,7 @@ def new_resources():
 
     try:
         # Get name
-        resource_name = input("Enter resource name (0 to cancel): ")
+        resource_name = input("Enter resource name (0 to cancel): ").strip()
 
         if resource_name == "0":
             return
@@ -140,7 +140,7 @@ def new_resources():
         with open("./Data/resource_type.txt", "r") as types:
             print(''.join(types.readlines()))
         while True:
-            resource_type = input("Enter resource type from above (0 to cancel): ").lower()
+            resource_type = input("Enter resource type from above (0 to cancel): ").strip().lower()
             
             if resource_type == "0":
                 return
@@ -155,7 +155,7 @@ def new_resources():
         print("1 - Good, 2 - Used, 3 - Fair, 4 - Needs Repair")
         while True:
             try:
-                condition_num = int(input("Enter resource condition 1-4 (0 to cancel): "))
+                condition_num = int(input("Enter resource condition 1-4 (0 to cancel): ").strip())
 
                 if condition_num == 0:
                     return
@@ -172,7 +172,7 @@ def new_resources():
         # User input quantity, 0 is accepted
         while True:
             try:
-                quantity = int(input("Enter quantity: "))
+                quantity = int(input("Enter quantity: ").strip())
                 break
             except ValueError:
                 print("Please enter a valid number.")
@@ -183,7 +183,7 @@ def new_resources():
         for line in loca:
             print(line["location_name"])
         while True:
-            location = input("Enter resource location (0 to cancel): ").title()
+            location = input("Enter resource location (0 to cancel): ").strip().title()
 
             if location == "0":
                 return
@@ -195,7 +195,7 @@ def new_resources():
                 break
 
         # Create new resource
-        resource, head = staff_lib.read_csv_file("./Data/resources.txt")
+        resource, _ = staff_lib.read_csv_file("./Data/resources.txt")
 
         if resource:  # Check if the list is not empty
             last_id = resource[-1]["resource_id"]
@@ -220,7 +220,7 @@ def update_resources():
     """Update resource details."""
     while True:
         try:
-            search_id = input("Enter resource ID (0 to cancel): ")
+            search_id = input("Enter resource ID (0 to cancel): ").strip()
 
             if search_id == "0":
                 return
@@ -257,7 +257,7 @@ def update_resources():
                 # Search for resource user wants to update
                 if resource["resource_id"] == search_id:
                     if field == "resource_name":
-                        new_detail = input("Enter new resource name (0 to cancel): ").title()
+                        new_detail = input("Enter new resource name (0 to cancel): ").strip().title()
 
                         if new_detail == "0":
                             return
@@ -268,7 +268,7 @@ def update_resources():
                             print(''.join(types.readlines()))
                         while True:
                             # User input resource type by choosing from the avialable list
-                            new_detail = input("Enter new resource type from above (0 to cancel): ").lower()
+                            new_detail = input("Enter new resource type from above (0 to cancel): ").strip().lower()
 
                             if new_detail == "0":
                                 return
@@ -284,7 +284,7 @@ def update_resources():
                         print("1 - Good, 2 - Used, 3 - Fair, 4 - Needs Repair")
                         while True:
                             try:
-                                condition_num = int(input("Enter new resource condition 1-4 (0 to cancel): "))
+                                condition_num = int(input("Enter new resource condition 1-4 (0 to cancel): ").strip())
 
                                 if condition_num == 0:
                                     return
@@ -302,7 +302,7 @@ def update_resources():
                         # User input quantity, 0 is accepted
                         while True:
                             try:
-                                new_detail = int(input("Enter new quantity: "))
+                                new_detail = int(input("Enter new quantity: ").strip())
 
                                 if new_detail == 0:
                                     return
@@ -318,7 +318,7 @@ def update_resources():
                         for line in loca:
                             print(line["location_name"])
                         while True:
-                            new_detail = input("Enter resource location (0 to cancel): ").title()
+                            new_detail = input("Enter resource location (0 to cancel): ").strip().title()
 
                             if new_detail == 0:
                                 return
@@ -351,7 +351,7 @@ def delete_resources():
     """Delete resource based on resource ID user inputted."""
     while True:
         try:
-            resource_id = input("Enter resource ID (0 to cancel): ")
+            resource_id = input("Enter resource ID (0 to cancel): ").strip()
 
             if resource_id == "0":
                 return
@@ -386,7 +386,7 @@ def split_resources():
     """Allows splitting of certain resource of a certain quantity become a new record and assign a new location."""
     while True:
         try:
-            resource_id = input("Enter resource ID (0 to cancel): ")
+            resource_id = input("Enter resource ID (0 to cancel): ").strip()
 
             if resource_id == "0":
                 return
@@ -406,7 +406,7 @@ def split_resources():
                     print(",".join(resource.values()))
                     while True:
                         try:
-                            num_to_split = int(input("Enter quantity to be splitted out (0 to cancel): "))
+                            num_to_split = int(input("Enter quantity to be splitted out (0 to cancel): ").strip())
 
                             if num_to_split == 0:
                                 return
@@ -426,7 +426,7 @@ def split_resources():
                         for line in loca:
                             print(line["location_name"])
                         while True:
-                            new_loc = input("Enter resource new location (0 to cancel): ").title()
+                            new_loc = input("Enter resource new location (0 to cancel): ").sstrip().title()
 
                             if new_loc == "0":
                                 return
@@ -482,7 +482,7 @@ def new_type():
             types.seek(0)
             print(''.join(types.readlines()))
 
-            new = input("Enter new type (0 to cancel): ").lower()
+            new = input("Enter new type (0 to cancel): ").strip().lower()
 
             if new == "0":
                 return
@@ -535,10 +535,9 @@ def get_main_type():
         print(f"{key} - {value}")
     while True:
         try:
-            type_num = input("Enter maintenance type (1-5) (0 to cancel): ")
-
-            if type_num == "0":
-                return
+            type_num = int(input("Enter maintenance type (1-5) (0 to cancel): ").strip())
+            if type_num == 0:
+                return 0
 
             if type_num in maintenance_types:
                 type = maintenance_types[type_num]
@@ -558,10 +557,9 @@ def get_main_status():
         print(f"{key} - {value}")
     while True:
         try:
-            status_num = input("Enter maintenance status (1-3) (0 to cancel): ")
-
-            if status_num == "0":
-                return
+            status_num = int(input("Enter maintenance status (1-3) (0 to cancel): ").strip())
+            if status_num == 0:
+                return 0
 
             if status_num in maintenance_status:
                 status = maintenance_status[status_num]
@@ -576,7 +574,7 @@ def log_maintenance():
     """Log new maintenance record."""
     try:
         while True:
-            resource_id = input("Enter resource ID (0 to cancel): ")
+            resource_id = input("Enter resource ID (0 to cancel): ").strip()
 
             if resource_id == "0":
                 return
@@ -587,33 +585,20 @@ def log_maintenance():
                 continue
             break
         
-        # Date validation loop
-        while True:
-            date = input("Enter date (YYYY-MM-DD) (0 to cancel): ")
-
-            if date == "0":
-                return
-
-            # Split date into three parts
-            parts = date.split("-")
-            if len(parts) == 3 and all(part.isdigit() for part in parts):
-                year, month, day = parts
-                # Convert to integer
-                year, month, day = int(year), int(month), int(day)
-
-                # Basic validation
-                if 1000 <= year <= 9999 and 1 <= month <= 12 and 1 <= day <= 31:
-                    date = f"{year}-{month:02d}-{day:02d}"
-                    break
-            print("Invalid date format.")
+        # Get date
+        date = staff_lib.get_date()
+        if date == "0":
+            return
         
         # Get maintenance type
         type = get_main_type()
+        if type == 0:
+            return
 
         # Get cost
         while True:
             try:
-                cost = float(input("Enter maintenance cost: "))
+                cost = float(input("Enter maintenance cost: ").strip())
                 if cost < 0: # Prevent negative cost
                     print("Cost cannot be negative.")
                     continue
@@ -624,9 +609,11 @@ def log_maintenance():
 
         # Get maintenance status
         status = get_main_status()
+        if status == 0:
+            return
 
         # Enter additional notes
-        notes = input("Enter notes (0 to cancel): ")
+        notes = input("Enter notes (0 to cancel): ").strip()
         if notes == "0":
             return
         notes = staff_lib.format_csv_value(notes)
@@ -657,7 +644,7 @@ def view_maintenance_history():
     """View maintenance history of a specific resource."""
     try:
         # Search for resource ID
-        resource_id = input("Enter resource ID (0 to cancel): ")
+        resource_id = input("Enter resource ID (0 to cancel): ").strip()
 
         if resource_id == "0":
             return
@@ -696,7 +683,7 @@ def view_maintenance_history():
 def update_mainenance_status():
     """Update maintenance status of a specific maintenance record."""
     try:
-        maintenance_id = input("Enter maintenance ID: ")
+        maintenance_id = input("Enter maintenance ID: ").strip()
         if not staff_lib.search_value("./Data/maintenances.txt", 0, maintenance_id):
             print("Invalid maintenance ID.")
             return
@@ -709,6 +696,8 @@ def update_mainenance_status():
 
                 # Get new maintenance status
                 status = get_main_status()
+                if status == 0:
+                    return
 
                 # Update the status of the specific record
                 maintenance["status"] = status
@@ -742,6 +731,9 @@ def filter_maintenance():
             # Filter by type
             elif choice == 1:
                 type = get_main_type()
+                if type == 0:
+                    return
+                
                 # Get the maintenance IDs of the specific type
                 maintenance_ids = staff_lib.search_value("./Data/maintenances.txt", 3, type, 0)
 
@@ -762,6 +754,9 @@ def filter_maintenance():
             # Filter by status
             elif choice == 2:
                 status = get_main_status()
+                if status == 0:
+                    return
+                
                 # Get the maintenance IDs of the specific status
                 maintenance_ids = staff_lib.search_value("./Data/maintenances.txt", 5, status, 0)
 

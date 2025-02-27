@@ -107,3 +107,41 @@ def new_id(last_id, prefix_length):
     next_id = f"{prefix}{next_number:0{len(number)}}"
     return next_id
 
+
+def get_date():
+    # Date validation loop
+    while True:
+        date = input("Enter date (YYYY-MM-DD) (0 to cancel): ").strip()
+        if date == "0":
+            return "0"
+
+        # Split date into three parts
+        parts = date.split("-")
+        if len(parts) == 3 and all(part.isdigit() for part in parts):
+            year, month, day = parts
+            # Convert to integer
+            year, month, day = int(year), int(month), int(day)
+
+            # Basic validation
+            if 1000 <= year <= 9999 and 1 <= month <= 12 and 1 <= day <= 31:
+                date = f"{year}-{month:02d}-{day:02d}"
+                return date
+        print("Invalid date format.")
+
+
+def get_time():
+    while True:
+        time = input("Enter time (HH:MM) (24-hour format) (0 to cancel): ").strip()
+        if time == "0":
+            return
+        
+        parts = time.split(":")
+
+        if len(parts) == 2 and all(part.isdigit() for part in parts):
+            hour, minute = map(int, parts)
+
+            if 0 <= hour < 24 and 0 <= minute < 60:
+                time = f"{hour:02d}:{minute:02d}"  # Ensures leading zero (e.g., 09:05)
+                return time
+
+        print("Invalid time format. Please enter in HH:MM (24-hour format).")

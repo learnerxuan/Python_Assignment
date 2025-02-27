@@ -3,6 +3,7 @@ import staff_lib
 from staff_manage_acc import staff_manage_acc
 from student_rec import student_rec
 from resources import resources
+from events import events
 
 
 def staff(staff_id, staff_name):
