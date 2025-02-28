@@ -4,6 +4,7 @@ from staff_manage_acc import staff_manage_acc
 from student_rec import student_rec
 from resources import resources
 from events import events
+from communication import communication
 
 
 def staff(staff_id, staff_name):

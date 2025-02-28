@@ -491,7 +491,6 @@ FUNCTION events()
     OUTPUT "3. Delete Event"
     OUTPUT "4. View All Events"
     OUTPUT "5. Filter Events"
-    OUTPUT "6. Search Events"
     OUTPUT "0. Back"
 
     DO
@@ -507,8 +506,6 @@ FUNCTION events()
             CALL all_event()
         ELSE IF choice == 5 THEN
             CALL filter_event()
-        ELSE IF choice == 6 THEN
-            CALL search_event()
         ELSE IF choice == 0 THEN
             CALL staff()
         ELSE
@@ -539,10 +536,10 @@ FUNCTION edit_event()
             OUTPUT "4. Update timetable"
             OUTPUT "0. Back"
         ELSE
-            OUTPUT "Resource unavailable"
+            OUTPUT "Event unavailable"
         END IF
     INPUT choice
-    OPEN "resources.txt" in write mode as writing
+    OPEN "event.txt" in write mode as writing
         DO 
             IF choice == 1 THEN
                 INPUT new_name
@@ -614,20 +611,6 @@ FUNCTION filter_event()
             OUTPUT "Invalid choice. Try again."
         END IF
     WHILE condition choice is False
-    RETURN
-
-
-FUNCTION search_event()
-    OUTPUT "Search Events:"
-    INPUT keyword
-    OPEN "events.txt" in read mode as events
-        FOR each line in events
-            IF keyword matches any event attribute THEN
-                OUTPUT event details
-            ELSE
-                OUTOUT "Event not found"
-            END IF
-    CALL events()
     RETURN
 
 
