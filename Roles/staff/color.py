@@ -1,4 +1,3 @@
-
 # ANSI escape codes for colors and styles
 RESET = "\033[0m"
 BOLD = "\033[1m"

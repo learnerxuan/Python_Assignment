@@ -1,18 +1,19 @@
 import color
 import staff_lib
 
-
 def staff_manage_acc(staff_id, staff_name):
-    """Display staff manage account menu and processes user choices."""
+    """Display staff manage account menu and process user choices."""
     while True:
-        print("""
-1. Change Password
-2. Update Phone Number
-3. Update Email
-0. Back""")
-        
+        print(f"{'=' * 17}{color.BOLD}{color.BLUE} MANAGE MY ACCOUNT {color.RESET}{'=' * 16}")
+        print(f"""{" " * 15}{color.YELLOW}1.{color.RESET} Change Password
+{" " * 15}{color.YELLOW}2.{color.RESET} Update Phone Number
+{" " * 15}{color.YELLOW}3.{color.RESET} Update Email
+{" " * 15}{color.YELLOW}0.{color.RESET} Back""")
+        print(f"{'=' * 52}")
+
         # Get user input and validate it
         choice = staff_lib.choose([0, 1, 2, 3])
+        print()
 
         if choice == 1:
             field = "password"
@@ -21,8 +22,7 @@ def staff_manage_acc(staff_id, staff_name):
         elif choice == 3:
             field = "email"
         elif choice == 0:
-            # Return back to staff menu
-            return
+            return  # Return to staff menu
 
         staff_update_detail(staff_id, field)
 
@@ -40,8 +40,10 @@ def staff_update_detail(staff_id, field):
         for staff in staffs:
             if staff["staff_id"] == staff_id:
                 staff_found = True
+                print(f"{color.BOLD}Change {field.replace("_", " ").title()}{color.RESET}")
                 while True:
                     new_detail = input(f"Enter new {field.replace("_", " ")} (0 to cancel): ").strip()
+                    print()
 
                     # Cancelled updating, return to staff_manage_acc
                     if new_detail == "0":
@@ -51,12 +53,14 @@ def staff_update_detail(staff_id, field):
                     if field == "password":
                         confirm_detail = input("Confirm password: ").strip()
                         if new_detail != confirm_detail:
-                            print("Password does not match. Please try again.")
+                            print(f"{color.YELLOW}Password does not match. Please try again.{color.RESET}")
+                            print()
                             continue
 
                     # Assign new value of the updated field
                     staff[field] = new_detail
-                    print(f"{field.capitalize().replace("_", " ")} updated successfully")
+                    print(f"{color.GREEN}{field.replace("_", " ").title()} updated successfully.{color.RESET}")
+                    print()
                     break
 
         if not staff_found:

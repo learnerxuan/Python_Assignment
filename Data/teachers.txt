@@ -4,4 +4,3 @@ T002,Ethan Harris,teach456,222-333-4444,ethan.harris@example.com,Male,F002
 T003,Sophia Clark,teach789,333-444-5555,sophia.clark@example.com,Female,F003
 T004,Liam Walker,teach2023,444-555-6666,liam.walker@example.com,Male,F004
 T005,Ava Lewis,teachPass,555-666-7777,ava.lewis@example.com,Female,F005
-

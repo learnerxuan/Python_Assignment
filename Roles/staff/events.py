@@ -1,22 +1,24 @@
 import staff_lib
+import color
 
 event_domains = {1: "Academic", 2: "Extracurricular"}
 event_types = {1: "Conference", 2:"Seminar"}
 
-
 def events():
-    """Display event menu and processes user choices."""
+    """Display event menu and process user choices."""
     while True:
-        print("""
-1. Create New Event
-2. Edit Event
-3. Delete Event
-4. View All Events
-5. Filter Events
-0. Back""")
-        
+        print(f"{'=' * 22}{color.BOLD}{color.BLUE} EVENTS {color.RESET}{'=' * 22}")
+        print(f"""{" " * 15}{color.YELLOW}1.{color.RESET}  Create New Event
+{" " * 15}{color.YELLOW}2.{color.RESET}  Edit Event
+{" " * 15}{color.YELLOW}3.{color.RESET}  Delete Event
+{" " * 15}{color.YELLOW}4.{color.RESET}  View All Events
+{" " * 15}{color.YELLOW}5.{color.RESET}  Filter Events
+{" " * 15}{color.YELLOW}0.{color.RESET}  Back""")
+        print(f"{'=' * 52}")
+
         # Get user input and validate it
         choice = staff_lib.choose([0, 1, 2, 3, 4, 5])
+        print()
 
         if choice == 1:
             new_event()
@@ -113,7 +115,7 @@ def new_event():
         # Get max attendees
         while True:
             try:
-                max_attendees = int(input("Enter maximum attendees (0 to cancel): "))
+                max_attendees = int(input("Enter maximum attendees (0 to cancel): ").strip())
                 if max_attendees == 0:
                     return
                 break
@@ -249,7 +251,7 @@ def edit_event():
                         elif field == "max_attendees":
                             while True:
                                 try:
-                                    new_detail = int(input("Enter maximum attendees (0 to cancel): "))
+                                    new_detail = int(input("Enter maximum attendees (0 to cancel): ").strip())
                                     if new_detail == 0:
                                         break
                                     break

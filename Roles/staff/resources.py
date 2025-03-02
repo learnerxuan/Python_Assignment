@@ -1,4 +1,5 @@
 import staff_lib
+import color
 
 # Dictionary used in this file
 resource_condition = {1: "Good", 2: "Used", 3: "Fair", 4: "Needs Repair"}
@@ -7,20 +8,22 @@ maintenance_status = {1: "Completed", 2: "Pending", 3: "In Progress"}
 
 
 def resources():
-    """Display resource management menu and processes user choices."""
+    """Display resource management menu and process user choices."""
     while True:
-        print("""
-1. View Resources
-2. Add New Resource
-3. Update Resource Details
-4. Delete Resource
-5. Split Resources
-6. New Type
-7. Maintenance Management
-0. Back""")
-        
+        print(f"{'=' * 16}{color.BOLD}{color.BLUE} RESOURCE MANAGEMENT {color.RESET}{'=' * 15}")
+        print(f"""{" " * 13}{color.YELLOW}1.{color.RESET}  View Resources
+{" " * 13}{color.YELLOW}2.{color.RESET}  Add New Resource
+{" " * 13}{color.YELLOW}3.{color.RESET}  Update Resource Details
+{" " * 13}{color.YELLOW}4.{color.RESET}  Delete Resource
+{" " * 13}{color.YELLOW}5.{color.RESET}  Split Resources
+{" " * 13}{color.YELLOW}6.{color.RESET}  New Type
+{" " * 13}{color.YELLOW}7.{color.RESET}  Maintenance Management
+{" " * 13}{color.YELLOW}0.{color.RESET}  Back""")
+        print(f"{'=' * 52}")
+
         # Get user input and validate it
         choice = staff_lib.choose([0, 1, 2, 3, 4, 5, 6, 7])
+        print()
 
         if choice == 1:
             view_resources()
@@ -37,24 +40,25 @@ def resources():
         elif choice == 7:
             maintenance()
         elif choice == 0:
-            # Return back to staff menu
-            return
+            return  # Return to staff menu
 
 
 def view_resources():
-    """Display resource viewing menu and processes user choices."""
+    """Display resource viewing menu and process user choices."""
     while True:
-        print("""
-1. View All Resources
-2. Search by ID
-3. Search by Name
-4. Filter by Type
-5. Filter by Condition
-6. Filter by Location
-0. Back""")
+        print(f"{'=' * 18}{color.BOLD}{color.BLUE} VIEW RESOURCES {color.RESET}{'=' * 18}")
+        print(f"""{" " * 12}{color.YELLOW}1.{color.RESET}  View All Resources
+{" " * 12}{color.YELLOW}2.{color.RESET}  Search by ID
+{" " * 12}{color.YELLOW}3.{color.RESET}  Search by Name
+{" " * 12}{color.YELLOW}4.{color.RESET}  Filter by Type
+{" " * 12}{color.YELLOW}5.{color.RESET}  Filter by Condition
+{" " * 12}{color.YELLOW}6.{color.RESET}  Filter by Location
+{" " * 12}{color.YELLOW}0.{color.RESET}  Back""")
+        print(f"{'=' * 52}")
 
         # Get user input and validate it
-        choice = staff_lib.choose([0, 1, 2, 3, 4, 5, 6, 7])
+        choice = staff_lib.choose([0, 1, 2, 3, 4, 5, 6])
+        print()
 
         try:
             resources, header = staff_lib.read_csv_file("./Data/resources.txt")
@@ -503,29 +507,30 @@ def new_type():
 
 
 def maintenance():
-    """Display maintenance management menu and processes user choices."""
+    """Display maintenance management menu and process user choices."""
     while True:
-        print("""
-1. Log maintenance
-2. View maintenance history
-3. Update maintenance status
-4. Filter maintenance record
-0. Back""")
-        
+        print(f"{'=' * 14}{color.BOLD}{color.BLUE} MAINTENANCE MANAGEMENT {color.RESET}{'=' * 14}")
+        print(f"""{" " * 11}{color.YELLOW}1.{color.RESET}  Log Maintenance
+{" " * 11}{color.YELLOW}2.{color.RESET}  View Maintenance History
+{" " * 11}{color.YELLOW}3.{color.RESET}  Update Maintenance Status
+{" " * 11}{color.YELLOW}4.{color.RESET}  Filter Maintenance Record
+{" " * 11}{color.YELLOW}0.{color.RESET}  Back""")
+        print(f"{'=' * 52}")
+
         # Get user input and validate it
         choice = staff_lib.choose([0, 1, 2, 3, 4])
+        print()
 
         if choice == 1:
             log_maintenance()
         elif choice == 2:
             view_maintenance_history()
         elif choice == 3:
-            update_mainenance_status()
+            update_maintenance_status()
         elif choice == 4:
             filter_maintenance()
         elif choice == 0:
-            # Return back to staff menu
-            return
+            return  # Return to staff menu
 
 
 def get_main_type():
@@ -680,7 +685,7 @@ def view_maintenance_history():
     return
 
 
-def update_mainenance_status():
+def update_maintenance_status():
     """Update maintenance status of a specific maintenance record."""
     try:
         maintenance_id = input("Enter maintenance ID: ").strip()

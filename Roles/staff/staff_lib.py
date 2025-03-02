@@ -39,10 +39,10 @@ def search_value(file_path, column_index, search_value, return_column=None):
     """
     Checks if the given search_value exists in the specified column of the file.
     return_column returns the value of the specified column of the same row that the search value was found.
-    If return_column is not specified
+    - If return_column is not specified
         - Returns True if at least found one
         - Returns Flase if not found
-    If return_column is specified
+    - If return_column is specified
         - Returns the value if only exist one 
         - Returns a list of value if multiple match
         - Returns False if not found
@@ -133,7 +133,7 @@ def get_time():
     while True:
         time = input("Enter time (HH:MM) (24-hour format) (0 to cancel): ").strip()
         if time == "0":
-            return
+            return "0"
         
         parts = time.split(":")
 
