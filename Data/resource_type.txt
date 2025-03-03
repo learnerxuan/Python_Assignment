@@ -18,4 +18,3 @@ clothing
 decoration
 musical instrument
 miscellaneous
-test

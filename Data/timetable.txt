@@ -1,2 +1,0 @@
-timetable_id,class_or_event_id,day,start_time,end_time,location_id
-TT001,CLS001,Monday,08:00,10:00,L001

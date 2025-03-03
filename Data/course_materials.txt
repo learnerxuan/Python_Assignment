@@ -1,1 +1,11 @@
-
+course_materials_id,materials
+CM001,Introduction to Programming - Lecture Notes
+CM002,Data Science Basics - Textbook
+CM003,Web Development - HTML/CSS Guide
+CM004,Database Systems - SQL Tutorial
+CM005,AI Fundamentals - Research Papers
+CM006,Operating Systems - Lab Manual
+CM007,Network Security - Case Studies
+CM008,Mobile App Development - Project Files
+CM009,Cloud Computing - Whitepapers
+CM010,Software Engineering - Design Patterns

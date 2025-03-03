@@ -46,4 +46,4 @@ def staff(staff_id, staff_name):
             exit("Program Exited")
 
 
-staff("S001", "name")
+staff("STF001", "Alice Johnson")

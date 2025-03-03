@@ -1,6 +1,11 @@
 staff_id,staff_name,password,phone_number,email,gender
-S001,Alice Johnson,newpass,012-345-6789,staff@gamil.com,Female
-S002,Bob Smith,staff456,222-333-4444,bob.smith@example.com,Male
-S003,Carol Williams,staff789,333-444-5555,carol.williams@example.com,Female
-S004,David Brown,staff2023,444-555-6666,david.brown@example.com,Male
-S005,Eva Davis,staffPass,555-666-7777,eva.davis@example.com,Female
+STF001,Alice Johnson,password,1234567,staff1@gmail.com,Female
+STF002,Bob Smith,staff456,222-333-4444,bob.smith@example.com,Male
+STF003,Carol Williams,staff789,333-444-5555,carol.williams@example.com,Female
+STF004,David Brown,staff2023,444-555-6666,david.brown@example.com,Male
+STF005,Eva Davis,staffPass,555-666-7777,eva.davis@example.com,Female
+STF006,Frank Wilson,staff101,666-777-8888,frank.wilson@example.com,Male
+STF007,Grace Lee,staffSafe,777-888-9999,grace.lee@example.com,Female
+STF008,Henry Miller,staffKey,888-999-0000,henry.miller@example.com,Male
+STF009,Irene Taylor,staffStrong,999-000-1111,irene.taylor@example.com,Female
+STF010,Jack Anderson,staffSecure,000-111-2222,jack.anderson@example.com,Male
