@@ -1,1 +1,13 @@
 maintenance_id,resource_id,date,type,cost,status,notes
+M001,R001,2024-02-20,Repair,150,Completed,Replaced faulty wiring
+M002,R002,2024-02-18,Inspection,50,Pending,Check for wear and tear
+M003,R003,2024-02-15,Replacement,300,Completed,Battery replaced
+M004,R004,2024-02-12,Repair,200,In Progress,Fixing software issue
+M005,R005,2024-02-10,Upgrade,500,Completed,Installed new firmware
+M006,R006,2024-02-08,Cleaning,30,Completed,Deep cleaned dust buildup
+M007,R007,2024-02-05,Inspection,45,Completed,No issues found
+M008,R008,2024-02-03,Repair,175,In Progress,Fixing overheating problem
+M009,R009,2024-02-01,Replacement,250,Completed,Hard drive replaced
+M010,R010,2024-01-28,Inspection,40,Pending,Awaiting technician
+M011,R001,2025-01-01,Repair,20.00,Completed,no
+M012,R005,2025-03-03,Repair,50.00,Pending,Waiting for spare parts
