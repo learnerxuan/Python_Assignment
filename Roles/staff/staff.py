@@ -26,7 +26,6 @@ def staff(staff_id, staff_name):
 
         # Get user input and validate it
         choice = staff_lib.choose([0, 1, 2, 3, 4, 5, 6, 7])
-        print()
 
         # Navigate based on user choice
         if choice == 1:

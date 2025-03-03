@@ -1,4 +1,9 @@
 course_enrollment_id,class_id,student_id,assessment_id,course_enroll_status
-CE001,CLS001,S001,None,Enrolled
+CE001,CLS001,S001,None,Unenrolled
 CE002,CLS002,S002,None,Enrolled
 CE003,CLS001,S005,None,Enrolled
+CE004,CLS003,S005,None,Unenrolled
+CE005,CLS001,S007,None,Enrolled
+CE006,CLS003,S006,None,Enrolled
+CE007,CLS008,S005,None,Unenrolled
+CE008,CLS003,S002,None,Enrolled

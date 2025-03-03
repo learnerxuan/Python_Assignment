@@ -10,3 +10,4 @@ M008,R008,2024-02-03,Repair,175,In Progress,Fixing overheating problem
 M009,R009,2024-02-01,Replacement,250,Completed,Hard drive replaced
 M010,R010,2024-01-28,Inspection,40,Pending,Awaiting technician
 M011,R001,2025-01-01,Repair,20.00,Completed,no
+M012,R005,2025-03-03,Repair,50.00,Pending,Waiting for spare parts

@@ -1,3 +1,4 @@
 event_id,event_name,event_domain,event_type,date,start_time,end_time,max_attendees,location
-EVT001,New,Academic,Seminar,2025-01-01,12:00,15:00,100,Room 2
+EVT001,Testettsts,Extracurricular,Conference,2025-03-03,10:00,10:00,20,Room 2
 EVT002,Tech Conference 2025,Academic,Conference,2025-01-01,10:00,12:00,10,Room 1
+EVT003,new,Academic,Seminar,2025-01-01,10:00,12:00,10,Room 1

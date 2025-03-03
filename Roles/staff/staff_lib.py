@@ -1,14 +1,19 @@
+import color
+
 def choose(choice):
     """Validates user choice and returns a number from the given list of choices passed as an argument."""
     while True:
         try:
-            num = int(input(f"Enter number ({choice[0]}-{choice[-1]}): ").strip())
+            num = int(input(f"{color.GREEN}Enter number ({choice[0]}-{choice[-1]}): {color.RESET}").strip())
+            print()
             if num in choice:
                 return num
             else:
-                print(f"Please enter a number between {choice[0]} and {choice[-1]}.")
+                print(f"{color.RED}Please enter a number between {choice[0]} and {choice[-1]}.{color.RED}")
+                print()
         except ValueError:
-            print(f"Invalid input. Please enter a number between {choice[0]} and {choice[-1]}.")
+            print(f"{color.RED}Invalid input. Please enter a number between {choice[0]} and {choice[-1]}.{color.RESET}")
+            print()
 
 
 def format_csv_value(value):
@@ -111,7 +116,8 @@ def new_id(last_id, prefix_length):
 def get_date():
     # Date validation loop
     while True:
-        date = input("Enter date (YYYY-MM-DD) (0 to cancel): ").strip()
+        date = input(f"{color.GREEN}Enter date (YYYY-MM-DD) (0 to cancel): {color.RESET}").strip()
+        print()
         if date == "0":
             return "0"
 
@@ -126,12 +132,13 @@ def get_date():
             if 1000 <= year <= 9999 and 1 <= month <= 12 and 1 <= day <= 31:
                 date = f"{year}-{month:02d}-{day:02d}"
                 return date
-        print("Invalid date format.")
+        print(f"{color.RED}Invalid date format.{color.RESET}\n")
 
 
 def get_time():
     while True:
-        time = input("Enter time (HH:MM) (24-hour format) (0 to cancel): ").strip()
+        time = input(f"{color.GREEN}Enter time (HH:MM) (24-hour format) (0 to cancel): {color.RESET}").strip()
+        print()
         if time == "0":
             return "0"
         
@@ -144,4 +151,5 @@ def get_time():
                 time = f"{hour:02d}:{minute:02d}"  # Ensures leading zero (e.g., 09:05)
                 return time
 
-        print("Invalid time format. Please enter in HH:MM (24-hour format).")
+        print(f"{color.RED}Invalid time format. Please enter in HH:MM (24-hour format).{color.RED}")
+        print()

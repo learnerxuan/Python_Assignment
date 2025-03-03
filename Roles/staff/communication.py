@@ -15,7 +15,6 @@ def communication():
 
         # Get user input and validate it
         choice = staff_lib.choose([0, 1, 2, 3, 4, 5])
-        print()
 
         if choice == 1:
             general_feedback()
@@ -37,27 +36,36 @@ def reply_feedback(prefix):
     # Read feedback data from file
     feedbacks, header = staff_lib.read_csv_file("./Data/feedbacks.txt")
 
-    print(','.join(header))  # Display table headers
+    # Display table headers
+    print("-" * 125)
+    for column in header:
+        print(f"{color.BOLD}{column.replace('_', ' ').upper():<20}{color.RESET}", end='')
+    print()
+    print("-" * 125)
 
     # Display only feedbacks related to the specified prefix (category)
     for feedback in feedbacks:
         if feedback["target_id"].startswith(prefix): 
-            print(','.join(feedback.values()))
+            print("".join(f"{value:<20}" for value in feedback.values()))
+            print("-" * 125)
+    print()
 
     # Prompt user for feedback ID
-    feedback_id = input("Enter feedback ID (0 to cancel): ").strip()
+    feedback_id = input(f"{color.GREEN}Enter feedback ID to reply (0 to cancel): {color.RESET}").strip()
+    print()
     if feedback_id == "0":
         return 0  # Cancel operation
     
     # Validate feedback ID
     if not staff_lib.search_value("./Data/feedbacks.txt", 0, feedback_id):
-        print("Invalid feedback ID.")  # Notify user of invalid ID
+        print(f"{color.RED}Invalid feedback ID.{color.RESET}\n")  # Notify user of invalid ID
         return 0
     
     # Find the selected feedback and prompt for a response
     for feedback in feedbacks:
         if feedback["feedback_id"] == feedback_id:
-            response = input("Enter response (0 to cancel): ").strip()
+            response = input(f"{color.GREEN}Enter response (0 to cancel): {color.RESET}").strip()
+            print()
             if response == "0":
                 return 0  # Cancel operation
             feedback["response"] = response  # Store response in feedback record
@@ -67,7 +75,7 @@ def reply_feedback(prefix):
         writer.write(",".join(header) + "\n")  # Write header row
         for feedback in feedbacks:
             writer.write(",".join(staff_lib.format_csv_value(str(value)) for value in feedback.values()) + "\n")
-        print("Feedback replied successfully.")  # Confirmation message
+        print(f"{color.GREEN}Feedback replied successfully.{color.RESET}\n")  # Confirmation message
     
     return
 
@@ -75,13 +83,14 @@ def reply_feedback(prefix):
 def general_feedback():
     """Reply to general feedbacks."""
     try:
+        print(f"{'=' * 53}{color.BOLD}{color.BLUE} GENERAL FEEDBACKS {color.RESET}{'=' * 53}")
         if reply_feedback("General") == 0:
             return  # If user cancels, exit function
 
     except FileNotFoundError:
-        print("File not found")
+        print(f"{color.RED}Error: File not found.{color.RESET}\n")
     except IOError:
-        print("Unable to read/write the file")
+        print(f"{color.RED}Error: Unable to read/write the file.{color.RESET}\n")
 
     return
 
@@ -89,13 +98,14 @@ def general_feedback():
 def course_feedback():
     """Reply to course-related feedbacks."""
     try:
+        print(f"{'=' * 52}{color.BOLD}{color.BLUE} COURSE FEEDBACKS {color.RESET}{'=' * 53}")
         if reply_feedback("C") == 0:
             return  # If user cancels, exit function
 
     except FileNotFoundError:
-        print("File not found")
+        print(f"{color.RED}Error: File not found.{color.RESET}\n")
     except IOError:
-        print("Unable to read/write the file")
+        print(f"{color.RED}Error: Unable to read/write the file.{color.RESET}\n")
 
     return
         
@@ -103,13 +113,14 @@ def course_feedback():
 def teacher_feedback():
     """Reply to teacher-related feedbacks."""
     try:
+        print(f"{'=' * 53}{color.BOLD}{color.BLUE} TEACHER FEEDBACKS {color.RESET}{'=' * 53}")
         if reply_feedback("T") == 0:
             return  # If user cancels, exit function
 
     except FileNotFoundError:
-        print("File not found")
+        print(f"{color.RED}Error: File not found.{color.RESET}\n")
     except IOError:
-        print("Unable to read/write the file")
+        print(f"{color.RED}Error: Unable to read/write the file.{color.RESET}\n")
 
     return
 
@@ -117,27 +128,37 @@ def teacher_feedback():
 def parents_contact():
     """Retrieve and display parents' contact information for a specific student."""
     try:
-        student_id = input("Enter student ID (0 to cancel): ").strip()
+        print(f"{'=' * 54}{color.BOLD}{color.BLUE} PARENTS CONTACT {color.RESET}{'=' * 54}")
+        student_id = input(f"{color.GREEN}Enter student ID (0 to cancel): {color.RESET}").strip()
+        print()
         if student_id == "0":
             return  # Cancel operation
         
         # Search for the student's parent ID
         parents_id = staff_lib.search_value("./Data/parents.txt", 1, student_id, 0)
         if not parents_id:
-            print("Parents not found.")  # Notify user if no parents are found
+            print(f"{color.RED}Parents not found.{color.RESET}\n")  # Notify user if no parents are found
             return
 
         # Retrieve and display parent details
         parents, header = staff_lib.read_csv_file("./Data/parents.txt")
-        print(','.join(header))  # Print table headers
+        # Print table headers
+        print("-" * 125)
+        for column in header:
+            print(f"{color.BOLD}{column.replace('_', ' ').upper():<20}{color.RESET}", end='')
+        print()
+        print("-" * 125)
         for parent in parents:
             if parent["parents_id"] == parents_id:
-                print(','.join(parent.values()))  # Print parent details
+                # Print parent details
+                print(" ".join(f"{value:<19}" for value in parent.values()))
+                print("-" * 125)
+        print()
 
     except FileNotFoundError:
-        print("File not found")
+        print(f"{color.RED}Error: File not found.{color.RESET}\n")
     except IOError:
-        print("Unable to read/write the file")
+        print(f"{color.RED}Error: Unable to read/write the file.{color.RESET}\n")
 
     return
 
@@ -145,32 +166,43 @@ def parents_contact():
 def contact_faculty():
     """Allow staff to input a faculty ID and send a message (simulation)."""
     try:
+        print(f"{'=' * 18}{color.BOLD}{color.BLUE} CONTACT FACULTY {color.RESET}{'=' * 18}")
         # Read faculty data from file
         faculties, header = staff_lib.read_csv_file("./Data/faculties.txt")
-        print(",".join(header))  # Print table headers
+        # Print table headers
+        print("-" * 53)
+        for column in header:
+            print(f"{color.BOLD}{column.replace('_', ' ').upper():<15}{color.RESET}", end='')
+        print()
+        print("-" * 53)
         for faculty in faculties:
-            print(",".join(faculty.values()))  # Display faculty information
+            # Display faculty information
+            print(" ".join(f"{value:<15}" for value in faculty.values()))
+            print("-" * 53) 
+        print()
 
         # Prompt user for faculty ID
         while True:
-            faculty_id = input("Enter faculty ID (0 to cancel): ").strip()
+            faculty_id = input(f"{color.GREEN}Enter faculty ID (0 to cancel): {color.RESET}").strip()
+            print()
             if faculty_id == "0":
                 return  # Cancel operation
             
             # Validate faculty ID
             if staff_lib.search_value("./Data/faculties.txt", 0, faculty_id):
                 # Prompt user for message
-                message = input("Enter message (0 to cancel): ").strip()
+                message = input(f"{color.GREEN}Enter message (0 to cancel): {color.RESET}").strip()
+                print()
                 if message == "0":
                     return  # Cancel operation
-                print("Message sent.")  # Confirmation message
+                print(f"{color.GREEN}Message sent.{color.RESET}\n")  # Confirmation message
                 return
-            print("Invalid faculty ID. Please try again.")  # Notify user of invalid ID
+            print(f"{color.RED}Invalid faculty ID. Please try again.{color.RESET}\n")  # Notify user of invalid ID
             continue
 
     except FileNotFoundError:
-        print("File not found")
+        print(f"{color.RED}Error: File not found.{color.RESET}\n")
     except IOError:
-        print("Unable to read/write the file")
+        print(f"{color.RED}Error: Unable to read/write the file.{color.RESET}\n")
 
     return

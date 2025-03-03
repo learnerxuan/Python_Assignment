@@ -1,5 +1,5 @@
 staff_id,staff_name,password,phone_number,email,gender
-S001,Alice Johnson,new,12345678,newemail@mail.com,Female
+S001,Alice Johnson,newpass,012-345-6789,staff@gamil.com,Female
 S002,Bob Smith,staff456,222-333-4444,bob.smith@example.com,Male
 S003,Carol Williams,staff789,333-444-5555,carol.williams@example.com,Female
 S004,David Brown,staff2023,444-555-6666,david.brown@example.com,Male
