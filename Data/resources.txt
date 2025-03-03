@@ -1,2 +1,11 @@
-resource_id,resource_name,resource_type,condition,quantity,location_id
-
+resource_id,resource_name,resource_type,condition,quantity,location
+R001,Projector A,av equipment,Needs Repair,1,Room 101
+R002,Whiteboard Marker Set,stationery,Good,10,Room 102
+R003,UPS Battery,electronics,Good,2,Room 103
+R004,Computer Lab PC 1,electronics,Needs Repair,1,Room 104
+R005,Network Router,networking,Good,3,Room 105
+R006,Vacuum Cleaner,maintenance supplies,Good,1,Room 106
+R007,Fire Extinguisher,safety equipment,Good,2,Room 107
+R008,Air Conditioner,laboratory equipment,Needs Repair,1,Room 108
+R009,External Hard Drive,accessory,Good,4,Room 109
+R010,Medical First Aid Kit,medical supplies,Fair,5,Room 110
