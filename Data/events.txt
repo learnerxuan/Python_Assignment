@@ -1,21 +1,16 @@
-event_id,event_name,event_domain,event_type,timetable_id,max_attendees
-EVT001,Tech Expo 2025,Technology,Conference,T101,500
-EVT002,AI Innovation Summit,Artificial Intelligence,Seminar,T102,300
-EVT003,Blockchain Revolution,Finance,Workshop,T103,200
-EVT004,Cybersecurity Awareness Week,Cybersecurity,Conference,T104,400
-EVT005,Cloud Computing Mastery,IT,Workshop,T105,250
-EVT006,Startup Pitch Challenge,Business,Competition,T106,150
-EVT007,Digital Marketing Trends,Marketing,Seminar,T107,350
-EVT008,Green Tech Symposium,Environment,Conference,T108,500
-EVT009,Game Development Bootcamp,Game Development,Workshop,T109,180
-EVT010,Quantum Computing Insights,Science,Seminar,T110,220
-EVT011,Medical AI Breakthroughs,Healthcare,Conference,T111,450
-EVT012,Web3 & Decentralization,Blockchain,Workshop,T112,170
-EVT013,UX/UI Design Trends,Design,Seminar,T113,300
-EVT014,Data Science Hackathon,Data Science,Competition,T114,200
-EVT015,Virtual Reality Innovations,Technology,Workshop,T115,250
-EVT016,EdTech Future Summit,Education,Conference,T116,400
-EVT017,Ethical Hacking Training,Cybersecurity,Workshop,T117,200
-EVT018,AI & Robotics Symposium,Artificial Intelligence,Conference,T118,500
-EVT019,Future of FinTech,Finance,Seminar,T119,300
-EVT020,Smart Cities Forum,Urban Planning,Conference,T120,350
+event_id,event_name,event_domain,event_type,date,start_time,end_time,max_attendees,location
+EVT001,Tech Innovations 2025,Academic,Conference,2025-01-10,09:00,12:00,30,Room 101
+EVT002,Future of Education,Academic,Seminar,2025-02-15,14:00,16:00,40,Room 102
+EVT003,Extracurricular Leadership Summit,Extracurricular,Conference,2025-03-20,10:00,13:00,50,Lecture Hall A
+EVT004,Research Trends in AI,Academic,Seminar,2025-04-05,11:00,13:00,35,Room 103
+EVT005,Student Activities Forum,Extracurricular,Conference,2025-05-18,09:30,12:30,200,Auditorium
+EVT006,Science & Innovation Talk,Academic,Seminar,2025-06-22,15:00,17:00,45,Physics Lab
+EVT007,Youth Leadership Conference,Extracurricular,Conference,2025-07-10,10:00,12:30,180,Lecture Hall B
+EVT008,Data Science Breakthroughs,Academic,Seminar,2025-08-05,13:00,15:00,40,Computer Lab 1
+EVT009,Career Advancement Strategies,Extracurricular,Conference,2025-09-14,09:00,11:30,100,Library
+EVT010,Modern Teaching Methods,Academic,Seminar,2025-10-01,14:00,16:00,50,Room 104
+EVT011,Student Council Meet-Up,Extracurricular,Conference,2025-11-20,10:00,12:00,30,Room 105
+EVT012,Global Business Trends,Academic,Seminar,2025-12-10,15:30,17:30,40,Multimedia Room
+EVT013,Innovation in Learning,Academic,Conference,2026-01-05,09:00,11:30,35,Room 106
+EVT014,Extracurricular Impact Summit,Extracurricular,Conference,2026-02-15,10:00,12:30,300,Gymnasium
+EVT015,Emerging Technologies in Education,Academic,Seminar,2026-03-07,14:00,16:00,50,Room 107
