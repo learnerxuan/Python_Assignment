@@ -149,7 +149,7 @@ FUNCTION stu_trans_course()
             IF search_id == student_id THEN
             OUTPUT row
         PROMPT "Course from (course_enrollment_id): "
-        PROMPT "Transfer to (course_teacher_id): "
+        PROMPT "Transfer to (class_id): "
         INPUT course_from, transfer_to
         FOR each line in enroll
             IF course_from == course_enrollment_id
@@ -158,7 +158,7 @@ FUNCTION stu_trans_course()
                 REPROMPT course_from
         OPEN "classes.txt" as reading in read mode
             FOR each line in reading
-                IF course_to == course_teacher_id
+                IF course_to == class_id
                     OPEN "course_enrollments.txt" as writing in append mode
                         APPEND student_id                
                 ELSE
@@ -176,7 +176,7 @@ FUNCTION stu_course_withdraw()
             FOR each line in enroll
                 IF student_id equals to student_id in enroll
                     OUTPUT line
-            INPUT course_teacher_id
+            INPUT class_id
             OPEN "course_enrollments.txt" in write mode as writing
                 SET course_enroll_status == inactive
     END IF
@@ -187,7 +187,7 @@ FUNCTION manage_timetable()
     INPUT class_id
     OPEN "timetable.txt" in read mode as timetable
         FOR each line in timetable
-            IF course_teacher_id equals to course_teacher_id in timetable
+            IF class_id equals to class_id in timetable
                 OUTPUT line
             ELSE
                 REPROMPT "Enter class id"
@@ -353,7 +353,7 @@ FUNCTION update_resources()
                 UPDATE condition = new_condition
             ELSE IF choice == 4 THEN
                 INPUT new_quantity
-                UPDATE quantity - new_quantity
+                UPDATE quantity = new_quantity
             ELSE IF choice == 5 THEN
                 INPUT new_location
                 UPDATE location_id = new_location
@@ -402,8 +402,7 @@ FUNCTION maintenance()
     OUTPUT "1. Log maintenance"
     OUTPUT "2. View maintenance history"
     OUTPUT "3. Update maintenance status"
-    OUTPUT "4. Search maintenance record"
-    OUTPUT "5. Upcoming Maintenance Tasks"
+    OUTPUT "4. Filter maintenance record"
     OUTPUT "0. Back"
 
     DO 
@@ -416,11 +415,7 @@ FUNCTION maintenance()
         ELSE IF choice == 3 THEN
             CALL update_maintrenance_status()
         ELSE IF choice == 4 THEN
-            CALL search_maintenance()
-        ELSE IF choice == 5 THEN
-            CALL generate_maintenance_report()
-        ELSE IF choice == 6 THEN
-            CALL upcoming_maintenance()
+            CALL filter_maintenance()
         ELSE IF choice == 0 THEN
             EXIT program
         ELSE
@@ -474,9 +469,11 @@ FUNCTION update_maintenance_status()
     RETURN
 
 
-FUNCTION search_maintenance()
+FUNCTION filter_maintenance()
     INPUT search_term
     IF input is 0 THEN
+        CALL maintenance()
+    ELSE
         OPEN "maintenance.txt" in read mode as maintenance
             FOR each line in maintenance
                 IF search_term exists in line THEN
@@ -488,22 +485,12 @@ FUNCTION search_maintenance()
     RETURN
 
 
-FUNCTION upcoming_maintenance_tasks()
-    OPEN "maintenance.txt" in read mode as maintenance
-        FOR each line in maintenance
-            IF status == "Pending" AND date > CURRENT_DATE THEN
-                OUTPUT line
-            END IF
-    RETURN
-
-
 FUNCTION events()
     OUTPUT "1. Create New Event"
     OUTPUT "2. Edit Event"
     OUTPUT "3. Delete Event"
     OUTPUT "4. View All Events"
     OUTPUT "5. Filter Events"
-    OUTPUT "6. Search Events"
     OUTPUT "0. Back"
 
     DO
@@ -519,8 +506,6 @@ FUNCTION events()
             CALL all_event()
         ELSE IF choice == 5 THEN
             CALL filter_event()
-        ELSE IF choice == 6 THEN
-            CALL search_event()
         ELSE IF choice == 0 THEN
             CALL staff()
         ELSE
@@ -551,10 +536,10 @@ FUNCTION edit_event()
             OUTPUT "4. Update timetable"
             OUTPUT "0. Back"
         ELSE
-            OUTPUT "Resource unavailable"
+            OUTPUT "Event unavailable"
         END IF
     INPUT choice
-    OPEN "resources.txt" in write mode as writing
+    OPEN "event.txt" in write mode as writing
         DO 
             IF choice == 1 THEN
                 INPUT new_name
@@ -626,20 +611,6 @@ FUNCTION filter_event()
             OUTPUT "Invalid choice. Try again."
         END IF
     WHILE condition choice is False
-    RETURN
-
-
-FUNCTION search_event()
-    OUTPUT "Search Events:"
-    INPUT keyword
-    OPEN "events.txt" in read mode as events
-        FOR each line in events
-            IF keyword matches any event attribute THEN
-                OUTPUT event details
-            ELSE
-                OUTOUT "Event not found"
-            END IF
-    CALL events()
     RETURN
 
 

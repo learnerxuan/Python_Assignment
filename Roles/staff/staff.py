@@ -2,23 +2,27 @@ import color
 import staff_lib
 from staff_manage_acc import staff_manage_acc
 from student_rec import student_rec
+from manage_timetable import manage_timetable
+from resources import resources
+from events import events
+from communication import communication
 
 
 def staff(staff_id, staff_name):
     """Displays the staff menu and processes user navigation."""
     while True:
         # Display the staff menu
-        print(staff_id, staff_name)
-        print(f"{"=" * 20}{color.BOLD} STAFF MENU {color.RESET}{"=" * 20}")
-        print(f"""{" " * 17}1. Manage my account
-{" " * 17}2. Students
-{" " * 17}3. Timetable
-{" " * 17}4. Resources
-{" " * 17}5. Events
-{" " * 17}6. Communication
-{" " * 17}7. Log out
-{" " * 17}0. Exit program""")
-        print(f"=" * 52)
+        print(f"\n{color.BOLD}{color.BLUE}STAFF ID:{color.RESET} {staff_id}   {color.BOLD}{color.BLUE}NAME:{color.RESET} {staff_name}\n")
+        print(f"{'=' * 20}{color.BOLD}{color.BLUE} STAFF MENU {color.RESET}{'=' * 20}")
+        print(f"""{" " * 15}{color.YELLOW}1.{color.RESET}  Manage My Account
+{" " * 15}{color.YELLOW}2.{color.RESET}  Students
+{" " * 15}{color.YELLOW}3.{color.RESET}  Timetable
+{" " * 15}{color.YELLOW}4.{color.RESET}  Resources
+{" " * 15}{color.YELLOW}5.{color.RESET}  Events
+{" " * 15}{color.YELLOW}6.{color.RESET}  Communication
+{" " * 15}{color.YELLOW}7.{color.RESET}  Log Out
+{" " * 15}{color.YELLOW}0.{color.RESET}  Exit Program""")
+        print(f"{'=' * 52}")
 
         # Get user input and validate it
         choice = staff_lib.choose([0, 1, 2, 3, 4, 5, 6, 7])
@@ -42,4 +46,4 @@ def staff(staff_id, staff_name):
             exit("Program Exited")
 
 
-staff("staff1", "name")
+staff("STF001", "Alice Johnson")

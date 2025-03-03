@@ -1,0 +1,20 @@
+electronics
+stationery
+furniture
+book
+networking
+accessory
+software
+consumables
+laboratory equipment
+sports equipment
+av equipment
+maintenance supplies
+safety equipment
+vehicle
+tool
+medical supplies
+clothing
+decoration
+musical instrument
+miscellaneous

@@ -1,28 +1,27 @@
 import color
 import staff_lib
 
-
 def staff_manage_acc(staff_id, staff_name):
-    """Display staff manage account menu and processes user choices."""
+    """Display staff manage account menu and process user choices."""
     while True:
-        print("""
-1. Change Password
-2. Update Phone Number
-3. Update Email
-0. Back""")
-        
+        print(f"{'=' * 17}{color.BOLD}{color.BLUE} MANAGE MY ACCOUNT {color.RESET}{'=' * 16}")
+        print(f"""{" " * 15}{color.YELLOW}1.{color.RESET} Change Password
+{" " * 15}{color.YELLOW}2.{color.RESET} Update Phone Number
+{" " * 15}{color.YELLOW}3.{color.RESET} Update Email
+{" " * 15}{color.YELLOW}0.{color.RESET} Back""")
+        print(f"{'=' * 52}")
+
         # Get user input and validate it
         choice = staff_lib.choose([0, 1, 2, 3])
 
         if choice == 1:
             field = "password"
         elif choice == 2:
-            field = "phone"
+            field = "phone_number"
         elif choice == 3:
             field = "email"
         elif choice == 0:
-            # Return back to staff menu
-            return
+            return  # Return to staff menu
 
         staff_update_detail(staff_id, field)
 
@@ -30,37 +29,21 @@ def staff_manage_acc(staff_id, staff_name):
 def staff_update_detail(staff_id, field):
     """Updates the staff's personal detail based on the selected field."""
 
-    # List to temporarily store all record from staffs.txt
-    staffs = []
-    
-    # Flag to check if staff is found
-    staff_found = False
     try:
-        with open("../../Data/staffs.txt", "r") as file:
-            header = file.readline().strip().split(",")
-            for line in file:
-                try:
-                    # Pass the line (record) into staff_lib.read_csv_line and assign the return value (a list) into a variable
-                    fields = staff_lib.read_csv_line(line.strip())
+        staffs, header = staff_lib.read_csv_file("./Data/staffs.txt")
 
-                    # Ignore the line if the line is not 6 fields
-                    if len(fields) != 6:
-                        continue
+        # Flag to check if staff is found
+        staff_found = False
 
-                    # Assign each element in the list to respective variable
-                    id, name, password, phone, email, gender = fields
-
-                    # Append each record as a dictionary
-                    staffs.append({"id": id, "name": name, "password": password, "phone": phone, "email": email, "gender": gender})
-                except ValueError:
-                    continue
-        
         # Search for user (staff) in file
         for staff in staffs:
-            if staff["id"] == staff_id:
+            if staff["staff_id"] == staff_id:
                 staff_found = True
+                print(f"\n{color.BOLD}Change {field.replace('_', ' ').title()}{color.RESET}\n")
+                
                 while True:
-                    new_detail = input(f"Enter new {field} (0 to cancel): ")
+                    new_detail = input(f"Enter new {field.replace('_', ' ')} (0 to cancel): ").strip()
+                    print()
 
                     # Cancelled updating, return to staff_manage_acc
                     if new_detail == "0":
@@ -68,31 +51,33 @@ def staff_update_detail(staff_id, field):
 
                     # Double confirm password
                     if field == "password":
-                        confirm_detail = input("Confirm password: ")
+                        confirm_detail = input("Confirm password: ").strip()
+                        print()
                         if new_detail != confirm_detail:
-                            print("Password does not match. Please try again.")
+                            print(f"{color.YELLOW}Password does not match. Please try again.{color.RESET}\n")
                             continue
 
                     # Assign new value of the updated field
                     staff[field] = new_detail
-                    print(f"{field.capitalize()} updated successfully")
+                    print(f"{color.GREEN}{field.replace('_', ' ').title()} updated successfully.{color.RESET}\n")
                     break
 
         if not staff_found:
-            print("Staff not found. Please contact admin.")
+            print(f"{color.RED}Staff not found. Please contact admin.{color.RESET}\n")
             return
 
         # Write newly changed data to file
-        with open("../../Data/staffs.txt", "w") as writer:
+        with open("./Data/staffs.txt", "w") as writer:
             writer.write(",".join(header) + "\n")
             for staff in staffs:
                 # Only write the value of each key-value pair for each staff
                 writer.write(",".join(staff_lib.format_csv_value(str(value)) for value in staff.values()) + "\n")
-    
+
     except FileNotFoundError:
-        print("File not found")
+        print(f"{color.RED}Error: File not found.{color.RESET}\n")
     except IOError:
-        print("Unable to read/write the file")
-    
+        print(f"{color.RED}Error: Unable to read/write the file.{color.RESET}\n")
+
     # Return to staff_manage_acc after updating
     return
+
