@@ -9,4 +9,26 @@ Room 107,30
 Room 108,40
 Room 109,35
 Room 110,50
-
+Library,100
+Computer Lab 1,40
+Computer Lab 2,35
+Science Lab,45
+Lecture Hall A,200
+Lecture Hall B,180
+Auditorium,500
+Cafeteria,150
+Gymnasium,300
+Sports Complex,400
+Student Lounge,50
+Faculty Office,20
+Administration Office,15
+Workshop Room,30
+Music Room,40
+Art Studio,35
+Physics Lab,50
+Chemistry Lab,45
+Biology Lab,50
+Meeting Room 1,20
+Meeting Room 2,25
+Server Room,10
+Multimedia Room,40
