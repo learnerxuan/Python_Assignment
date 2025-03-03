@@ -1,4 +1,4 @@
-location,capacity
+location_name,capacity
 Room 101,30
 Room 102,40
 Room 103,35
