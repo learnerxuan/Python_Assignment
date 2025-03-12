@@ -6,7 +6,7 @@ def course_management():
         """
         try:
             # Open the courses.txt file and read the records
-            with open("../../Data/courses.txt", "r") as file:
+            with open("./Data/courses.txt", "r") as file:
                 # Skip header
                 file.readline()
 
@@ -46,7 +46,7 @@ def course_management():
             print("=" * 39)
             print(f"| {'Teacher ID':<12} | {'Teacher Name':<20} |")
             print("-" * 39)
-            with open("../../Data/teachers.txt","r") as file:
+            with open("./Data/teachers.txt","r") as file:
                 # Skip header
                 file.readline()
 
@@ -71,7 +71,7 @@ def course_management():
                     return
 
                 teacher_found = False
-                with open("../../Data/teachers.txt", "r") as file:
+                with open("./Data/teachers.txt", "r") as file:
                     for line in file:
                         check_exist = line.strip().split(",")[0]
                         if check_exist == teacher_id:
@@ -88,8 +88,8 @@ def course_management():
                 return
 
             # Append the new course to courses.txt
-            course_id = libraries.generate_new_id("../../Data/courses.txt", "C")
-            with open("../../Data/courses.txt", "a+") as file:
+            course_id = libraries.generate_new_id("./Data/courses.txt", "C")
+            with open("./Data/courses.txt", "a+") as file:
                 file.seek(0)  # Move to the beginning of the file
                 content = file.read()
                 if content and not content.endswith("\n"):  # Ensure file ends with a newline
@@ -120,13 +120,13 @@ def course_management():
                 teacher_data = {}
 
                 # Load all teacher data
-                with open("../../Data/teachers.txt", "r") as file:
+                with open("./Data/teachers.txt", "r") as file:
                     for line in file:
                         data = line.strip().split(",")
                         teacher_data[data[0]] = data[1]  # {teacher_id: teacher_name}
 
                 # Read courses.txt and check if course exists
-                with open("../../Data/courses.txt", "r") as file:
+                with open("./Data/courses.txt", "r") as file:
                     for line in file:
                         course = line.strip().split(",")
 
@@ -170,7 +170,7 @@ def course_management():
                             print("=" * 39)
                             print(f"| {'Teacher ID':<12} | {'Teacher Name':<20} |")
                             print("-" * 39)
-                            with open("../../Data/teachers.txt", "r") as file:
+                            with open("./Data/teachers.txt", "r") as file:
                                 # Skip header
                                 file.readline()
 
@@ -216,7 +216,7 @@ def course_management():
                     continue # Let user to reenter
 
                 # Write updated course data
-                with open("../../Data/courses.txt", "w") as file:
+                with open("./Data/courses.txt", "w") as file:
                     file.write("\n".join(course_data) + "\n")
 
                 print("✅ Course record updated successfully!")
@@ -242,7 +242,7 @@ def course_management():
                 if target_course.lower() == "exit":
                     return # Return back to the menu
 
-                with open("../../Data/courses.txt") as file:
+                with open("./Data/courses.txt") as file:
                     for line in file:
                         if target_course == line.strip().split(",")[0]:
                             found = True
@@ -253,7 +253,7 @@ def course_management():
                 if not found:
                     print(f"❌ Course ID '{target_course}' not found")
                 else:
-                    with open("../../Data/courses.txt", "w") as file:
+                    with open("./Data/courses.txt", "w") as file:
                         file.writelines(new_record)
                     return # Return back to the menu
 

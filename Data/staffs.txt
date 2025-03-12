@@ -1,5 +1,5 @@
 staff_id,staff_name,password,phone_number,email,gender
-STF001,Alice Johnson,Password123,111-222-333-444,alicejohnson@gmail.com,Female
+STF001,Alice Johnson,Password1234,111-222-333-444,alicejohnson@gmail.com,Female
 STF002,Bob Smith,staff456,222-333-4444,bob.smith@example.com,Male
 STF003,Carol Williams,staff789,333-444-5555,carol.williams@example.com,Female
 STF004,David Brown,staff2023,444-555-6666,david.brown@example.com,Male

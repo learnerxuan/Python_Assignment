@@ -1,16 +1,5 @@
 
-def teacher():
-    teacher_id=input("Enter Your teacher_id:").strip()
-    try:
-        with open("teachers.txt", "r") as file:
-            teacher_ids = {line.strip() for line in file}  # Read all IDs into a set
-
-        if teacher_id not in teacher_ids:
-            print("Teacher ID not found. Please try again!")
-            return
-    except FileNotFoundError:
-        print("Error: teacher.txt file not found!")
-        return
+def teacher(teacher_id):
 
     print(f"Welcome,Teacher {teacher_id}")
 
@@ -28,24 +17,24 @@ def teacher():
 
 
        if choice == "1":
-           from main.Manage_course import manage_courses
+           from Manage_course import manage_courses
            manage_courses(teacher_id)
        elif choice == "2":
-           from main.student_enrollment import student_enrollment
+           from student_enrollment import student_enrollment
            student_enrollment()
        elif choice == "3":
-           from main.Grade_Assignment import grade_assignment
+           from Grade_Assignment import grade_assignment
            grade_assignment(teacher_id)
        elif choice == "4":
-           from main.Track_Attendance import track_attendance
+           from Track_Attendance import track_attendance
            track_attendance(teacher_id)
        elif choice == "5":
-           from main.Generate_Report import generate_report
+           from Generate_Report import generate_report
            generate_report(teacher_id)
        elif choice == "6":
            print("Thank You for using Teacher Course Management System")
            break
        else:
            print("Invalid Choice")
-teacher()
+
 

@@ -54,16 +54,3 @@ def administrator():
         except Exception as e:
             print(f"⚠️ An unexpected error occurred: {e}")
 
-
-administrator()
-
-
-
-
-
-
-
-
-
-
-

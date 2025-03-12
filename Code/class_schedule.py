@@ -6,7 +6,7 @@ def class_schedule():
         """
         try:
             # Open the courses.txt file and read the records
-            with open("../../Data/classes.txt", "r") as file:
+            with open("./Data/classes.txt", "r") as file:
                 # Print the table header
                 print("=" * 108)
                 print(f"| {'Class ID':<12} | {'Course ID':<10} | {'Teacher ID':<13} | {'Day':<11} | {'Starting Time':<15} | {'Ending Time':<15} | {'Location':<10} |")
@@ -38,7 +38,7 @@ def class_schedule():
                     return # Return back to the menu
 
                 course_exists = False
-                with open("../../Data/courses.txt", "r") as file:
+                with open("./Data/courses.txt", "r") as file:
                     file.readline()  # Skip header
                     for line in file:
                         check_exist = line.strip().split(",")
@@ -97,7 +97,7 @@ def class_schedule():
             print(f"| {'Location':<15} | {'Capacity':<10} |")
             print("-" * 32)
             available_locations = [] # Store available locations
-            with open("../../Data/locations.txt", "r") as file:
+            with open("./Data/locations.txt", "r") as file:
                 file.readline()  # Skip header
                 for line in file:
                     location = line.strip().split(",")
@@ -119,7 +119,7 @@ def class_schedule():
             new_start_minutes = time_to_minutes(start_time)
             new_end_minutes = time_to_minutes(end_time)
 
-            with open("../../Data/classes.txt", "r") as file:
+            with open("./Data/classes.txt", "r") as file:
                 file.readline()  # Skip header
                 for line in file:
                     check_exist = line.strip().split(",")
@@ -140,8 +140,8 @@ def class_schedule():
                                 return
 
             # Write new class schedule
-            class_id = libraries.generate_new_id("../../Data/classes.txt", "CLS")
-            with open("../../Data/classes.txt", "a") as file:
+            class_id = libraries.generate_new_id("./Data/classes.txt", "CLS")
+            with open("./Data/classes.txt", "a") as file:
                 # Use "None" for teacher_id, and "" for lesson_plan, notes, announcement
                 file.write(f"{class_id},{course_id},None,{day.capitalize()},{start_time},{end_time},{location},None,None,None\n")
 
@@ -166,7 +166,7 @@ def class_schedule():
                 updated_records = []
 
                 # Read current class records
-                with open("../../Data/classes.txt", "r") as file:
+                with open("./Data/classes.txt", "r") as file:
                     header = file.readline()  # Save header
                     for line in file:
                         check_exist = line.strip().split(",")
@@ -234,7 +234,7 @@ def class_schedule():
                             print(f"| {'Location':<15} | {'Capacity':<10} |")
                             print("-" * 32)
                             available_locations = []
-                            with open("../../Data/locations.txt", "r") as file:
+                            with open("./Data/locations.txt", "r") as file:
                                 file.readline()  # Skip header
                                 for loc in file:
                                     loc_data = loc.strip().split(",")
@@ -257,7 +257,7 @@ def class_schedule():
                             new_start_minutes = time_to_minutes(new_start_time)
                             new_end_minutes = time_to_minutes(new_end_time)
 
-                            with open("../../Data/classes.txt", "r") as file:
+                            with open("./Data/classes.txt", "r") as file:
                                 file.readline()  # Skip header
                                 for other_class in file:
                                     check_exist = other_class.strip().split(",")
@@ -286,7 +286,7 @@ def class_schedule():
                     return
 
                 # Write updated data back to the file
-                with open("../../Data/classes.txt", "w") as file:
+                with open("./Data/classes.txt", "w") as file:
                     file.write(header)  # Write the header back
                     file.writelines(updated_records)
 
@@ -312,7 +312,7 @@ def class_schedule():
                 if delete_class_id.lower() == "exit":
                     return
 
-                with open("../../Data/classes.txt","r") as file:
+                with open("./Data/classes.txt","r") as file:
                     for line in file:
                         classes = line.strip().split(",")
                         if delete_class_id == classes[0]:
@@ -324,7 +324,7 @@ def class_schedule():
                 if not class_found:
                     print(f"❌ Class ID '{delete_class_id}' not found")
                 else:
-                    with open("../../Data/classes.txt", "w") as file:
+                    with open("./Data/classes.txt", "w") as file:
                         file.writelines(new_record)
                     return  # Return back to the menu
 

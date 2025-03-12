@@ -43,7 +43,7 @@ def system_administration():
 
                 # Print out Parents data in table form
                 if choice == 5:
-                    with open(f"../../Data/{user}.txt", "r") as file:
+                    with open(f"./Data/{user}.txt", "r") as file:
                         # Skip header
                         file.readline()
 
@@ -70,7 +70,7 @@ def system_administration():
                         f"| {'ID':<10} | {'Name':<20} | {'Password':<15} | {'Phone Number':<15} | {'Email':<27} | {'Gender':<10} | {'Enrollment Status':<18} | {'Parent ID':<10} |")
                     print("-" * 150)
 
-                    with open("../../Data/students.txt", "r") as file:
+                    with open("./Data/students.txt", "r") as file:
                         # Skip header
                         file.readline()
 
@@ -83,7 +83,7 @@ def system_administration():
 
                 # Print out admins,staffs and teachers data in table form
                 elif choice == 1 or choice == 2 or choice == 3:
-                    with open(f"../../Data/{user}.txt", "r") as file:
+                    with open(f"./Data/{user}.txt", "r") as file:
                         # Skip header
                         file.readline()
 
@@ -181,10 +181,10 @@ def system_administration():
                     continue  # Return back to User Management Menu
 
                 if user == "teachers":
-                    id = libraries.generate_new_id("../../Data/teachers.txt", "T")
+                    id = libraries.generate_new_id("./Data/teachers.txt", "T")
                     data = f"{id},{name},{password},{phone_number},{email},{gender}"
                 elif user == "students":
-                    id = libraries.generate_new_id("../../Data/students.txt", "S")
+                    id = libraries.generate_new_id("./Data/students.txt", "S")
 
                     # Add student's parent details
                     print("Fill in parents details: ")
@@ -224,10 +224,10 @@ def system_administration():
                             exit = True
                             break  # Return back to User Management Menu
 
-                        parent_id = libraries.generate_new_id("../../Data/parents.txt", "P")
+                        parent_id = libraries.generate_new_id("./Data/parents.txt", "P")
                         data = f"{id},{name},{password},{phone_number},{email},{gender},None,{parent_id}"
                         parent_data = f"{parent_id},{id},{name},{phone_number},{email},{gender}"
-                        with open("../../Data/parents.txt", "a+") as file:
+                        with open("./Data/parents.txt", "a+") as file:
                             file.seek(0)  # Move the cursor to the beginning of the file
                             content = file.read()
                             if content and not content.endswith("\n"):  # Ensure no extra blank lines
@@ -240,14 +240,14 @@ def system_administration():
                     if exit == True:
                         continue
                 elif user == "staffs":
-                    id = libraries.generate_new_id("../../Data/staffs.txt", "STF")
+                    id = libraries.generate_new_id("./Data/staffs.txt", "STF")
                     data = f"{id},{name},{password},{phone_number},{email},{gender}"
                 else:
-                    id = libraries.generate_new_id("../../Data/admins.txt", "A")
+                    id = libraries.generate_new_id("./Data/admins.txt", "A")
                     data = f"{id},{name},{password},{phone_number},{email},{gender}"
 
                 # Save all variables into the respective file
-                file_path = f"../../Data/{user}.txt"
+                file_path = f"./Data/{user}.txt"
                 with open(file_path, "a+") as file:
                     file.seek(0)  # Move the cursor to the beginning of the file
                     content = file.read()
@@ -296,7 +296,7 @@ def system_administration():
                     print("❌ Invalid choice. Please choose again.")
                     continue # Restart the loop if invalid choice
 
-                file_path = f"../../Data/{user}.txt"
+                file_path = f"./Data/{user}.txt"
 
                 # Input ID of the user to update
                 while True:
@@ -417,7 +417,7 @@ def system_administration():
                     print("❌ Invalid choice. Please choose again.")
                     continue
 
-                file_path = f"../../Data/{user}.txt"
+                file_path = f"./Data/{user}.txt"
 
                 while True:
                     target_user_id = input("Enter user ID to be deleted (or type 'exit' to return): ").strip()
@@ -451,7 +451,7 @@ def system_administration():
 
                     # Delete parent ID of the student from parents.txt
                     if user == "students" and parent_id_to_delete:
-                        parent_file_path = "../../Data/parents.txt"
+                        parent_file_path = "./Data/parents.txt"
                         parent_records = []
                         parent_found = False
 
@@ -511,5 +511,5 @@ def system_administration():
         except Exception as e:
             print(f"⚠️ An unexpected error occurred: {e}")
 
-system_administration()
+
 

@@ -10,8 +10,12 @@ from staff_events import events
 from staff_communication import communication
 
 
-def staff(staff_id, staff_name):
+def staff(staff_id):
     """Displays the staff menu and processes user navigation."""
+
+    # Get staff name
+    staff_name = staff_lib.search_value("./Data/staffs.txt", 0, staff_id, 1)
+
     while True:
         # Display the staff menu
         print(f"\n{color.BOLD}{color.BLUE}STAFF ID:{color.RESET} {staff_id}   {color.BOLD}{color.BLUE}NAME:{color.RESET} {staff_name}\n")
@@ -46,5 +50,3 @@ def staff(staff_id, staff_name):
             return
         elif choice == 0:
             exit("Program Exited")
-
-staff("STF001", "Name")

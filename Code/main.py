@@ -16,7 +16,7 @@ def main():
 
             if user_choice == 1:
                 login()
-            elif user_choice ==2:
+            elif user_choice == 2:
                 exit("Exiting the system. Goodbye! Have have nice day ,see you next time !")
             else:
                 print("❌ Invalid choice. Please choose again.")
@@ -50,9 +50,9 @@ def login():
             elif choice == 2:
                 user = "teachers"
             elif choice == 3:
-                user = "staffs"
-            elif choice == 4:
                 user = "students"
+            elif choice == 4:
+                user = "staffs"
             elif choice == 5:
                 return  # Exit the Add User menu
             else:
@@ -64,7 +64,7 @@ def login():
             id = str(input("🆔 Enter your ID: "))
             password = str(input("🔑 Enter your password: "))
 
-            file_path = f"../../Data/{user}.txt"
+            file_path = f"./Data/{user}.txt"
 
             found = False
             with open(file_path,"r") as file:
@@ -80,36 +80,17 @@ def login():
                 if user == "admins":
                     Administrator.administrator()
                 elif user == "teachers":
-                    teacher.teacher()
+                    teacher.teacher(id)
                 elif user == "students":
                     ...
                 elif user == "staffs":
-                    staff.staff()
+                    staff.staff(id)
 
         except ValueError:
             print("❌ Invalid input. Please enter a valid number.")
+            continue
         except Exception as e:
             print(f"⚠️ An unexpected error occurred: {e}")
+            return
 
-while True:
-    try:
-        print("=" * 46)
-        print("| Welcome to the Education Management System |")
-        print("=" * 46)
-        print("| 1. Login" + " " * 35 + "|")
-        print("| 2. Exit" + " " * 36 + "|")
-        print("=" * 46)
-
-        user_choice = int(input("👉 Choose your option by number: "))
-
-        if user_choice == 1:
-            login()
-        elif user_choice ==2:
-            print("Exiting the system. Goodbye! Have have nice day ,see you next time !")
-            quit()
-        else:
-            print("❌ Invalid choice. Please choose again.")
-    except ValueError:
-        print("❌ Invalid input. Please enter a valid number.")
-    except Exception as e:
-        print(f"⚠️ An unexpected error occurred: {e}")
+main()

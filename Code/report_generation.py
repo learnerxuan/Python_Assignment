@@ -4,7 +4,7 @@ def report_generation():
         try:
             # Store student_id and student_name into students dictionary
             students = {}
-            with open("../../Data/students.txt", "r") as file:
+            with open("./Data/students.txt", "r") as file:
                 for line in file:
                     data = line.strip().split(",")
                     student_id = data[0]
@@ -13,7 +13,7 @@ def report_generation():
 
             # Read assessments and process data
             report = {}
-            with open("../../Data/assessments.txt", "r") as file:
+            with open("./Data/assessments.txt", "r") as file:
                 file.readline()  # Skip header
 
                 for line in file:
@@ -91,7 +91,7 @@ def report_generation():
         try:
             class_attendance = {} # Store attendance data
 
-            with open("../../Data/attendances.txt", "r") as file:
+            with open("./Data/attendances.txt", "r") as file:
                 # Skip header
                 file.readline()
 
@@ -128,7 +128,7 @@ def report_generation():
     def student_attendance_report():
         try:
             students_name = {} # Store students data
-            with open("../../Data/students.txt", "r") as file:
+            with open("./Data/students.txt", "r") as file:
                 # Skip header
                 file.readline()
                 for line in file:
@@ -136,7 +136,7 @@ def report_generation():
                     students_name[student_id] = student_name
 
             students_attendance = {} # Store students attendance
-            with open("../../Data/attendances.txt", "r") as file:
+            with open("./Data/attendances.txt", "r") as file:
                 # Skip header
                 file.readline()
 
@@ -186,7 +186,7 @@ def report_generation():
         """ Generate financial report for all students """
         try:
             students_name = {}  # Store students' names
-            with open("../../Data/students.txt", "r") as file:
+            with open("./Data/students.txt", "r") as file:
                 file.readline()  # Skip header
                 for line in file:
                     data = line.strip().split(",")
@@ -200,7 +200,7 @@ def report_generation():
                 f"| {'Student ID':<12} | {'Name':<20} | {'Total Fees':<12} | {'Fees Paid':<10} | {'Amount Left':<11} | {'Completion of Payment':<20} |")
             print("-" * 105)
 
-            with open("../../Data/students_finance.txt", "r") as file:
+            with open("./Data/students_finance.txt", "r") as file:
                 file.readline()  # Skip header
                 for line in file:
                     line = line.strip()
@@ -242,7 +242,7 @@ def report_generation():
             total_amount_revenue = 0
             total_amount_expenses = 0
 
-            with open("../../Data/institution_finance.txt", "r") as file:
+            with open("./Data/institution_finance.txt", "r") as file:
                 file.readline()  # Skip the header line
 
                 for line in file:

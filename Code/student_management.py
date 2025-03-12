@@ -9,7 +9,7 @@ def student_management():
             students = {} # Store students data
 
             # Read student records
-            with open("../../Data/students.txt", "r") as file:
+            with open("./Data/students.txt", "r") as file:
                 file.readline()  # Skip header
                 for line in file:
                     data = line.strip().split(",")  # Ensure no space after comma
@@ -28,7 +28,7 @@ def student_management():
                     }
 
             parents = {} # Store parents data
-            with open("../../Data/parents.txt", "r") as file:
+            with open("./Data/parents.txt", "r") as file:
                 file.readline()  # Skip header
 
                 for line in file:
@@ -69,7 +69,7 @@ def student_management():
 
             # Store student_id and name into students dictionary
             students = {}
-            with open("../../Data/students.txt") as file:
+            with open("./Data/students.txt") as file:
                 # Skip header
                 file.readline()
 
@@ -80,7 +80,7 @@ def student_management():
 
             # Store course id and course name into courses dictionary
             courses = {}
-            with open("../../Data/courses.txt") as file:
+            with open("./Data/courses.txt") as file:
                 # Skip header
                 file.readline()
 
@@ -89,7 +89,7 @@ def student_management():
                     course_id = data[0]
                     courses[course_id] = data[1]
 
-            with open("../../Data/assessments.txt", "r") as file:
+            with open("./Data/assessments.txt", "r") as file:
                 # Skip header
                 file.readline()
 
@@ -121,7 +121,7 @@ def student_management():
                     updated_records = [] # Store updated data
 
 
-                    with open("../../Data/students.txt", "r") as file:
+                    with open("./Data/students.txt", "r") as file:
                         for line in file:
                             all_lines = line.strip().split(",")
 
@@ -180,7 +180,7 @@ def student_management():
                         continue  # Redisplay the update menu
 
                     # Write updated data back to the file
-                    with open("../../Data/students.txt", "w") as file:
+                    with open("./Data/students.txt", "w") as file:
                         file.writelines(updated_records)
 
                     print(f"✅ User ID: {id} record updated successfully!")
@@ -204,7 +204,7 @@ def student_management():
                     updated_records = [] # Store updated data
 
 
-                    with open("../../Data/parents.txt", "r") as file:
+                    with open("./Data/parents.txt", "r") as file:
                         for line in file:
                             all_lines = line.strip().split(",")
 
@@ -253,7 +253,7 @@ def student_management():
                         continue  # Redisplay the update menu
 
                     # Write updated data back to the file
-                    with open("../../Data/parents.txt", "w") as file:
+                    with open("./Data/parents.txt", "w") as file:
                         file.writelines(updated_records)
 
                     print(f"✅ User ID: {id} record updated successfully!")
@@ -277,7 +277,7 @@ def student_management():
                 found = False
                 updated_records = []
 
-                with open("../../Data/assessments.txt", "r") as file:
+                with open("./Data/assessments.txt", "r") as file:
                     for line in file:
                         all_lines = line.strip().split(",")
 
@@ -307,7 +307,7 @@ def student_management():
                     continue  # Let user to reenter when ID not found
 
                 # Write updated records back to the file
-                with open("../../Data/assessments.txt", "w") as file:
+                with open("./Data/assessments.txt", "w") as file:
                     file.writelines(updated_records)
 
                 print(f"✅ Assessment ID: {id} record updated successfully!")
