@@ -1,9 +1,11 @@
-
 def teacher():
     teacher_id=input("Enter Your teacher_id:").strip()
     try:
         with open("teachers.txt", "r") as file:
-            teacher_ids = {line.strip() for line in file}  # Read all IDs into a set
+            lines = file.readlines()[1:]  # Skip the header line
+            teacher_ids = {line.split(",")[0].strip().upper() for line in lines}  # Extract only teacher IDs
+
+        print("Teacher IDs found:", teacher_ids)  # Debugging
 
         if teacher_id not in teacher_ids:
             print("Teacher ID not found. Please try again!")
@@ -11,8 +13,6 @@ def teacher():
     except FileNotFoundError:
         print("Error: teacher.txt file not found!")
         return
-
-    print(f"Welcome,Teacher {teacher_id}")
 
     while True:
        print("Teacher Course Management System")
