@@ -14,3 +14,4 @@ EVT012,Global Business Trends,Academic,Seminar,2025-12-10,15:30,17:30,40,Multime
 EVT013,Innovation in Learning,Academic,Conference,2026-01-05,09:00,11:30,35,Room 106
 EVT014,Extracurricular Impact Summit,Extracurricular,Conference,2026-02-15,10:00,12:30,300,Gymnasium
 EVT015,Emerging Technologies in Education,Academic,Seminar,2026-03-07,14:00,16:00,50,Room 107
+EVT016,AI Conference,Extracurricular,Conference,2025-04-01,10:00,12:00,50,Auditorium
