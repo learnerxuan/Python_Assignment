@@ -71,8 +71,8 @@ def class_schedule():
 
             # Convert HH:MM to total minutes
             def time_to_minutes(time_str):
-                hh, mm = map(int, time_str.split(":"))
-                return hh * 60 + mm
+                hh, mm = time_str.split(":")
+                return int(hh) * 60 + int(mm)
 
             # Input start time
             while True:
@@ -205,8 +205,8 @@ def class_schedule():
 
                             # Convert HH:MM to total minutes
                             def time_to_minutes(time_str):
-                                hh, mm = map(int, time_str.split(":"))
-                                return hh * 60 + mm
+                                hh, mm = time_str.split(":")
+                                return int(hh) * 60 + int(mm)
 
                             # Input new start time
                             while True:
@@ -365,4 +365,4 @@ def class_schedule():
         except ValueError:
             print("❌ Please enter a valid number (1-5).")
 
-class_schedule()
+# class_schedule()
