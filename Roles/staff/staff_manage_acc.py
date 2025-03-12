@@ -1,4 +1,6 @@
-import color
+"""This is a Staff's code."""
+
+import staff_color as color
 import staff_lib
 
 def staff_manage_acc(staff_id, staff_name):

@@ -1,5 +1,7 @@
+"""This is a Staff's code."""
+
 import staff_lib
-import color
+import staff_color as color
 
 def communication():
     """Display feedback menu and process user choices."""

@@ -1,5 +1,7 @@
+"""This is a Staff's code."""
+
 import staff_lib
-import color
+import staff_color as color
 
 event_domains = {1: "Academic", 2: "Extracurricular"}
 event_types = {1: "Conference", 2:"Seminar"}

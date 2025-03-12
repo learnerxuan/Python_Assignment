@@ -1,4 +1,6 @@
-import color
+"""This is a Staff's code."""
+
+import staff_color as color
 
 def choose(choice):
     """Validates user choice and returns a number from the given list of choices passed as an argument."""

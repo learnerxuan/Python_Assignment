@@ -1,5 +1,7 @@
+"""This is a Staff's code."""
+
 import staff_lib
-import color
+import staff_color as color
 
 # Dictionary used in this file
 resource_condition = {1: "Good", 2: "Used", 3: "Fair", 4: "Needs Repair"}

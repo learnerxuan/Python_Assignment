@@ -1,11 +1,13 @@
-import color
+"""This is a Staff's code."""
+
+import staff_color as color
 import staff_lib
 from staff_manage_acc import staff_manage_acc
-from student_rec import student_rec
-from manage_timetable import manage_timetable
-from resources import resources
-from events import events
-from communication import communication
+from staff_student_rec import student_rec
+from staff_manage_timetable import manage_timetable
+from staff_resources import resources
+from staff_events import events
+from staff_communication import communication
 
 
 def staff(staff_id, staff_name):
@@ -41,9 +43,7 @@ def staff(staff_id, staff_name):
         elif choice == 6:
             communication()
         elif choice == 7:
-            main()
+            return
         elif choice == 0:
             exit("Program Exited")
 
-
-staff("STF001", "Alice Johnson")
