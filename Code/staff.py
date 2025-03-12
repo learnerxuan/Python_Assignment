@@ -47,3 +47,4 @@ def staff(staff_id, staff_name):
         elif choice == 0:
             exit("Program Exited")
 
+staff("STF001", "Name")

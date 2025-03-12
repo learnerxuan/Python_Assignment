@@ -1,4 +1,32 @@
 import Administrator
+import staff
+import teacher
+
+def main():
+    while True:
+        try:
+            print("=" * 46)
+            print("| Welcome to the Education Management System |")
+            print("=" * 46)
+            print("| 1. Login" + " " * 35 + "|")
+            print("| 2. Exit" + " " * 36 + "|")
+            print("=" * 46)
+
+            user_choice = int(input("👉 Choose your option by number: "))
+
+            if user_choice == 1:
+                login()
+            elif user_choice ==2:
+                exit("Exiting the system. Goodbye! Have have nice day ,see you next time !")
+            else:
+                print("❌ Invalid choice. Please choose again.")
+                continue
+        except ValueError:
+            print("❌ Invalid input. Please enter a valid number.")
+            continue
+        except Exception as e:
+            exit(f"⚠️ An unexpected error occurred: {e}")
+
 
 def login():
     while True:
@@ -51,7 +79,12 @@ def login():
             else:
                 if user == "admins":
                     Administrator.administrator()
-
+                elif user == "teachers":
+                    teacher.teacher()
+                elif user == "students":
+                    ...
+                elif user == "staffs":
+                    staff.staff()
 
         except ValueError:
             print("❌ Invalid input. Please enter a valid number.")
