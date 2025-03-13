@@ -1,11 +1,11 @@
 class_id,course_id,teacher_id,day,start_time,end_time,location,lesson_plan,notes,announcement
-CLS001,C001,T001,Monday,08:00,10:00,Room 101,"Intro to Programming","Focus on basic syntax and variables","Prepare for next week's quiz"
-CLS002,C002,T002,Tuesday,10:00,12:00,Room 102,"Data Structures and Algorithms","Study arrays and linked lists","Review chapter 3 before the class"
-CLS003,C003,T005,Wednesday,09:00,11:00,Room 103,"Calculus I","Topics on derivatives and limits","Bring a calculator to class"
-CLS004,C004,T010,Thursday,13:00,15:00,Room 104,"Fundamentals of Physics","Newton's Laws of Motion","Lab session after the theory"
-CLS005,C005,T005,Friday,14:00,16:00,Room 105,"Biology Basics","Photosynthesis and cell respiration","Complete homework 2 by Friday"
-CLS006,C006,T008,Monday,11:00,13:00,Room 106,"General Chemistry","Acids, bases, and pH","Read the lab manual before the experiment"
-CLS007,C007,T009,Tuesday,14:00,16:00,Room 107,"English Literature","Shakespeare's works","Prepare for class discussion on Hamlet"
-CLS008,C008,T003,Wednesday,08:00,10:00,Room 108,"Web Development","Introduction to HTML and CSS","Work on website design project"
-CLS009,C009,T004,Thursday,10:00,12:00,Room 109,"Linear Algebra","Matrix operations and vector spaces","Review practice problems before the test"
-CLS010,C010,T006,Friday,09:00,11:00,Room 110,"Microeconomics","Supply and demand analysis","Read chapters 5 and 6 for next class"
+CLS001,C001,T001,Monday,08:00,10:00,Room 101,Intro to Programming,Focus on basic syntax and variables,Prepare for next week's quiz
+CLS002,C002,T002,Tuesday,10:00,12:00,Room 102,Data Structures and Algorithms,Study arrays and linked lists,Review chapter 3 before the class
+CLS003,C003,T005,Wednesday,09:00,11:00,Room 103,Calculus I,Topics on derivatives and limits,Bring a calculator to class
+CLS004,C004,T010,Thursday,13:00,15:00,Room 104,Fundamentals of Physics,Newton's Laws of Motion,Lab session after the theory
+CLS005,C005,T005,Friday,14:00,16:00,Room 105,Biology Basics,Photosynthesis and cell respiration,Complete homework 2 by Friday
+CLS006,C006,T008,Monday,11:00,13:00,Room 106,General Chemistry,"Acids, bases, and pH",Read the lab manual before the experiment
+CLS007,C007,T009,Tuesday,14:00,16:00,Room 107,English Literature,Shakespeare's works,Prepare for class discussion on Hamlet
+CLS008,C008,T003,Wednesday,08:00,10:00,Room 108,Web Development,Introduction to HTML and CSS,Work on website design project
+CLS009,C009,T004,Thursday,08:00,10:00,Room 108,Linear Algebra,Matrix operations and vector spaces,Review practice problems before the test
+CLS010,C010,T006,Friday,09:00,11:00,Room 110,Microeconomics,Supply and demand analysis,Read chapters 5 and 6 for next class

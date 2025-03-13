@@ -125,15 +125,19 @@ def get_date():
 
         # Split date into three parts
         parts = date.split("-")
-        if len(parts) == 3 and all(part.isdigit() for part in parts):
+        if len(parts) == 3:
             year, month, day = parts
-            # Convert to integer
-            year, month, day = int(year), int(month), int(day)
 
-            # Basic validation
-            if 1000 <= year <= 9999 and 1 <= month <= 12 and 1 <= day <= 31:
-                date = f"{year}-{month:02d}-{day:02d}"
-                return date
+            # Ensure all parts are digits
+            if year.isdigit() and month.isdigit() and day.isdigit():
+                # Convert to integer
+                year, month, day = int(year), int(month), int(day)
+
+                # Basic validation
+                if 1000 <= year <= 9999 and 1 <= month <= 12 and 1 <= day <= 31:
+                    date = f"{year}-{month:02d}-{day:02d}"
+                    return date
+
         print(f"{color.RED}Invalid date format.{color.RESET}\n")
 
 
