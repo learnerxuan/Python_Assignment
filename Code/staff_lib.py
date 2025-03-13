@@ -79,10 +79,10 @@ def search_value(file_path, column_index, search_value, return_column=None):
 def read_csv_file(file_path):
     """
     Reads a CSV file and stores each record as a dictionary, using the header as keys, stored in a list.
-    Returns the list and header
+    Returns the list and header.
     """
 
-    # List to temporarily store all record
+    # List to temporarily store all records
     list_name = []
 
     with open(file_path, "r") as file:
@@ -92,16 +92,23 @@ def read_csv_file(file_path):
                 # Pass the line (record) into staff_lib.read_csv_line and assign the return value (a list) into a variable
                 fields = read_csv_line(line.strip())
 
-                # Skip the line if the line does not have the same number of column as header
+                # Skip the line if the line does not have the same number of columns as the header
                 if len(fields) != len(header):
                     continue
 
+                # Create a dictionary for a record
+                record = {}
+                for i in range(len(header)):
+                    record[header[i]] = fields[i]
+
                 # Append each record as a dictionary
-                list_name.append(dict(zip(header, fields)))
+                list_name.append(record)
                 
             except ValueError:
                 continue
+                
     return list_name, header
+
 
 
 def new_id(last_id, prefix_length):
@@ -147,15 +154,19 @@ def get_time():
         print()
         if time == "0":
             return "0"
-        
+
         parts = time.split(":")
+        
+        if len(parts) == 2:
+            hour, minute = parts
 
-        if len(parts) == 2 and all(part.isdigit() for part in parts):
-            hour, minute = map(int, parts)
+            # Ensure both parts are digits
+            if hour.isdigit() and minute.isdigit():
+                hour, minute = int(hour), int(minute)
 
-            if 0 <= hour < 24 and 0 <= minute < 60:
-                time = f"{hour:02d}:{minute:02d}"  # Ensures leading zero (e.g., 09:05)
-                return time
+                # Validate hour and minute
+                if 0 <= hour < 24 and 0 <= minute < 60:
+                    return f"{hour:02d}:{minute:02d}"  # Format time with leading zeros
 
-        print(f"{color.RED}Invalid time format. Please enter in HH:MM (24-hour format).{color.RED}")
+        print(f"{color.RED}Invalid time format. Please enter in HH:MM (24-hour format).{color.RESET}")
         print()
