@@ -1,1 +1,11 @@
-
+course_materials_id,course_id,materials,assignment_materials
+CM001,C001,Introduction to Programming - Lecture Notes,Introduction to Programming: Assignment Part 1 & 2 - Guidelines
+CM002,C002,Data Science Basics - Textbook,Data Science Basics: Assignment Part 1 & 2 - Guidelines
+CM003,C003,Web Development - HTML/CSS Guide,Web Development: Assignment Part 1 & 2 - Guidelines
+CM004,C004,Database Systems - SQL Tutorial,Database Systems: Assignment Part 1 & 2 - Guidelines
+CM005,C005,AI Fundamentals - Research Papers,AI Fundamentals: Assignment Part 1 & 2 - Guidelines
+CM006,C006,Operating Systems - Lab Manual,Operating Systems: Assignment Part 1 & 2 - Guidelines
+CM007,C007,Network Security - Case Studies,Network Security: Assignment Part 1 & 2 - Guidelines
+CM008,C008,Mobile App Development - Project Files,Mobile App Development: Assignment Part 1 & 2 - Guidelines
+CM009,C009,Cloud Computing - Whitepapers,Cloud Computing: Assignment Part 1 & 2 - Guidelines
+CM010,C010,Software Engineering - Design Patterns,Software Engineering: Assignment Part 1 & 2 - Guidelines
