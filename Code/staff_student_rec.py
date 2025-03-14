@@ -118,12 +118,13 @@ def stu_course_reg():
                     # Loop through each enrollment record
                     for enroll in course_enroll:
                         # Check if this record matches the student, class, and has "Enrolled" status
-                        if enroll["student_id"] == student_id and enroll["class_id"] == class_chosen and enroll["course_enroll_status"] == "Enrolled":
+                        if (enroll["student_id"] == student_id and enroll["class_id"] == class_chosen 
+                            and enroll["course_enroll_status"] == "Enrolled"):
                             already_enrolled = True
                             break 
 
                     # Prevent duplication enrollment
-                    if already_enrolled:
+                    if already_enrolled:    
                         print(f"{color.RED}Student is already enrolled in this class.{color.RESET}")
                         print()
                         return
