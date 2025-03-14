@@ -55,7 +55,7 @@ def track_attendance(teacher_id):
                     print("Students in Class:", student_ids)
                 except FileNotFoundError:
                     print("course_enrollments.txt file not found.")
-                    continue  
+                    return  
 
                 # Ask for attendance date
                 date = input("Enter the date (YYYY-MM-DD): ").strip()
@@ -81,7 +81,7 @@ def track_attendance(teacher_id):
                 return  
             except FileNotFoundError:
                 print("classes.txt file not found.")
-                continue  
+                return  
 
         elif choice == "2":  # If the user chooses to view attendance
             try:
@@ -130,11 +130,11 @@ def track_attendance(teacher_id):
                             print(f"Student: {record[2]}, Date: {record[3]}, Status: {record[4]}")
                 except FileNotFoundError:
                     print("attendances.txt file not found.")
-                    continue  
+                    return 
 
             except FileNotFoundError:
                 print("classes.txt file not found.")
-                continue  
+                return 
 
         else:
             print("Invalid choice. Please select 1 or 2.")
