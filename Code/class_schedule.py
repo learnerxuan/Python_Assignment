@@ -93,9 +93,9 @@ def class_schedule():
                 print("❌ Invalid time! End time must be later than start time and in HH:MM format.")
 
             # Display available locations
-            print("=" * 32)
-            print(f"| {'Location':<15} | {'Capacity':<10} |")
-            print("-" * 32)
+            print("=" * 42)
+            print(f"| {'Location':<25} | {'Capacity':<10} |")
+            print("-" * 42)
             available_locations = [] # Store available locations
             with open("./Data/locations.txt", "r") as file:
                 file.readline()  # Skip header
@@ -103,12 +103,12 @@ def class_schedule():
                     location = line.strip().split(",")
                     if len(location) >= 2:
                         available_locations.append(location[0])
-                        print(f"| {location[0]:<15} | {location[1]:<10} |")
-            print("=" * 32)
+                        print(f"| {location[0]:<25} | {location[1]:<10} |")
+            print("=" * 42)
 
             # Input location
             while True:
-                location = input("Enter room number: ").strip()
+                location = input("Enter location: ").strip()
                 if location.lower() == "exit":
                     return
                 if location in available_locations:
@@ -230,9 +230,9 @@ def class_schedule():
                                 print("❌ Invalid time! End time must be later than start time and in HH:MM format.")
 
                             # Display available locations
-                            print("=" * 32)
-                            print(f"| {'Location':<15} | {'Capacity':<10} |")
-                            print("-" * 32)
+                            print("=" * 42)
+                            print(f"| {'Location':<25} | {'Capacity':<10} |")
+                            print("-" * 42)
                             available_locations = []
                             with open("./Data/locations.txt", "r") as file:
                                 file.readline()  # Skip header
@@ -240,8 +240,8 @@ def class_schedule():
                                     loc_data = loc.strip().split(",")
                                     if len(loc_data) >= 2:
                                         available_locations.append(loc_data[0])
-                                        print(f"| {loc_data[0]:<15} | {loc_data[1]:<10} |")
-                            print("=" * 32)
+                                        print(f"| {loc_data[0]:<25} | {loc_data[1]:<10} |")
+                            print("=" * 42)
 
                             # Input new location
                             while True:

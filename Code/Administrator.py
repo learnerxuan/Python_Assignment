@@ -18,7 +18,7 @@ def administrator():
             print("=" * 73)
             print(f"| {'No.':<3} | {'Function':<26} | {'Description':<34} |")
             print("-" * 73)
-            print(f"| 1   | System Administration      | Add, Update, Delete User           |")
+            print(f"| 1   | System Administration      | View, Add, Update, Delete User     |")
             print(f"| 2   | Student Management         | View, Update Student Record        |")
             print(f"| 3   | Course Management          | View, Add, Update, Delete Course   |")
             print(f"| 4   | Class Schedule             | View, Add, Update Schedule         |")
