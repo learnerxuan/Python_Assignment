@@ -6,7 +6,7 @@ def class_schedule():
         """
         try:
             # Open the courses.txt file and read the records
-            with open("../../Data/classes.txt", "r") as file:
+            with open("./../Data/classes.txt", "r") as file:
                 # Print the table header
                 print("=" * 108)
                 print(f"| {'Class ID':<12} | {'Course ID':<10} | {'Teacher ID':<13} | {'Day':<11} | {'Starting Time':<15} | {'Ending Time':<15} | {'Location':<10} |")
