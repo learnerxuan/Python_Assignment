@@ -31,7 +31,7 @@ def emergencyChange(student_id):
             print("\nPlease enter a valid input.")
             
     try:
-        with open("parents.txt", "r") as f:
+        with open("../Data/parents.txt", "r") as f:
             lines = f.readlines()
     except FileNotFoundError:
         print("Error: parents.txt file not found.")
@@ -52,7 +52,7 @@ def emergencyChange(student_id):
         print(f"Error: No parent found for student ID {student_id}.")
         return
 
-    with open("parents.txt", "w") as f:
+    with open("../Data/parents.txt", "w") as f:
         f.writelines(updated_lines)
 
     print(f"Emergency contact has been updated.")
@@ -69,7 +69,7 @@ def phone_numberChange(student_id):
             break
         
     try:
-        with open("students.txt", "r") as f:
+        with open("../Data/students.txt", "r") as f:
             lines = f.readlines()
     except FileNotFoundError:
         print("Error: students.txt file not found.")
@@ -90,7 +90,7 @@ def phone_numberChange(student_id):
         print(f"No student found for current student ID.")
         return
 
-    with open("students.txt", "w") as f:
+    with open("../Data/students.txt", "w") as f:
         f.writelines(updated_lines)
 
     print(f"Your phone number has been updated.")
@@ -107,7 +107,7 @@ def emailChange(student_id):
             break
     
     try:
-        with open("students.txt", "r") as f:
+        with open("../Data/students.txt", "r") as f:
             lines = f.readlines()
     except FileNotFoundError:
         print("Error: students.txt file not found.")
@@ -128,7 +128,7 @@ def emailChange(student_id):
         print(f"No student found for current student ID.")
         return
 
-    with open("students.txt", "w") as f:
+    with open("../Data/students.txt", "w") as f:
         f.writelines(updated_lines)
 
     print(f"Your email address has been updated.")
@@ -157,7 +157,7 @@ def passwordChange(student_id):
             break
 
     try:
-        with open("students.txt", "r") as f:
+        with open("../Data/students.txt", "r") as f:
             lines = f.readlines()
     except FileNotFoundError:
         print("Error: students.txt file not found.")
@@ -179,18 +179,18 @@ def passwordChange(student_id):
         print(f"No student found for current student ID.")
         return
 
-    with open("students.txt", "w") as f:
+    with open("../Data/students.txt", "w") as f:
         f.writelines(updated_lines)
     
     return
 
 def studentsManage(student_id): # MAIN MENU
-    with open ("students.txt","r") as f:
+    with open("../Data/students.txt","r") as f:
         for line in f:
             data = line.strip().split(",")
             if data[0] == student_id:
                 student_details = data
-    with open ("parents.txt","r") as f:
+    with open("../Data/parents.txt","r") as f:
         for line in f:
             data = line.strip().split(",")
             if data[0] == student_id:

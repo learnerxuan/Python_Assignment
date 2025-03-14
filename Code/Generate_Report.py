@@ -7,15 +7,15 @@ def generate_report(teacher_id):
     if choice == "1":
         try:
             # Read classes data
-            with open("classes.txt", "r") as file:
+            with open("../Data/classes.txt", "r") as file:
                 classes = [line.strip().split(",") for line in file.readlines()]
 
             # Read assessments data
-            with open("assessments.txt", "r") as file:
+            with open("../Data/assessments.txt", "r") as file:
                 assessments = [line.strip().split(",") for line in file.readlines()]
 
             # Read feedback data
-            with open("feedbacks.txt", "r") as file:
+            with open("../Data/feedbacks.txt", "r") as file:
                 feedback = [line.strip().split(",") for line in file.readlines()]
 
         except FileNotFoundError:
@@ -97,11 +97,11 @@ def generate_report(teacher_id):
     if choice == "2":
         try:
             # Read classes data
-            with open("classes.txt", "r") as file:
+            with open("../Data/classes.txt", "r") as file:
                 classes = [line.strip().split(",") for line in file.readlines()]
 
             # Read attendance data from "attendances.txt"
-            with open("attendances.txt", "r") as file:
+            with open("../Data/attendances.txt", "r") as file:
                 attendance_records = [line.strip().split(",") for line in file.readlines()]
 
         except FileNotFoundError:

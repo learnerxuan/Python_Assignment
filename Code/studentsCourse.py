@@ -1,12 +1,12 @@
 def academic_performance(student_id): # 6 assessments.txt, show feedback as well as per course_id
     try:
-        with open("courses.txt", "r") as f:
+        with open("../Data/courses.txt", "r") as f:
             courses = {line.split(",")[0]: line.split(",")[1] for line in f.readlines()[1:]}
 
-        with open("assessments.txt", "r") as f:
+        with open("../Data/assessments.txt", "r") as f:
             assessments = [line.strip().split(",") for line in f.readlines()[1:]]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = {line.split(",")[0]: line.strip().split(",") for line in f.readlines()[1:]}
 
         print("\n========================= Academic Performance ========================")
@@ -42,16 +42,16 @@ def academic_performance(student_id): # 6 assessments.txt, show feedback as well
 
 def exam_schedule(student_id): # 5 examtimetable.txt, associate with course_id with student_id
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             enrollments = [line.strip().split(",") for line in f.readlines()[1:]]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = {line.split(",")[0]: line.strip().split(",") for line in f.readlines()[1:]}
 
-        with open("courses.txt", "r") as f:
+        with open("../Data/courses.txt", "r") as f:
             courses = {line.split(",")[0]: line.split(",")[1] for line in f.readlines()[1:]}
 
-        with open("examtimetable.txt", "r") as f:
+        with open("../Data/examtimetable.txt", "r") as f:
             exam = [line.strip().split(",") for line in f.readlines()[1:]]
 
         exam_schedule_list = []
@@ -99,16 +99,16 @@ def exam_schedule(student_id): # 5 examtimetable.txt, associate with course_id w
 
 def schedule(student_id): # 4 classes.txt, associate with course_id with student_id
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             enrollments = [line.strip().split(",") for line in f.readlines()[1:]]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = {line.split(",")[0]: line.strip().split(",") for line in f.readlines()[1:]}
 
-        with open("courses.txt", "r") as f:
+        with open("../Data/courses.txt", "r") as f:
             courses = {line.split(",")[0]: line.split(",")[1] for line in f.readlines()[1:]}
             
-        with open("teachers.txt", "r") as f:
+        with open("../Data/teachers.txt", "r") as f:
             teachers = {line.split(",")[0]: line.split(",")[1] for line in f.readlines()[1:]}
 
         print("\n========================= Class Schedule ========================\n")
@@ -156,16 +156,16 @@ def schedule(student_id): # 4 classes.txt, associate with course_id with student
 
 def attendance(student_id): # 3 attendances.txt, associate with student_id and class_id but somehow need to associate with course_id from regstered courses by student.
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             enrollments = [line.strip().split(",") for line in f.readlines()[1:]]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = {line.split(",")[0]: line.strip().split(",") for line in f.readlines()[1:]}
 
-        with open("courses.txt", "r") as f:
+        with open("../Data/courses.txt", "r") as f:
             courses = {line.split(",")[0]: line.split(",")[1] for line in f.readlines()[1:]}
 
-        with open("attendances.txt", "r") as f:
+        with open("../Data/attendances.txt", "r") as f:
             attendances = [line.strip().split(",") for line in f.readlines()[1:]]
 
         print("\n================== Attendance ==================\n")
@@ -204,10 +204,10 @@ def attendance(student_id): # 3 attendances.txt, associate with student_id and c
 
 def enrollments(student_id): # 2 course_enrollments.txt, see the courses they are enrolled to
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             course_enrollments = f.readlines()[1:]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = f.readlines()[1:]
 
         print("\n============================ Enrolled Classes ===========================")
@@ -239,7 +239,7 @@ import random # for class_id
 
 def next_enrollmentid(): # generates new course_enrollment_id
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             lines = f.readlines()
             if lines and len(lines) > 1:
                 enrollment_id = [line.strip().split(",")[0] for line in lines[1:]]
@@ -253,7 +253,7 @@ def next_enrollmentid(): # generates new course_enrollment_id
 
 def next_assessmentid(): # generates new assessment_id
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             lines = f.readlines()
             if lines and len(lines) > 1:  # Ensure there's more than just the header
                 assessment_id = []
@@ -273,7 +273,7 @@ def courses(student_details, student_id):
     print("============================ Available Courses ===========================")
     print(f"Student ID: {student_details[0]}\nStudent Name: {student_details[1]}")
     
-    with open("courses.txt", "r") as f:
+    with open("../Data/courses.txt", "r") as f:
         lines = f.readlines()[1:]
         courses_data = [line.strip().split(",") for line in lines if line.strip()]
 
@@ -292,7 +292,7 @@ def courses(student_details, student_id):
         
     print("=" * (sum(col_widths) + 9))
     
-    with open("courses.txt", "r") as f:
+    with open("../Data/courses.txt", "r") as f:
         lines = f.readlines()[1:]
         courses_data = [line.strip().split(",") for line in lines if line.strip()]
 
@@ -319,10 +319,10 @@ def courses(student_details, student_id):
                 studentsCourse(student_id)
                 return
             else:            
-                with open("course_enrollments.txt", "r") as f:
+                with open("../Data/course_enrollments.txt", "r") as f:
                     enrollments = f.readlines()
                 
-                with open("classes.txt", "r") as f:
+                with open("../Data/classes.txt", "r") as f:
                     classes_data = [line.strip().split(",") for line in f.readlines()[1:] if line.strip()]
 
                 available_class_ids = [c[0] for c in classes_data if c[1] == course_id]
@@ -358,7 +358,7 @@ def courses(student_details, student_id):
                     assessment_id = next_assessmentid()
                     enrollment_id = enrollments[unenrolled_index].strip().split(',')[0]
                     
-                    with open("course_enrollments.txt", "w") as f:
+                    with open("../Data/course_enrollments.txt", "w") as f:
                         for i, enrollment in enumerate(enrollments):
                             if i == unenrolled_index:
                                 f.write(f"{enrollment_id},{class_id},{student_id},{assessment_id},Enrolled\n")
@@ -372,7 +372,7 @@ def courses(student_details, student_id):
                     new_enrollmentid = next_enrollmentid()
                     assessment_id = next_assessmentid()
                     
-                    with open("course_enrollments.txt", "a") as f:
+                    with open("../Data/course_enrollments.txt", "a") as f:
                         f.write(f"{new_enrollmentid},{class_id},{student_id},{assessment_id},Enrolled\n")
                     print("You have successfully enrolled in the course.")
                     studentsCourse(student_id)
@@ -388,7 +388,7 @@ def courses(student_details, student_id):
             print("Please enter a valid choice.")
             
 def studentsCourse(student_id):
-    with open ("students.txt","r") as f:
+    with open("../Data/students.txt","r") as f:
         for line in f:
             data = line.strip().split(",")
             if data[0] == student_id:

@@ -13,7 +13,7 @@ def track_attendance(teacher_id):
         if choice == "1":  # If the user chooses to record attendance
             try:
                 # Open and read classes.txt file
-                with open("classes.txt", "r") as file:
+                with open("../Data/classes.txt", "r") as file:
                     lines = file.readlines()
                     classes = [line.strip().split(",") for line in lines]
 
@@ -41,7 +41,7 @@ def track_attendance(teacher_id):
 
                 try:
                     # Open and read course_enrollments.txt file
-                    with open("course_enrollments.txt", "r") as file:
+                    with open("../Data/course_enrollments.txt", "r") as file:
                         lines = file.readlines()
                         enrollments = [line.strip().split(",") for line in lines]
 
@@ -74,7 +74,7 @@ def track_attendance(teacher_id):
                     attendance_id = libraries.generate_new_id("attendances.txt", "ATT")
 
                     # Append attendance record to attendances.txt
-                    with open("attendances.txt", "a") as file:
+                    with open("../Data/attendances.txt", "a") as file:
                         file.write(f"{attendance_id},{class_id},{student_id},{date},{status}\n")
 
                 print("Attendance recorded successfully.")
@@ -86,7 +86,7 @@ def track_attendance(teacher_id):
         elif choice == "2":  # If the user chooses to view attendance
             try:
                 # Open and read classes.txt file
-                with open("classes.txt", "r") as file:
+                with open("../Data/classes.txt", "r") as file:
                     lines = file.readlines()
                     classes = [line.strip().split(",") for line in lines]
 
@@ -114,7 +114,7 @@ def track_attendance(teacher_id):
 
                 try:
                     # Open and read attendances.txt file
-                    with open("attendances.txt", "r") as file:
+                    with open("../Data/attendances.txt", "r") as file:
                         lines = file.readlines()
                         attendance_records = [line.strip().split(",") for line in lines]
 

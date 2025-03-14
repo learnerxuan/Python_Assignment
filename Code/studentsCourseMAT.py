@@ -1,9 +1,9 @@
 def announcements(student_id):
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             course_enrollments = f.readlines()[1:]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = f.readlines()[1:]
 
         print("\n============================ Announcements ===========================")
@@ -32,16 +32,16 @@ def announcements(student_id):
 
 def assignments(student_id): # materials.txt
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             course_enrollments = f.readlines()[1:]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = f.readlines()[1:]
 
-        with open("materials.txt", "r") as f:
+        with open("../Data/materials.txt", "r") as f:
             materials = [line.strip().split(",") for line in f.readlines()[1:]]
 
-        with open("courses.txt", "r") as f:
+        with open("../Data/courses.txt", "r") as f:
             courses = {line.split(",")[0]: line.split(",")[1] for line in f.readlines()[1:]}
 
         print("====================== Assignments Materials ======================")
@@ -68,10 +68,10 @@ def assignments(student_id): # materials.txt
 
 def lecture_notes(student_id): # classes.txt
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             course_enrollments = f.readlines()[1:]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = f.readlines()[1:]
 
         print("\n============================ Course Notes ===========================")
@@ -100,16 +100,16 @@ def lecture_notes(student_id): # classes.txt
 
 def course_materials(student_id):
     try:
-        with open("course_enrollments.txt", "r") as f:
+        with open("../Data/course_enrollments.txt", "r") as f:
             course_enrollments = f.readlines()[1:]
 
-        with open("classes.txt", "r") as f:
+        with open("../Data/classes.txt", "r") as f:
             classes = f.readlines()[1:]
 
-        with open("materials.txt", "r") as f:
+        with open("../Data/materials.txt", "r") as f:
             materials = [line.strip().split(",") for line in f.readlines()[1:]]
 
-        with open("courses.txt", "r") as f:
+        with open("../Data/courses.txt", "r") as f:
             courses = {line.split(",")[0]: line.split(",")[1] for line in f.readlines()[1:]}
 
         print("\n============================ Course Materials ===========================")
@@ -142,7 +142,7 @@ def course_materials(student_id):
             print("Please try again and enter a valid choice.")
             
 def studentsCourseMAT(student_id):
-    with open ("students.txt","r") as f:
+    with open("../Data/students.txt","r") as f:
         for line in f:
             data = line.strip().split(",")
             if data[0] == student_id:

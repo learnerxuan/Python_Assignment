@@ -14,7 +14,7 @@ def manage_courses(teacher_id):
         if choice == "1":  # If user chooses to update a class
             try:
                 # Open and read classes.txt file
-                with open("classes.txt", "r") as file:
+                with open("../Data/classes.txt", "r") as file:
                     lines = file.readlines()
 
                     # Convert each line into a list, skipping empty lines
@@ -99,7 +99,7 @@ def manage_courses(teacher_id):
 
             # If the class was found and updated, save the changes
             if found:
-                with open("classes.txt", "w") as file:
+                with open("../Data/classes.txt", "w") as file:
                     file.writelines(updated_classes)
                 print("Class updated successfully.")
                 return
@@ -110,7 +110,7 @@ def manage_courses(teacher_id):
         elif choice == "2":  # If user chooses to create a class
             try:
                 # Open and read courses.txt file
-                with open("courses.txt", "r") as file:
+                with open("../Data/courses.txt", "r") as file:
                     lines = file.readlines()
 
                     # Convert each line into a list, skipping empty lines
@@ -155,7 +155,7 @@ def manage_courses(teacher_id):
 
             try:
                 # Append the new class to the file
-                with open("classes.txt", "a") as file:
+                with open("../Data/classes.txt", "a") as file:
                     file.write(new_class)
                 print("Class created successfully.")
                 return

@@ -1,6 +1,7 @@
 import Administrator
 import staff
 import teacher
+import students
 
 def main():
     while True:
@@ -82,7 +83,7 @@ def login():
                 elif user == "teachers":
                     teacher.teacher(id)
                 elif user == "students":
-                    ...
+                    students.students(id)
                 elif user == "staffs":
                     staff.staff(id)
 

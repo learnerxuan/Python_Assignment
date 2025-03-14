@@ -14,7 +14,7 @@ def grade_assignment(teacher_id):
         if choice == "1" or choice == "2":  # If the user chooses to grade an assignment or an exam
             try:
                 # Open and read classes.txt file
-                with open("classes.txt", "r") as file:
+                with open("../Data/classes.txt", "r") as file:
                     lines = file.readlines()
                     classes = [line.strip().split(",") for line in lines]
 
@@ -42,7 +42,7 @@ def grade_assignment(teacher_id):
 
                 try:
                     # Open and read students.txt file
-                    with open("students.txt", "r") as file:
+                    with open("../Data/students.txt", "r") as file:
                         lines = file.readlines()
                         students = [line.strip().split(",") for line in lines]
 
@@ -66,7 +66,7 @@ def grade_assignment(teacher_id):
 
                 try:
                     # Open and read courses.txt file
-                    with open("courses.txt", "r") as file:
+                    with open("../Data/courses.txt", "r") as file:
                         lines = file.readlines()
                         courses = [line.strip().split(",") for line in lines]
 
@@ -100,7 +100,7 @@ def grade_assignment(teacher_id):
 
                 try:
                     # Append grading information to assessments.txt file
-                    with open("assessments.txt", "a") as file:
+                    with open("../Data/assessments.txt", "a") as file:
                         file.write(f"{assignment_id},{course_id},{class_id},{student_id},{assessment_type},{grade},{feedback}\n")
                     print("Graded Successfully")
                     return  
@@ -125,7 +125,7 @@ def grade_assignment(teacher_id):
 
             try:
                 # Append the feedback to feedbacks.txt file
-                with open("feedbacks.txt", "a") as file:
+                with open("../Data/feedbacks.txt", "a") as file:
                     file.write(new_feedback)
                 print("Feedback Submitted Successfully")
                 return  

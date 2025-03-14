@@ -14,7 +14,7 @@ def student_enrollment():
         if choice == 1:  # Enrolling a student
             try:
                 # Open and read classes.txt file
-                with open("classes.txt", "r") as file:
+                with open("../Data/classes.txt", "r") as file:
                     lines = file.readlines()
 
                     # Convert each line into a list, skipping empty lines
@@ -34,7 +34,7 @@ def student_enrollment():
                 if class_id in class_ids:
                     try:
                         # Open and read students.txt file
-                        with open("students.txt", "r") as file:
+                        with open("../Data/students.txt", "r") as file:
                             lines = file.readlines()
 
                             # Convert each line into a list
@@ -57,7 +57,7 @@ def student_enrollment():
                     if student_id in student_ids:
                         try:
                             # Open and read assessments.txt file
-                            with open("assessments.txt", "r") as file:
+                            with open("../Data/assessments.txt", "r") as file:
                                 lines = file.readlines()
 
                                 # Convert each line into a list
@@ -88,7 +88,7 @@ def student_enrollment():
                             course_enrollment_id = libraries.generate_new_id("course_enrollments.txt", "CE")
 
                             # Save new enrollment record to file
-                            with open("course_enrollments.txt", "a") as file:
+                            with open("../Data/course_enrollments.txt", "a") as file:
                                 file.write(f"{course_enrollment_id},{class_id},{student_id},{assignment},{status}\n")
                             print("Enrolled successfully.")
                             return
@@ -108,7 +108,7 @@ def student_enrollment():
         elif choice == 2:  # Removing a student from a class
             try:
                 # Open and read classes.txt file
-                with open("classes.txt", "r") as file:
+                with open("../Data/classes.txt", "r") as file:
                     lines = file.readlines()
 
                     # Convert each line into a list
@@ -131,7 +131,7 @@ def student_enrollment():
             if class_id in class_ids:
                 try:
                     # Open and read students.txt file
-                    with open("students.txt", "r") as file:
+                    with open("../Data/students.txt", "r") as file:
                         lines = file.readlines()
 
                         # Convert each line into a list
@@ -153,11 +153,11 @@ def student_enrollment():
                 student_id = input("Enter Student ID: ").strip()
                 if student_id in student_ids:
                     # Open course_enrollments.txt to remove the student enrollment
-                    with open("course_enrollments.txt", "r") as file:
+                    with open("../Data/course_enrollments.txt", "r") as file:
                         enrollments = file.readlines()
 
                     # Rewrite the file without the removed enrollment
-                    with open("course_enrollments.txt", "w") as file:
+                    with open("../Data/course_enrollments.txt", "w") as file:
                         for enrollment in enrollments:
                             if f"{student_id},{class_id}" not in enrollment.strip():
                                 file.write(enrollment)

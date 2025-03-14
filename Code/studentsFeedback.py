@@ -1,6 +1,6 @@
 def next_feedbackid(): # generate the next feedback_id
     try:
-        with open("feedbacks.txt","r") as f:
+        with open("../Data/feedbacks.txt","r") as f:
             lines = f.readlines()
             if lines: 
                 last_line = lines[-1].strip()
@@ -22,7 +22,7 @@ def feedback_academic(student_id):
     print(f"Target: {target_id}")
     feedback_ac = input("\nEnter your overall feedback on your academic experience at the University : \n")
     response = "None"
-    with open ("feedbacks.txt","a") as f:
+    with open("../Data/feedbacks.txt","a") as f:
         f.write(f"{feedback_id},{student_id},{target_id},{feedback_ac},{response}\n")
     return
 
@@ -32,7 +32,7 @@ def feedback_instructors(student_id):
     feedback_in = input("Enter your feedback on your instructors at the University : \n")
     feedback_id = next_feedbackid()
     response = "None"
-    with open ("feedbacks.txt","a") as f:
+    with open("../Data/feedbacks.txt","a") as f:
         f.write(f"{feedback_id},{student_id},{target_id},{feedback_in},{response}\n")
     return
 
@@ -42,18 +42,18 @@ def feedback_course(student_id):
     feedback_co = input("\nEnter your feedback on your course at the University : \n")
     feedback_id = next_feedbackid()
     response = "None"
-    with open ("feedbacks.txt","a") as f:
+    with open("../Data/feedbacks.txt","a") as f:
         f.write(f"{feedback_id},{student_id},{target_id},{feedback_co},{response}\n")
     return
 
 def studentFeedback(student_id):
-    with open ("students.txt","r") as f:
+    with open("../Data/students.txt","r") as f:
         for line in f:
             data = line.strip().split(",")
             if data[0] == student_id:
                 student_details = data
                 
-    with open ("feedbacks.txt","r") as f:
+    with open("../Data/feedbacks.txt","r") as f:
         for line in f:
             data = line.strip().split(",")
             if data[0] == student_id:

@@ -1,5 +1,5 @@
 def students(student_id): # VERY MAIN
-    with open ("students.txt","r") as f:
+    with open("../Data/students.txt","r") as f:
         for line in f:
             data = line.strip().split(",")
             if data[0] == student_id:
@@ -32,4 +32,3 @@ def students(student_id): # VERY MAIN
             return
         else:
             print("\nPlease try again and enter a valid choice.\n")
-students("S001")
