@@ -14,7 +14,7 @@ def staff(staff_id):
     """Displays the staff menu and processes user navigation."""
 
     # Get staff name
-    staff_name = staff_lib.search_value("./Data/staffs.txt", 0, staff_id, 1)
+    staff_name = staff_lib.search_value("../Data/staffs.txt", 0, staff_id, 1)
 
     while True:
         # Display the staff menu

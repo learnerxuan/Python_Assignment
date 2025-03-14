@@ -36,7 +36,7 @@ def reply_feedback(prefix):
     """Staff replies to feedbacks according to the type specified (field) by students."""
 
     # Read feedback data from file
-    feedbacks, header = staff_lib.read_csv_file("./Data/feedbacks.txt")
+    feedbacks, header = staff_lib.read_csv_file("../Data/feedbacks.txt")
 
     # Display table headers
     print("-" * 125)
@@ -59,7 +59,7 @@ def reply_feedback(prefix):
         return 0  # Cancel operation
     
     # Validate feedback ID
-    if not staff_lib.search_value("./Data/feedbacks.txt", 0, feedback_id):
+    if not staff_lib.search_value("../Data/feedbacks.txt", 0, feedback_id):
         print(f"{color.RED}Invalid feedback ID.{color.RESET}\n")  # Notify user of invalid ID
         return 0
     
@@ -73,7 +73,7 @@ def reply_feedback(prefix):
             feedback["response"] = response  # Store response in feedback record
     
     # Write updated feedback data back to file
-    with open("./Data/feedbacks.txt", "w") as writer:
+    with open("../Data/feedbacks.txt", "w") as writer:
         writer.write(",".join(header) + "\n")  # Write header row
         for feedback in feedbacks:
             writer.write(",".join(staff_lib.format_csv_value(str(value)) for value in feedback.values()) + "\n")
@@ -137,13 +137,13 @@ def parents_contact():
             return  # Cancel operation
         
         # Search for the student's parent ID
-        parents_id = staff_lib.search_value("./Data/parents.txt", 1, student_id, 0)
+        parents_id = staff_lib.search_value("../Data/parents.txt", 1, student_id, 0)
         if not parents_id:
             print(f"{color.RED}Parents not found.{color.RESET}\n")  # Notify user if no parents are found
             return
 
         # Retrieve and display parent details
-        parents, header = staff_lib.read_csv_file("./Data/parents.txt")
+        parents, header = staff_lib.read_csv_file("../Data/parents.txt")
         # Print table headers
         print("-" * 125)
         for column in header:
@@ -170,7 +170,7 @@ def contact_faculty():
     try:
         print(f"{'=' * 18}{color.BOLD}{color.BLUE} CONTACT FACULTY {color.RESET}{'=' * 18}")
         # Read faculty data from file
-        faculties, header = staff_lib.read_csv_file("./Data/faculties.txt")
+        faculties, header = staff_lib.read_csv_file("../Data/faculties.txt")
         # Print table headers
         print("-" * 53)
         for column in header:
@@ -191,7 +191,7 @@ def contact_faculty():
                 return  # Cancel operation
             
             # Validate faculty ID
-            if staff_lib.search_value("./Data/faculties.txt", 0, faculty_id):
+            if staff_lib.search_value("../Data/faculties.txt", 0, faculty_id):
                 # Prompt user for message
                 message = input(f"{color.GREEN}Enter message (0 to cancel): {color.RESET}").strip()
                 print()

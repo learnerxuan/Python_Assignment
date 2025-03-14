@@ -130,7 +130,7 @@ def new_event():
                 continue
 
         # Get location
-        locations, header = staff_lib.read_csv_file("./Data/locations.txt")
+        locations, header = staff_lib.read_csv_file("../Data/locations.txt")
         # Create a list to store locations that can fit max attendees
         locations_available = []
         print(f"{color.YELLOW}Locations available according to maximum attendees:{color.RESET}")
@@ -156,7 +156,7 @@ def new_event():
             print(f"{color.RED}Invalid location. Please try again.{color.RESET}\n")
 
         # Generate new ID for the event
-        events, _ = staff_lib.read_csv_file("./Data/events.txt")
+        events, _ = staff_lib.read_csv_file("../Data/events.txt")
 
         if events:  # Check if the list is not empty
             last_id = events[-1]["event_id"]
@@ -165,7 +165,7 @@ def new_event():
             next_id = "EVT001"  # Default starting ID if no records exist
 
         # Add new record
-        with open("./Data/events.txt", "a") as file:
+        with open("../Data/events.txt", "a") as file:
             file.write(f"{next_id},{staff_lib.format_csv_value(event_name)},{event_domain},{event_type},{date},{start_time},{end_time},{max_attendees},{staff_lib.format_csv_value(location)}\n")
         print(f"{color.GREEN}Successfully added!{color.RESET}\n") 
 
@@ -189,7 +189,7 @@ def edit_event():
                 return
 
             # Check if event ID exist
-            if not staff_lib.search_value("./Data/events.txt", 0, event_id):
+            if not staff_lib.search_value("../Data/events.txt", 0, event_id):
                 print(f"{color.RED}Invalid event ID.{color.RESET}\n")
                 continue
             
@@ -226,7 +226,7 @@ def edit_event():
                 elif choice == 8:
                     field = "location"
 
-                events, header = staff_lib.read_csv_file("./Data/events.txt")
+                events, header = staff_lib.read_csv_file("../Data/events.txt")
 
                 for event in events:
                     if event["event_id"] == event_id:
@@ -278,7 +278,7 @@ def edit_event():
 
                         elif field == "location":
                             # Get location
-                            locations, Lheader = staff_lib.read_csv_file("./Data/locations.txt")
+                            locations, Lheader = staff_lib.read_csv_file("../Data/locations.txt")
                             # Create a list to store locations that can fit max attendees
                             locations_available = []
                             print(f"{color.YELLOW}Locations available according to maximum attendees:{color.RESET}")
@@ -307,7 +307,7 @@ def edit_event():
                         event[field] = new_detail # Update event's field
 
                         # Write newly changed data to file
-                        with open("./Data/events.txt", "w") as writer:
+                        with open("../Data/events.txt", "w") as writer:
                             writer.write(",".join(header) + "\n")
                             for event in events:
                                 # Only write the value of each key-value pair for each resource
@@ -334,17 +334,17 @@ def delete_event():
                 return
 
             # Validate the presence of event ID
-            if not staff_lib.search_value("./Data/events.txt", 0, event_id):
+            if not staff_lib.search_value("../Data/events.txt", 0, event_id):
                 print(f"{color.RED}Invalid event ID.{color.RESET}\n")
                 continue
             
-            events, header = staff_lib.read_csv_file("./Data/events.txt")
+            events, header = staff_lib.read_csv_file("../Data/events.txt")
 
             # Append the list with all the other event except the one user intends to delete
             events = [event for event in events if event["event_id"] != event_id]
 
             # Write newly changed data to file
-            with open("./Data/events.txt", "w") as writer:
+            with open("../Data/events.txt", "w") as writer:
                 writer.write(",".join(header) + "\n")
                 for event in events:
                     # Only write the value of each key-value pair for each resource
@@ -363,7 +363,7 @@ def all_event():
     """View all events"""
     try:
         print(f"{'=' * 73}{color.BOLD}{color.BLUE} ALL EVENTS {color.RESET}{'=' * 73}")
-        events, header = staff_lib.read_csv_file("./Data/events.txt")
+        events, header = staff_lib.read_csv_file("../Data/events.txt")
         # Print all events
         print("-" * 159)
         for column in header:
@@ -401,7 +401,7 @@ def filter_event():
             value = get_event_type()
 
         # Get every events as a dict and appended into a list
-        events, header = staff_lib.read_csv_file("./Data/events.txt")
+        events, header = staff_lib.read_csv_file("../Data/events.txt")
 
         print("-" * 159)
         for column in header:

@@ -34,7 +34,7 @@ def stu_course_reg():
     """
     try:
         print(f"{'=' * 35}{color.BOLD}{color.BLUE} STUDENTS' COURSE REGISTRATION {color.RESET}{'=' * 34}")
-        with open("./Data/courses.txt", "r") as courses:
+        with open("../Data/courses.txt", "r") as courses:
             header = courses.readline().strip().split(",")
             print(f"{color.YELLOW}Available Courses:{color.RESET}")
             print("-" * 100)
@@ -62,8 +62,8 @@ def stu_course_reg():
             print()
             if course_chosen == "0":
                 return
-            if staff_lib.search_value("./Data/courses.txt", 0, course_chosen):
-                with open("./Data/classes.txt", "r") as classes:
+            if staff_lib.search_value("../Data/courses.txt", 0, course_chosen):
+                with open("../Data/classes.txt", "r") as classes:
                     class_header = classes.readline().strip().split(",")
                     print(f"{color.YELLOW}Availables Classes:{color.RESET}")
                     print("-" * 25)
@@ -80,7 +80,7 @@ def stu_course_reg():
                             
                             # Find teacher name in teachers.txt using corresponding teacher_id in classes.txt
                             if class_field[1] == course_chosen:
-                                teacher_name = staff_lib.search_value("./Data/teachers.txt", 0, class_field[2], 1)
+                                teacher_name = staff_lib.search_value("../Data/teachers.txt", 0, class_field[2], 1)
                                 if not teacher_name:
                                     continue
                                 print(class_field[0], teacher_name, sep="    ")
@@ -99,7 +99,7 @@ def stu_course_reg():
                 return
             
             # Verify if the class ID exists in classes.txt
-            if staff_lib.search_value("./Data/classes.txt", 0, class_chosen):
+            if staff_lib.search_value("../Data/classes.txt", 0, class_chosen):
                 student_id = input(f"{color.GREEN}Enter student ID (0 to cancel): {color.RESET}").strip()
                 print()
 
@@ -107,10 +107,10 @@ def stu_course_reg():
                     return
                 
                 # Verify if the student ID exist in students.txt
-                if staff_lib.search_value("./Data/students.txt", 0, student_id):
+                if staff_lib.search_value("../Data/students.txt", 0, student_id):
 
                     # Read all enrollments from the file
-                    course_enroll, _ = staff_lib.read_csv_file("./Data/course_enrollments.txt")
+                    course_enroll, _ = staff_lib.read_csv_file("../Data/course_enrollments.txt")
 
                     # Initialize a flag to check if the student is already enrolled
                     already_enrolled = False
@@ -130,7 +130,7 @@ def stu_course_reg():
                         return
 
                     # Read from course_enrollments.txt
-                    course_enroll, header = staff_lib.read_csv_file("./Data/course_enrollments.txt")
+                    course_enroll, header = staff_lib.read_csv_file("../Data/course_enrollments.txt")
 
                     if course_enroll:  # Check if the list is not empty
                         last_id = course_enroll[-1]["course_enrollment_id"]
@@ -148,7 +148,7 @@ def stu_course_reg():
                 continue
         
         # Add new record
-        with open("./Data/course_enrollments.txt", "a") as new_rec:
+        with open("../Data/course_enrollments.txt", "a") as new_rec:
             new_rec.write(f"{next_id},{class_chosen},{student_id},None,Enrolled\n")
         print(f"{color.GREEN}Student successfully enrolled!{color.RESET}")
         print()
@@ -171,16 +171,16 @@ def stu_course_withdraw():
                 return # Return back to student record menu
             
             # Checks if student enrolled in any course
-            elif not staff_lib.search_value("./Data/course_enrollments.txt", 2, student_id):
+            elif not staff_lib.search_value("../Data/course_enrollments.txt", 2, student_id):
                 print(f"{color.RED}Invalid student ID. Please try again.{color.RESET}")
                 print()
                 continue
             
             # Get the class_id(s) students enrolled in (a list)
-            classes_id = staff_lib.search_value("./Data/course_enrollments.txt", 2, student_id, 1)
+            classes_id = staff_lib.search_value("../Data/course_enrollments.txt", 2, student_id, 1)
 
             # Read from classes.txt
-            classes, class_header = staff_lib.read_csv_file("./Data/classes.txt")
+            classes, class_header = staff_lib.read_csv_file("../Data/classes.txt")
 
             print(f"{color.YELLOW}Classes Student Enrolled In:{color.RESET}")
             print("-" * 50)
@@ -192,11 +192,11 @@ def stu_course_withdraw():
                 # If class is enrolled by student
                 if rec["class_id"] in classes_id:
                     # Check enrollment status 
-                    course_status = staff_lib.search_value("./Data/course_enrollments.txt", 1, rec["class_id"], 4)
+                    course_status = staff_lib.search_value("../Data/course_enrollments.txt", 1, rec["class_id"], 4)
 
                     if course_status != "Unenrolled":
                         # Get the corresponding course name from courses.txt
-                        course = staff_lib.search_value("./Data/courses.txt", 0, rec["course_id"], 1)
+                        course = staff_lib.search_value("../Data/courses.txt", 0, rec["course_id"], 1)
                         # Print the class id together with course name
                         print(rec["class_id"], course, sep="    ")
                         print("-" * 50)
@@ -210,14 +210,14 @@ def stu_course_withdraw():
                     print(f"{color.RED}Invalid class ID. Please try again.{color.RESET}")
                     print()
                     continue
-                course_enroll, course_header = staff_lib.read_csv_file("./Data/course_enrollments.txt")
+                course_enroll, course_header = staff_lib.read_csv_file("../Data/course_enrollments.txt")
 
                 # Get to the record line that student wish to withdraw
                 for line in course_enroll:
                     if line["class_id"] == course_from and line["student_id"] == student_id:
                         line["course_enroll_status"] = "Unenrolled"
 
-                with open("./Data/course_enrollments.txt", "w") as writer:
+                with open("../Data/course_enrollments.txt", "w") as writer:
                     writer.write(",".join(course_header) + "\n")
                     for line in course_enroll:
                         # Only write the value of each key-value pair

@@ -28,7 +28,7 @@ def assign_teacher():
     while True:
         try:
             # Read classes and filter those with no teacher assigned
-            classes, header = staff_lib.read_csv_file("./Data/classes.txt")
+            classes, header = staff_lib.read_csv_file("../Data/classes.txt")
             print(f"{'=' * 37}{color.BOLD}{color.BLUE} ASSIGN TEACHER {color.RESET}{'=' * 37}")
             print(f"{color.YELLOW}Classes With No Teacher Assigned:{color.RESET}")
 
@@ -53,7 +53,7 @@ def assign_teacher():
             teacher_assigned = False  # Track if a change is made
 
             # Validate class ID and ensure no teacher is assigned
-            if staff_lib.search_value("./Data/classes.txt", 0, class_id) and staff_lib.search_value("./Data/classes.txt", 0, class_id, 2) == "None":
+            if staff_lib.search_value("../Data/classes.txt", 0, class_id) and staff_lib.search_value("../Data/classes.txt", 0, class_id, 2) == "None":
                 print(f"{color.YELLOW}Class Chosen:{color.RESET}")
                 # Display class headers
                 print("-" * 90)
@@ -70,7 +70,7 @@ def assign_teacher():
 
                         # Get teachers for the course
                         course_id = cls["course_id"]
-                        teachers = staff_lib.search_value("./Data/courses.txt", 0, course_id, 3).split()
+                        teachers = staff_lib.search_value("../Data/courses.txt", 0, course_id, 3).split()
                         
                         # Display available teachers
                         print(f"{color.YELLOW}Teachers Available:{color.RESET}")
@@ -78,7 +78,7 @@ def assign_teacher():
                         print(f"{color.BOLD}TEACHER ID     NAME{color.RESET}")
                         print("-" * 40)
                         for teacher in teachers:
-                            print(f"{teacher}           {staff_lib.search_value('./Data/teachers.txt', 0, teacher, 1)}")
+                            print(f"{teacher}           {staff_lib.search_value('../Data/teachers.txt', 0, teacher, 1)}")
                             print("-" * 40)
 
                         assigned_tch = input(f"{color.GREEN}Enter teacher ID (0 to cancel): {color.RESET}").strip()
@@ -98,7 +98,7 @@ def assign_teacher():
 
                 # Write changes only if a teacher was assigned
                 if teacher_assigned:
-                    with open("./Data/classes.txt", "w") as writer:
+                    with open("../Data/classes.txt", "w") as writer:
                         writer.write(",".join(header) + "\n")
                         for cls in classes:
                             writer.write(",".join(staff_lib.format_csv_value(str(value)) for value in cls.values()) + "\n")
@@ -172,7 +172,7 @@ def update_timetable():
         try:
             print(f"{'=' * 36}{color.BOLD}{color.BLUE} UPDATE TIMETABLE {color.RESET}{'=' * 36}")
             print(f"{color.YELLOW}All Classes:{color.RESET}")
-            all_class, header = staff_lib.read_csv_file("./Data/classes.txt")
+            all_class, header = staff_lib.read_csv_file("../Data/classes.txt")
             # Print header
             print("-" * 90)
             for column in header[0:7]:
@@ -191,13 +191,13 @@ def update_timetable():
                 return
             
             # Validate class ID
-            if not staff_lib.search_value("./Data/classes.txt", 0, class_id):
+            if not staff_lib.search_value("../Data/classes.txt", 0, class_id):
                 print(f"{color.RED}Invalid class ID. Please try again.{color.RESET}")
                 print()
                 continue
             
             while True:
-                classes, header = staff_lib.read_csv_file("./Data/classes.txt")
+                classes, header = staff_lib.read_csv_file("../Data/classes.txt")
                 print(f"{color.YELLOW}Class Chosen:{color.RESET}")
                 print("-" * 90)
                 # Display header
@@ -234,7 +234,7 @@ def update_timetable():
 
                 # Write to file only if changes were made
                 if any(classes[i] != all_class[i] for i in range(len(classes))):
-                    with open("./Data/classes.txt", "w") as writer:
+                    with open("../Data/classes.txt", "w") as writer:
                         writer.write(",".join(header) + "\n")
                         for cls in classes:
                             writer.write(",".join(staff_lib.format_csv_value(str(value)) for value in cls.values()) + "\n")
@@ -316,7 +316,7 @@ def change_location(old_cls, classes):
     """Change the class location while ensuring no conflicts."""
     print(f"{'=' * 13}{color.BOLD}{color.BLUE} CHANGE TIME {color.RESET}{'=' * 14}")
     # Read available locations from file
-    loca, header = staff_lib.read_csv_file("./Data/locations.txt")
+    loca, header = staff_lib.read_csv_file("../Data/locations.txt")
 
     # Display location headers
     print("-" * 40)
@@ -339,7 +339,7 @@ def change_location(old_cls, classes):
             return old_cls  # Return original record if the user cancels
 
         # Validate if the entered location exists in the dataset
-        if staff_lib.search_value("./Data/locations.txt", 0, new_location):
+        if staff_lib.search_value("../Data/locations.txt", 0, new_location):
             # Check for scheduling conflicts at the new location
             if check_conflict(classes, old_cls["class_id"], old_cls["day"], old_cls["start_time"], old_cls["end_time"], new_location):
                 print(f"{color.RED}Conflict detected. Please choose another location.{color.RESET}")  # Notify user of conflict

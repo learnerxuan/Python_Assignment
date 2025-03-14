@@ -61,7 +61,7 @@ def view_resources():
         choice = staff_lib.choose([0, 1, 2, 3, 4, 5, 6])
 
         try:
-            resources, header = staff_lib.read_csv_file("./Data/resources.txt")
+            resources, header = staff_lib.read_csv_file("../Data/resources.txt")
 
             def get_resource(field, data):
                 """This function search for resources according to user specified field"""
@@ -104,7 +104,7 @@ def view_resources():
 
             # Search by type
             elif choice == 4:
-                with open("./Data/resource_type.txt", "r") as types:
+                with open("../Data/resource_type.txt", "r") as types:
                     print(''.join(types.readlines()), end="")
                 get_resource("resource_type", input(f"{color.GREEN}Enter resource type: {color.RESET}").strip().upper())
                     
@@ -127,7 +127,7 @@ def view_resources():
     
             # Search by location
             elif choice == 6:
-                locations, _ = staff_lib.read_csv_file("./Data/locations.txt")
+                locations, _ = staff_lib.read_csv_file("../Data/locations.txt")
                 print(f"{color.YELLOW}Locations:{color.RESET}")
                 for line in locations:
                     print(line["location_name"])
@@ -159,7 +159,7 @@ def new_resources():
             return
 
         # User input resource type by choosing from the avialable list
-        with open("./Data/resource_type.txt", "r") as types:
+        with open("../Data/resource_type.txt", "r") as types:
             print(f"{color.YELLOW}Resource types:{color.RESET}")
             print(''.join(types.readlines()), end='')
         while True:
@@ -169,7 +169,7 @@ def new_resources():
             if resource_type == "0":
                 return
 
-            if not staff_lib.search_value("./Data/resource_type.txt", 0, resource_type):
+            if not staff_lib.search_value("../Data/resource_type.txt", 0, resource_type):
                 print(f"{color.RED}Invalid resource type.{color.RESET}")
                 print()
                 continue
@@ -207,7 +207,7 @@ def new_resources():
                 print(f"{color.GREEN}Please enter a valid number.{color.RESET}")
 
         # User input location from a list of available locations
-        loca, header = staff_lib.read_csv_file("./Data/locations.txt")
+        loca, header = staff_lib.read_csv_file("../Data/locations.txt")
         print(f"{color.YELLOW}Locations:{color.RESET}")
         print(header[0])
         for line in loca:
@@ -219,7 +219,7 @@ def new_resources():
             if location == "0":
                 return
 
-            if not staff_lib.search_value("./Data/locations.txt", 0, location):
+            if not staff_lib.search_value("../Data/locations.txt", 0, location):
                 print(f"{color.RED}Invalid location.{color.RED}")
                 print()
                 continue
@@ -227,7 +227,7 @@ def new_resources():
                 break
 
         # Create new resource
-        resource, _ = staff_lib.read_csv_file("./Data/resources.txt")
+        resource, _ = staff_lib.read_csv_file("../Data/resources.txt")
 
         if resource:  # Check if the list is not empty
             last_id = resource[-1]["resource_id"]
@@ -236,7 +236,7 @@ def new_resources():
             next_id = "R001"  # Default starting ID if no records exist
 
         # Add new record
-        with open("./Data/resources.txt", "a") as new_res:
+        with open("../Data/resources.txt", "a") as new_res:
             new_res.write(f"{next_id},{staff_lib.format_csv_value(resource_name)},{resource_type},{condition},{quantity},{staff_lib.format_csv_value(location)}\n")
         print(f"{color.GREEN}Successfully added!{color.RESET}")
         print()
@@ -259,7 +259,7 @@ def update_resources():
             if search_id == "0":
                 return
 
-            if not staff_lib.search_value("./Data/resources.txt", 0, search_id):
+            if not staff_lib.search_value("../Data/resources.txt", 0, search_id):
                 print(f"{color.RED}Invalid resource ID{color.RESET}\n")
                 continue
             
@@ -284,7 +284,7 @@ def update_resources():
             elif choice == 5:
                 field = "location"
 
-            resources, header = staff_lib.read_csv_file("./Data/resources.txt")
+            resources, header = staff_lib.read_csv_file("../Data/resources.txt")
 
             for resource in resources:
                 # Search for resource user wants to update
@@ -298,7 +298,7 @@ def update_resources():
 
                     elif field == "resource_type":
                         # Display all type
-                        with open("./Data/resource_type.txt", "r") as types:
+                        with open("../Data/resource_type.txt", "r") as types:
                             print(f"{color.YELLOW}Resource types:{color.RESET}")
                             print(''.join(types.readlines()))
                         while True:
@@ -308,7 +308,7 @@ def update_resources():
                             if new_detail == "0":
                                 return
 
-                            if not staff_lib.search_value("./Data/resource_type.txt", 0, new_detail): # Validate type
+                            if not staff_lib.search_value("../Data/resource_type.txt", 0, new_detail): # Validate type
                                 print(f"{color.RED}Invalid resource type.{color.RESET}\n")
                                 continue
                             else:
@@ -350,7 +350,7 @@ def update_resources():
 
                     elif field == "location":
                         # User input location from a list of available locations
-                        loca, loca_header = staff_lib.read_csv_file("./Data/locations.txt")
+                        loca, loca_header = staff_lib.read_csv_file("../Data/locations.txt")
                         print(f"{color.BOLD}{loca_header[0].replace("_", " ").upper()}{color.RESET}")
                         for line in loca:
                             print(line["location_name"])
@@ -361,7 +361,7 @@ def update_resources():
                             if new_detail == "0":
                                 return
 
-                            if not staff_lib.search_value("./Data/locations.txt", 0, new_detail):
+                            if not staff_lib.search_value("../Data/locations.txt", 0, new_detail):
                                 print(f"{color.RED}Invalid location.{color.RESET}\n")
                                 continue
                             else:
@@ -370,7 +370,7 @@ def update_resources():
                     resource[field] = new_detail
             
             # Write newly changed data to file
-            with open("./Data/resources.txt", "w") as writer:
+            with open("../Data/resources.txt", "w") as writer:
                 writer.write(",".join(header) + "\n")
                 for resource in resources:
                     # Only write the value of each key-value pair for each resource
@@ -397,17 +397,17 @@ def delete_resources():
                 return
 
             # Validate the presence of resource ID
-            if not staff_lib.search_value("./Data/resources.txt", 0, resource_id):
+            if not staff_lib.search_value("../Data/resources.txt", 0, resource_id):
                 print(f"{color.RED}Invalid resource ID.{color.RESET}\n")
                 continue
             
-            resources, header = staff_lib.read_csv_file("./Data/resources.txt")
+            resources, header = staff_lib.read_csv_file("../Data/resources.txt")
 
             # Append the list with all the other resource except the one user intends to delete
             resources = [resource for resource in resources if resource["resource_id"] != resource_id]
 
             # Write newly changed data to file
-            with open("./Data/resources.txt", "w") as writer:
+            with open("../Data/resources.txt", "w") as writer:
                 writer.write(",".join(header) + "\n")
                 for resource in resources:
                     # Only write the value of each key-value pair for each resource
@@ -434,12 +434,12 @@ def split_resources():
                 return
 
             # Validate resource ID
-            if not staff_lib.search_value("./Data/resources.txt", 0, resource_id):
+            if not staff_lib.search_value("../Data/resources.txt", 0, resource_id):
                 print(f"{color.RED}Invalid resource ID.{color.RESET}\n")
                 continue
             
             # Read resources into a list
-            resources, header = staff_lib.read_csv_file("./Data/resources.txt")
+            resources, header = staff_lib.read_csv_file("../Data/resources.txt")
 
             print("-" * 125)
             for column in header:
@@ -470,7 +470,7 @@ def split_resources():
                             continue
                         
                         # User input new location from a list of available locations
-                        loca, loca_header = staff_lib.read_csv_file("./Data/locations.txt")
+                        loca, loca_header = staff_lib.read_csv_file("../Data/locations.txt")
                         print(f"{color.BOLD}{loca_header[0].replace("_", " ").upper()}{color.RESET}")
                         for line in loca:
                             print(line["location_name"])
@@ -481,7 +481,7 @@ def split_resources():
                             if new_loc == "0":
                                 return
 
-                            if not staff_lib.search_value("./Data/locations.txt", 0, new_loc):
+                            if not staff_lib.search_value("../Data/locations.txt", 0, new_loc):
                                 print(f"{color.RED}Invalid location.{color.RESET}\n")
                                 continue
                             else:
@@ -508,7 +508,7 @@ def split_resources():
             resources.append(splitted)
 
             # Write newly changed data to file
-            with open("./Data/resources.txt", "w") as writer:
+            with open("../Data/resources.txt", "w") as writer:
                 writer.write(",".join(header) + "\n")
                 for resource in resources:
                     # Only write the value of each key-value pair for each resource
@@ -527,7 +527,7 @@ def split_resources():
 def new_type():
     """Add new resource type."""
     try:
-        with open("./Data/resource_type.txt", "a+") as types:
+        with open("../Data/resource_type.txt", "a+") as types:
             print(f"{color.YELLOW}Existing Resource Type:{color.RESET}")
             types.seek(0)
             print(''.join(types.readlines()), end="")
@@ -539,7 +539,7 @@ def new_type():
                 return
 
             # Check if resource type already existed
-            if staff_lib.search_value("./Data/resource_type.txt", 0, new):
+            if staff_lib.search_value("../Data/resource_type.txt", 0, new):
                 print(f"{color.RED}Resource type exist.{color.RESET}\n")
                 return
             
@@ -634,7 +634,7 @@ def log_maintenance():
                 return
 
             # Check if resource ID exist
-            if not staff_lib.search_value("./Data/resources.txt", 0, resource_id):
+            if not staff_lib.search_value("../Data/resources.txt", 0, resource_id):
                 print(f"{color.RED}Invalid resource.{color.RESET}\n")
                 continue
             break
@@ -674,7 +674,7 @@ def log_maintenance():
         notes = staff_lib.format_csv_value(notes)
 
         # Create new maintenance log
-        maintenance, _ = staff_lib.read_csv_file("./Data/maintenances.txt")
+        maintenance, _ = staff_lib.read_csv_file("../Data/maintenances.txt")
 
         if maintenance:  # Check if the list is not empty
             last_id = maintenance[-1]["maintenance_id"]
@@ -683,7 +683,7 @@ def log_maintenance():
             next_id = "R001"  # Default starting ID if no records exist
 
         # Add new record
-        with open("./Data/maintenances.txt", "a") as new_main:
+        with open("../Data/maintenances.txt", "a") as new_main:
             new_main.write(f"{next_id},{resource_id},{date},{type},{cost},{status},{notes}\n")
         print(f"{color.GREEN}Successfully added!{color.RESET}\n")
 
@@ -707,13 +707,13 @@ def view_maintenance_history():
             return
         
         # If resource ID exist in maintenances.txt, returns a list for multiple occurance, single value for one occurance
-        main_ids = staff_lib.search_value("./Data/maintenances.txt", 1, resource_id, 0)
+        main_ids = staff_lib.search_value("../Data/maintenances.txt", 1, resource_id, 0)
 
         if main_ids == False:
             print(f"{color.RED}Resource has no maintenance history.{color.RESET}\n")
             return
 
-        maintenances, header = staff_lib.read_csv_file("./Data/maintenances.txt") 
+        maintenances, header = staff_lib.read_csv_file("../Data/maintenances.txt") 
         print("-" * 125)
         for column in header:
             print(f"{color.BOLD}{column.replace('_', ' ').upper():<15}{color.RESET}", end='')
@@ -751,10 +751,10 @@ def update_maintenance_status():
         print(f"{'=' * 49}{color.BOLD}{color.BLUE} UPDATE MAINTENANCE STATUS {color.RESET}{'=' * 50}")
         maintenance_id = input(f"{color.GREEN}Enter maintenance ID: {color.RESET}").strip()
         print()
-        if not staff_lib.search_value("./Data/maintenances.txt", 0, maintenance_id):
+        if not staff_lib.search_value("../Data/maintenances.txt", 0, maintenance_id):
             print(f"{color.RED}Invalid maintenance ID.{color.RESET}\n")
             return
-        maintenances, header = staff_lib.read_csv_file("./Data/maintenances.txt")
+        maintenances, header = staff_lib.read_csv_file("../Data/maintenances.txt")
         for maintenance in maintenances:
             if maintenance["maintenance_id"] == maintenance_id:
                 # Output the maintenance record
@@ -776,7 +776,7 @@ def update_maintenance_status():
                 maintenance["status"] = status
 
         # Write newly changed data to file
-        with open("./Data/maintenances.txt", "w") as writer:
+        with open("../Data/maintenances.txt", "w") as writer:
             writer.write(",".join(header) + "\n")
             for maintenance in maintenances:
                 # Only write the value of each key-value pair for each maintenance
@@ -808,13 +808,13 @@ def filter_maintenance():
                     return
                 
                 # Get the maintenance IDs of the specific type
-                maintenance_ids = staff_lib.search_value("./Data/maintenances.txt", 3, type, 0)
+                maintenance_ids = staff_lib.search_value("../Data/maintenances.txt", 3, type, 0)
 
                 if maintenance_ids == False:
                     print(f"{color.RED}No record.{color.RESET}\n")
                     continue
                 
-                maintenances, header = staff_lib.read_csv_file("./Data/maintenances.txt")
+                maintenances, header = staff_lib.read_csv_file("../Data/maintenances.txt")
 
                 print("-" * 125)
                 for column in header:
@@ -837,13 +837,13 @@ def filter_maintenance():
                     return
                 
                 # Get the maintenance IDs of the specific status
-                maintenance_ids = staff_lib.search_value("./Data/maintenances.txt", 5, status, 0)
+                maintenance_ids = staff_lib.search_value("../Data/maintenances.txt", 5, status, 0)
 
                 if maintenance_ids == False:
                     print(f"{color.RED}No record.{color.RESET}\n")
                     continue
                 
-                maintenances, header = staff_lib.read_csv_file("./Data/maintenances.txt")
+                maintenances, header = staff_lib.read_csv_file("../Data/maintenances.txt")
 
                 print("-" * 125)
                 for column in header:

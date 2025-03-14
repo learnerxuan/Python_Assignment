@@ -64,7 +64,7 @@ def login():
             id = str(input("🆔 Enter your ID: "))
             password = str(input("🔑 Enter your password: "))
 
-            file_path = f"./Data/{user}.txt"
+            file_path = f"../Data/{user}.txt"
 
             found = False
             with open(file_path,"r") as file:

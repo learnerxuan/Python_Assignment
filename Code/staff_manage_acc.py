@@ -32,7 +32,7 @@ def staff_update_detail(staff_id, field):
     """Updates the staff's personal detail based on the selected field."""
 
     try:
-        staffs, header = staff_lib.read_csv_file("./Data/staffs.txt")
+        staffs, header = staff_lib.read_csv_file("../Data/staffs.txt")
 
         # Flag to check if staff is found
         staff_found = False
@@ -69,7 +69,7 @@ def staff_update_detail(staff_id, field):
             return
 
         # Write newly changed data to file
-        with open("./Data/staffs.txt", "w") as writer:
+        with open("../Data/staffs.txt", "w") as writer:
             writer.write(",".join(header) + "\n")
             for staff in staffs:
                 # Only write the value of each key-value pair for each staff
