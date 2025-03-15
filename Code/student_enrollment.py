@@ -169,7 +169,7 @@ def student_enrollment():
                 print("Class ID not found.")
 
         else:
-            print("Invalid Choice")
+            print("Invalid choice. Please select 1 or 2")
 
 
 student_enrollment()
