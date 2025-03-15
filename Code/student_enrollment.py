@@ -156,20 +156,23 @@ def student_enrollment():
                     with open("../Data/course_enrollments.txt", "r") as file:
                         enrollments = file.readlines()
 
-                    # Rewrite the file without the removed enrollment
+                    updated_enrollments = [
+                        enrollment for enrollment in enrollments
+                        if f"{student_id},{class_id}" not in enrollment.strip()
+                    ]
+
+                    # Write back only the updated enrollments
                     with open("../Data/course_enrollments.txt", "w") as file:
-                        for enrollment in enrollments:
-                            if f"{student_id},{class_id}" not in enrollment.strip():
-                                file.write(enrollment)
+                        file.writelines(updated_enrollments)
 
                     print("Removed successfully.")
+                    return
                 else:
                     print("Student ID not found.")
+                    return
             else:
                 print("Class ID not found.")
+                return
 
         else:
-            print("Invalid Choice")
-
-
-student_enrollment()
+            print("Invalid choice. Please select 1 or 2")

@@ -200,7 +200,7 @@ def report_generation():
                 f"| {'Student ID':<12} | {'Name':<20} | {'Total Fees':<12} | {'Fees Paid':<10} | {'Amount Left':<11} | {'Completion of Payment':<20} |")
             print("-" * 105)
 
-            with open("../Data/students_finance.txt", "r") as file:
+            with open("../Data/student_finances.txt", "r") as file:
                 file.readline()  # Skip header
                 for line in file:
                     line = line.strip()
@@ -228,7 +228,7 @@ def report_generation():
             print("=" * 105)
 
         except FileNotFoundError:
-            print("❌ Error: students_finance.txt file not found.")
+            print("❌ Error: student_finances.txt file not found.")
         except Exception as e:
             print(f"⚠️ Error: Unable to generate financial report. Details: {e}")
 
@@ -242,7 +242,7 @@ def report_generation():
             total_amount_revenue = 0
             total_amount_expenses = 0
 
-            with open("../Data/institution_finance.txt", "r") as file:
+            with open("../Data/institution_finances.txt", "r") as file:
                 file.readline()  # Skip the header line
 
                 for line in file:
@@ -289,7 +289,7 @@ def report_generation():
             print("=" * 70)
 
         except FileNotFoundError:
-            print("❌ Error: institution_finance.txt file not found.")
+            print("❌ Error: institution_finances.txt file not found.")
         except Exception as e:
             print(f"⚠️ Error: Unable to generate financial report. Details: {e}")
 
@@ -330,4 +330,4 @@ def report_generation():
         except Exception as e:
             print(f"⚠️ An unexpected error occurred. Details: {e}")
 
-# report_generation()
+#report_generation()

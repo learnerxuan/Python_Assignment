@@ -28,7 +28,7 @@ def grade_assignment(teacher_id):
 
                 if not teacher_classes:
                     print("No classes assigned to you.")
-                    continue  
+                    return  
 
                 # Extract class IDs assigned to the teacher
                 class_ids = [cls[0] for cls in teacher_classes]
@@ -56,7 +56,7 @@ def grade_assignment(teacher_id):
                     print("Students:", student_ids)
                 except FileNotFoundError:
                     print("students.txt file not found.")
-                    continue  
+                    return  
 
                 # Ask teacher to enter student ID
                 student_id = input("Enter Student ID: ").strip()
@@ -80,7 +80,7 @@ def grade_assignment(teacher_id):
                     print("Courses:", course_ids)
                 except FileNotFoundError:
                     print("courses.txt file not found.")
-                    continue  
+                    return  
 
                 # Ask teacher to enter course ID
                 course_id = input("Enter Course ID: ").strip()
@@ -109,7 +109,7 @@ def grade_assignment(teacher_id):
                     continue  
             except FileNotFoundError:
                 print("classes.txt not found.")
-                continue  
+                return  
 
         elif choice == "3":  # If the user chooses to provide feedback
             # Generate a new feedback ID
@@ -131,7 +131,7 @@ def grade_assignment(teacher_id):
                 return  
             except FileNotFoundError:
                 print("feedbacks.txt file not found.")
-                continue  
+                return 
 
         else:
             print("Invalid choice. Please select 1, 2, or 3.")

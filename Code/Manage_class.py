@@ -2,7 +2,7 @@
 import libraries
 
 
-def manage_courses(teacher_id):
+def manage_classes(teacher_id):
     print("Manage Classes")
     print("1) Update Class")
     print("2) Create a Class")
@@ -42,7 +42,7 @@ def manage_courses(teacher_id):
 
             except FileNotFoundError:  # Handle missing file error
                 print("classes.txt file not found.")
-                continue
+                return
 
                 # Ask the teacher which class to update
             class_id = input("Enter the class ID to update: ").strip()
@@ -105,7 +105,7 @@ def manage_courses(teacher_id):
                 return
             else:
                 print("Class Not Available or You Are Not Authorized to Update It.")
-                continue
+                return
 
         elif choice == "2":  # If user chooses to create a class
             try:
@@ -136,7 +136,7 @@ def manage_courses(teacher_id):
 
             except FileNotFoundError:  # Handle missing file error
                 print("Courses .txt file not exist")
-                continue
+                return
 
                 # Get new class details from the teacher
             print("Creating a new class")
@@ -161,9 +161,9 @@ def manage_courses(teacher_id):
                 return
             except FileNotFoundError:  # Handle missing file error
                 print("classes.txt file not found.")
-                continue
+                return
 
         else:  # Handle invalid menu choice
-            print("Invalid choice.")
+            print("Invalid choice. Please select 1 or 2")
             return
 
