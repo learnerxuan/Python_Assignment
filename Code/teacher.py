@@ -15,7 +15,7 @@ def teacher(teacher_id):
 
         if choice == "1":
             from Manage_class import manage_classes  # Ensure correct filename
-            manage_class(teacher_id)
+            manage_classes(teacher_id)
         elif choice == "2":
             from student_enrollment import student_enrollment
             student_enrollment()
