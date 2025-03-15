@@ -96,7 +96,7 @@ def grade_assignment(teacher_id):
                 feedback = input("Enter Your Feedback: ").strip()
 
                 # Generate new assignment ID
-                assignment_id = libraries.generate_new_id("assessments.txt", "ASM")
+                assignment_id = libraries.generate_new_id("../Data/assessments.txt", "ASM")
 
                 try:
                     # Append grading information to assessments.txt file
