@@ -2,7 +2,7 @@
 import libraries
 
 
-def manage_courses(teacher_id):
+def manage_classes(teacher_id):
     print("Manage Classes")
     print("1) Update Class")
     print("2) Create a Class")
