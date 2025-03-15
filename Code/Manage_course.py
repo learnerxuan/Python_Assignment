@@ -164,6 +164,6 @@ def manage_courses(teacher_id):
                 return
 
         else:  # Handle invalid menu choice
-            print("Invalid choice.")
+            print("Invalid choice. Please select 1 or 2")
             return
 
