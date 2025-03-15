@@ -7,5 +7,5 @@ CLS005,C005,T005,Friday,14:00,16:00,Room 105,Biology Basics,Photosynthesis and c
 CLS006,C006,T008,Monday,11:00,13:00,Room 106,General Chemistry,"Acids, bases, and pH",Read the lab manual before the experiment
 CLS007,C007,T009,Tuesday,14:00,16:00,Room 107,English Literature,Shakespeare's works,Prepare for class discussion on Hamlet
 CLS008,C008,T003,Wednesday,08:00,10:00,Room 108,Web Development,Introduction to HTML and CSS,Work on website design project
-CLS009,C009,T004,Thursday,08:00,10:00,Room 108,Linear Algebra,Matrix operations and vector spaces,Review practice problems before the test
+CLS009,C009,T004,Thursday,08:30,10:30,Room 108,Linear Algebra,Matrix operations and vector spaces,Review practice problems before the test
 CLS010,C010,T006,Friday,09:00,11:00,Room 110,Microeconomics,Supply and demand analysis,Read chapters 5 and 6 for next class

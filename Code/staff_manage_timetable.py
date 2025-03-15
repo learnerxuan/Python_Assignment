@@ -210,7 +210,8 @@ def update_timetable():
                         print("        ".join(map(str, (list(cls.values())[:7]))))
                         print("-" * 90)
 
-                        print(f"""\n{color.BOLD}Option:{color.RESET}
+                        print(f"""
+{color.BOLD}Option:{color.RESET}
 {color.YELLOW}1.{color.RESET} Change Day
 {color.YELLOW}2. {color.RESET}Change Time
 {color.YELLOW}3. {color.RESET}Change Location
@@ -231,9 +232,15 @@ def update_timetable():
                             if classes[i]["class_id"] == class_id:
                                 classes[i] = updated_cls
                                 break  
-
-                # Write to file only if changes were made
-                if any(classes[i] != all_class[i] for i in range(len(classes))):
+                
+                # Check if any changes were made before writing to file
+                changes_made = False
+                for i in range(len(classes)):
+                    if classes[i] != all_class[i]:
+                        changes_made = True
+                        break
+                
+                if changes_made:
                     with open("../Data/classes.txt", "w") as writer:
                         writer.write(",".join(header) + "\n")
                         for cls in classes:
