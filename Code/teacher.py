@@ -14,25 +14,24 @@ def teacher(teacher_id):
         choice = input("Enter Your Choice: ").strip()
 
         if choice == "1":
-            from manage_course import manage_courses  # Ensure correct filename
+            from Manage_course import manage_courses  # Ensure correct filename
             manage_courses(teacher_id)
         elif choice == "2":
             from student_enrollment import student_enrollment
             student_enrollment()
         elif choice == "3":
-            from grade_assignment import grade_assignment  # Ensure correct filename
+            from Grade_Assignment import grade_assignment  # Ensure correct filename
             grade_assignment(teacher_id)
         elif choice == "4":
-            from track_attendance import track_attendance  # Ensure correct filename
+            from Track_Attendance import track_attendance  # Ensure correct filename
             track_attendance(teacher_id)
         elif choice == "5":
-            from generate_report import generate_report  # Ensure correct filename
+            from Generate_Report import generate_report  # Ensure correct filename
             generate_report(teacher_id)
         elif choice == "6":
             print("\n🎓 Thank You for using the Teacher Course Management System. Goodbye!\n")
             break
         else:
             print("\n❌ Invalid choice! Please enter a number between 1 and 6.\n")
-
 
 
