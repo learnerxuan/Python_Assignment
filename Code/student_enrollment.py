@@ -85,7 +85,7 @@ def student_enrollment():
                                 return
 
                                 # Generate new enrollment ID
-                            course_enrollment_id = libraries.generate_new_id("course_enrollments.txt", "CE")
+                            course_enrollment_id = libraries.generate_new_id("../Data/course_enrollments.txt", "CE")
 
                             # Save new enrollment record to file
                             with open("../Data/course_enrollments.txt", "a") as file:
