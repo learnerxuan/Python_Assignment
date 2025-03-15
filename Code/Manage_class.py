@@ -140,7 +140,7 @@ def manage_classes(teacher_id):
 
                 # Get new class details from the teacher
             print("Creating a new class")
-            class_id = libraries.generate_new_id("classes.txt", "CLS")  # Generate a new class ID
+            class_id = libraries.generate_new_id("../Data/classes.txt", "CLS")  # Generate a new class ID
             course_id = input("Enter Course ID: ").strip()
             day = input("Enter Day: ").strip()
             start_time = input("Enter Start Time (HH:MM): ").strip()
