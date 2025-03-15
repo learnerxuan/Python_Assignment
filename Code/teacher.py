@@ -3,7 +3,7 @@ def teacher(teacher_id):
 
     while True:
         print("\n===== Teacher Course Management System =====")
-        print("1) Manage Courses")
+        print("1) Manage Classes")
         print("2) Student Enrollment")
         print("3) Grade Assignment and Assessment")
         print("4) Track Attendance")
