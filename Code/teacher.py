@@ -14,8 +14,8 @@ def teacher(teacher_id):
         choice = input("Enter Your Choice: ").strip()
 
         if choice == "1":
-            from Manage_course import manage_courses  # Ensure correct filename
-            manage_courses(teacher_id)
+            from Manage_classes import manage_classes  # Ensure correct filename
+            manage_classes(teacher_id)
         elif choice == "2":
             from student_enrollment import student_enrollment
             student_enrollment()
