@@ -5,5 +5,5 @@ If using PyCharm:
 - Open Main and click Run
 
 If using VSCode:
-- Navigate to the code folder using {cd code} command.
-- Run the code
+- Navigate to the Code folder using {cd Code} command.
+- Run the code {python main.py}
