@@ -71,7 +71,7 @@ def track_attendance(teacher_id):
                         status = "absent"
 
                     # Generate a new attendance ID
-                    attendance_id = libraries.generate_new_id("attendances.txt", "ATT")
+                    attendance_id = libraries.generate_new_id("../Data/attendances.txt", "ATT")
 
                     # Append attendance record to attendances.txt
                     with open("../Data/attendances.txt", "a") as file:

@@ -266,7 +266,7 @@ def report_generation():
                 total_amount_revenue += amount
 
             print("-" * 70)
-            print(f"Total Revenue: USD {total_amount_revenue:,}")
+            print(f"Total Revenue: RM {total_amount_revenue:,}")
             print("=" * 70)
 
             # Print Expense Section
