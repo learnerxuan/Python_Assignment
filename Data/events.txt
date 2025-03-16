@@ -11,8 +11,8 @@ EVT009,Career Advancement Strategies,Extracurricular,Conference,2025-09-14,09:00
 EVT010,Modern Teaching Methods,Academic,Seminar,2025-10-01,14:00,16:00,50,Room 104
 EVT011,Student Council Meet-Up,Extracurricular,Conference,2025-11-20,10:00,12:00,30,Room 105
 EVT012,Global Business Trends,Academic,Seminar,2025-12-10,15:30,17:30,40,Multimedia Room
-EVT013,Innovation in Learning,Academic,Conference,2026-01-05,09:00,11:30,35,Room 106
 EVT014,Extracurricular Impact Summit,Extracurricular,Conference,2026-02-15,10:00,12:30,300,Gymnasium
 EVT015,Emerging Technologies in Education,Academic,Seminar,2026-03-07,14:00,16:00,50,Room 107
 EVT016,AI Conference,Extracurricular,Conference,2025-04-01,10:00,12:00,50,Auditorium
 EVT017,Data Analytic Talk,Academic,Seminar,2025-04-09,10:00,13:00,50,Auditorium
+EVT018,Machine Learning with Python,Academic,Seminar,2025-05-15,13:00,17:00,100,Lecture Hall B

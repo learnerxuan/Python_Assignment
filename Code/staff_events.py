@@ -3,8 +3,6 @@
 import staff_lib
 import staff_color as color
 
-event_domains = {1: "Academic", 2: "Extracurricular"}
-event_types = {1: "Conference", 2:"Seminar"}
 
 def events():
     """Display event menu and process user choices."""
@@ -38,6 +36,9 @@ def events():
 
 def get_event_domain():
     """Returns event domain in string."""
+
+    event_domains = {1: "Academic", 2: "Extracurricular"}
+
     print(f"{color.YELLOW}Select Event Domain:{color.RESET}")
     for key, value in event_domains.items():
         print(f"{key} - {value}")
@@ -60,6 +61,9 @@ def get_event_domain():
 
 def get_event_type():
     """Returns event type in string."""
+
+    event_types = {1: "Conference", 2:"Seminar"}
+
     print(f"{color.YELLOW}Select Event Type:{color.RESET}")
     for key, value in event_types.items():
         print(f"{key} - {value}")
@@ -414,7 +418,6 @@ def filter_event():
             if event[key] == value:
                 print("".join(f"{value:<18}" for value in event.values()))
                 print("-" * 159)
-                return
         
     except FileNotFoundError:
         print(f"{color.RED}Error: File not found.{color.RESET}\n")

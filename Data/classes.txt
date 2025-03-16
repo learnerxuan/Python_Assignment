@@ -2,10 +2,14 @@ class_id,course_id,teacher_id,day,start_time,end_time,location,lesson_plan,notes
 CLS001,C001,T001,Monday,08:00,10:00,Room 101,Intro to Programming,Focus on basic syntax and variables,Prepare for next week's quiz
 CLS002,C002,T002,Tuesday,10:00,12:00,Room 102,Data Structures and Algorithms,Study arrays and linked lists,Review chapter 3 before the class
 CLS003,C003,T005,Wednesday,09:00,11:00,Room 103,Calculus I,Topics on derivatives and limits,Bring a calculator to class
-CLS004,C004,T010,Thursday,13:00,15:00,Room 104,Fundamentals of Physics,Newton's Laws of Motion,Lab session after the theory
+CLS004,C004,T010,Thursday,10:00,12:00,Room 104,Fundamentals of Physics,Newton's Laws of Motion,Lab session after the theory
 CLS005,C005,T005,Friday,14:00,16:00,Room 105,Biology Basics,Photosynthesis and cell respiration,Complete homework 2 by Friday
 CLS006,C006,T008,Monday,11:00,13:00,Room 106,General Chemistry,"Acids, bases, and pH",Read the lab manual before the experiment
 CLS007,C007,T009,Tuesday,14:00,16:00,Room 107,English Literature,Shakespeare's works,Prepare for class discussion on Hamlet
 CLS008,C008,T003,Wednesday,08:00,10:00,Room 108,Web Development,Introduction to HTML and CSS,Work on website design project
 CLS009,C009,T004,Thursday,08:30,10:30,Room 108,Linear Algebra,Matrix operations and vector spaces,Review practice problems before the test
 CLS010,C010,T006,Friday,09:00,11:00,Room 110,Microeconomics,Supply and demand analysis,Read chapters 5 and 6 for next class
+CLS011,C001,T004,Tuesday,08:00,10:00,Room 111,Python Functions and Loops,Practice writing functions and loops,Complete exercises before class
+CLS012,C002,None,Wednesday,14:00,16:00,Room 112,Data Visualization,Exploring Matplotlib and Seaborn,Prepare a small dataset for visualization
+CLS013,C003,None,Thursday,10:00,12:00,Room 113,JavaScript Basics,Introduction to DOM manipulation,Work on a simple interactive webpage
+CLS014,C004,None,Friday,08:00,10:00,Room 114,Advanced SQL,Indexes and Query Optimization,Review last week's queries

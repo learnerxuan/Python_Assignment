@@ -3,11 +3,6 @@
 import staff_lib
 import staff_color as color
 
-# Dictionary used in this file
-resource_condition = {1: "Good", 2: "Used", 3: "Fair", 4: "Needs Repair"}
-maintenance_types = {1: "Repair", 2: "Inspection", 3: "Replacement", 4: "Upgrade", 5: "Cleaning"}
-maintenance_status = {1: "Completed", 2: "Pending", 3: "In Progress"}
-
 
 def resources():
     """Display resource management menu and process user choices."""
@@ -46,6 +41,9 @@ def resources():
 
 def view_resources():
     """Display resource viewing menu and process user choices."""
+
+    resource_condition = {1: "Good", 2: "Used", 3: "Fair", 4: "Needs Repair"}
+
     while True:
         print(f"{'=' * 18}{color.BOLD}{color.BLUE} VIEW RESOURCES {color.RESET}{'=' * 18}")
         print(f"""{" " * 12}{color.YELLOW}1.{color.RESET}  View All Resources
@@ -147,6 +145,8 @@ def view_resources():
 
 def new_resources():
     """Register new resources, take name, condition, quantity, location."""
+
+    resource_condition = {1: "Good", 2: "Used", 3: "Fair", 4: "Needs Repair"}
 
     try:
         print(f"{'=' * 30}{color.BOLD}{color.BLUE} ADD NEW RESOURCE {color.RESET}{'=' * 30}")
@@ -250,6 +250,9 @@ def new_resources():
 
 def update_resources():
     """Update resource details."""
+
+    resource_condition = {1: "Good", 2: "Used", 3: "Fair", 4: "Needs Repair"}
+
     while True:
         try:
             print(f"{'=' * 20}{color.BOLD}{color.BLUE} UPDATE RESOURCE DETAILS {color.RESET}{'=' * 20}")
@@ -581,6 +584,9 @@ def maintenance():
 
 def get_main_type():
     """Returns maintenance type in string."""
+
+    maintenance_types = {1: "Repair", 2: "Inspection", 3: "Replacement", 4: "Upgrade", 5: "Cleaning"}
+
     print(f"{color.YELLOW}Select Maintenance Type:{color.RESET}")
     for key, value in maintenance_types.items():
         print(f"{key} - {value}")
@@ -603,6 +609,9 @@ def get_main_type():
 
 def get_main_status():
     """Returns maintenance status in string."""
+
+    maintenance_status = {1: "Completed", 2: "Pending", 3: "In Progress"}
+
     print(f"{color.YELLOW}Select Maintenance Status:{color.RESET}")
     for key, value in maintenance_status.items():
         print(f"{key} - {value}")
