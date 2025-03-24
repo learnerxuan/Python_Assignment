@@ -104,8 +104,7 @@ def course_management():
                 content = file.read()
                 if content and not content.endswith("\n"):  # Ensure file ends with a newline
                     file.write("\n")
-                file.write(
-                    f"{course_id},{course_name},{description},{' '.join(teacher_ids)}\n")  # Add a newline at the end
+                file.write(f"{course_id},{course_name},{description},{' '.join(teacher_ids)}\n")  # Add a newline at the end
             print(f"✅ New course with ID '{course_id}' is added successfully!")
 
         except FileNotFoundError as e:
