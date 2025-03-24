@@ -272,7 +272,7 @@ def report_generation():
             # Print Expense Section
             print("\nExpense Details:")
             print("-" * 70)
-            print(f"| {'Name':<48} | {'Amount (RMD)':<15} |")
+            print(f"| {'Name':<48} | {'Amount (RM)':<15} |")
             print("-" * 70)
 
             for name_expense, amount in expenses:
