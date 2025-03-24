@@ -30,43 +30,53 @@ def course_management():
 
     def add_course():
         """
-        Add new course, input course_name,description,teacher_id
+        Add new course, input course_name, description, teacher_id
         """
         print("Adding new course...")
         try:
-            course_name = str(input("Enter course name: ")).strip()
-            if course_name.lower() == "exit":
-                return # Return back to the menu
+            while True:
+                course_name = input("Enter course name: ").strip()
+                if course_name.lower() == "exit":
+                    return  # Return back to the menu
 
-            description = str(input("Enter course description: ")).strip()
+                course_found = False
+                with open("../Data/courses.txt", "r") as file:
+                    for line in file:
+                        courses = line.strip().split(",")
+                        if len(courses) > 1 and courses[1].lower() == course_name.lower():
+                            course_found = True
+                            break
+
+                if course_found:
+                    print(f"❌ Course name '{course_name}' already exists. Please enter a new course name.")
+                    continue  # Ask for input again
+                else:
+                    break  # Proceed to the next step if the course is unique
+
+            description = input("Enter course description: ").strip()
             if description.lower() == "exit":
                 return
 
-            # Print out Teacher ID and Teacher's Name in table form
+            # Print out Teacher ID and Teacher Name in table form
             print("=" * 39)
             print(f"| {'Teacher ID':<12} | {'Teacher Name':<20} |")
             print("-" * 39)
-            with open("../Data/teachers.txt","r") as file:
-                # Skip header
-                file.readline()
-
+            with open("../Data/teachers.txt", "r") as file:
+                file.readline()  # Skip header
                 for line in file:
                     teacher = line.strip().split(",")
-                    teacher_id = teacher[0]
-                    teacher_name = teacher[1]
-                    print(f"| {teacher_id:<12} | {teacher_name:<20} |")
-
+                    if len(teacher) > 1:
+                        print(f"| {teacher[0]:<12} | {teacher[1]:<20} |")
             print("=" * 39)
 
             # Allow multiple teachers to be entered one by one
             print("Enter teacher IDs one by one. Press 'Enter' (empty input) to finish.")
-            teacher_ids = [] # Store all Teacher ID
+            teacher_ids = []  # Store all Teacher IDs
 
-            # Check if the teacher's ID exists
             while True:
-                teacher_id = str(input("Enter teacher's id: ")).strip()
+                teacher_id = input("Enter teacher's id: ").strip()
                 if not teacher_id:
-                    break # Empty input, break the loop
+                    break  # Stop input on empty input
                 if teacher_id.lower() == "exit":
                     return
 
@@ -77,12 +87,12 @@ def course_management():
                         if check_exist == teacher_id:
                             teacher_found = True
                             break
+
                 if teacher_found:
                     teacher_ids.append(teacher_id)
                 else:
-                    print(f"❌ Teacher's ID {teacher_id} does not exist")
+                    print(f"❌ Teacher's ID '{teacher_id}' does not exist.")
 
-            # Cancel the course addition when there is no teacher ID inputted
             if not teacher_ids:
                 print("⚠️ No valid teacher IDs entered. Course addition canceled.")
                 return
@@ -94,7 +104,8 @@ def course_management():
                 content = file.read()
                 if content and not content.endswith("\n"):  # Ensure file ends with a newline
                     file.write("\n")
-                file.write(f"{course_id},{course_name},{description},{' '.join(teacher_ids)}\n")  # Add a newline at the end
+                file.write(
+                    f"{course_id},{course_name},{description},{' '.join(teacher_ids)}\n")  # Add a newline at the end
             print(f"✅ New course with ID '{course_id}' is added successfully!")
 
         except FileNotFoundError as e:
