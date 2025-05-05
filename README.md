@@ -64,7 +64,7 @@ The Education Management System is a comprehensive Python-based application desi
 - LOW ZE XUAN (Administrator)
 - HENG EE SERN (Staff)
 - TAN HAO SHUAN (Teacher)
-- FARIS (Student) 
+- FARRIS (Student) 
 
 ## Course Information
 - Course: AAPP0015-4-1-PWP
